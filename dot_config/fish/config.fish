@@ -28,12 +28,5 @@ alias top "btm -b"
 alias gotest "gotestsum -f testname"
 alias ca "chezmoi apply"
 
-if command -v direnv >/dev/null
-    direnv hook fish | source
-end
-
-if type -q ssh-agent
-    eval (ssh-agent -c | grep -v "echo") > /dev/null 2>&1
-end
-
+direnv hook fish | source
 fish_vi_key_bindings

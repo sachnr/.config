@@ -22,3 +22,11 @@ mouse-hide-while-typing = "true"
 ## Clipboard
 clipboard-read = "allow"
 clipboard-paste-protection = "false"
+
+# keybinds
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+a>v=new_split:right
+keybind = ctrl+a>s=new_split:down
