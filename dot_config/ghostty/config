@@ -1,0 +1,24 @@
+## Theme
+font-family = "Iosevka Term"
+font-style = "Iosevka Term Medium"
+font-style-bold = "Iosevka Term Bold"
+font-style-italic = "Iosevka Term Medium Italic"
+font-style-bold-italic = "Iosevka Term Bold Italic"
+font-size = 13.5
+theme = "mellow"
+window-padding-x = 4
+window-padding-y = 4
+window-decoration = "false"
+adjust-cell-height = 15%
+gtk-custom-css = tab-style.css
+
+## Options
+shell-integration-features = "no-cursor"
+cursor-style-blink = "false"
+cursor-style = "block"
+cursor-invert-fg-bg = "true"
+mouse-hide-while-typing = "true"
+
+## Clipboard
+clipboard-read = "allow"
+clipboard-paste-protection = "false"

@@ -1,0 +1,16 @@
+dot_config/emacs/eln-cache/
+dot_config/emacs/elpaca/
+dot_config/emacs/private_auto-save-list/
+dot_config/emacs/transient/
+dot_config/emacs/#init.el#
+
+dot_config/tmux/plugins/
+
+dot_config/zsh/private_dot_zcompcache
+dot_config/zsh/private_dot_histfile
+
+dot_config/mpd/lyrics/
+dot_config/mpd/playlists/
+dot_config/mpd/mpd.db
+dot_config/mpd/mpd.log
+dot_config/mpd/mpdstate
