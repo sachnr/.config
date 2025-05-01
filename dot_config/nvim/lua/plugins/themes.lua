@@ -1,0 +1,16 @@
+return {
+	"mellow-theme/mellow.nvim",
+	-- "folke/tokyonight.nvim",
+	"rebelot/kanagawa.nvim",
+	"Shatur/neovim-ayu",
+	"ellisonleao/gruvbox.nvim",
+	"marko-cerovac/material.nvim",
+	-- "neanias/everforest-nvim",
+	-- "tomasiser/vim-code-dark",
+	-- "EdenEast/nightfox.nvim",
+	-- "sainnhe/sonokai",
+	-- "catppuccin/nvim",
+	-- "navarasu/onedark.nvim",
+	-- "ribru17/bamboo.nvim",
+	-- "ramojus/mellifluous.nvim",
+}

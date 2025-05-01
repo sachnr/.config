@@ -1,24 +1,27 @@
 colors:
   bright:
-    black: "#727169"
-    blue: "#7fb4ca"
-    cyan: "#7aa89f"
-    green: "#98bb6c"
-    magenta: "#938aa9"
-    red: "#e82424"
-    white: "#dcd7ba"
-    yellow: "#e6c384"
+    black: "#546e7a" # palette = 8
+    red: "#ff5370" # palette = 9
+    green: "#c3e88d" # palette = 10
+    yellow: "#ffcb6b" # palette = 11
+    blue: "#82aaff" # palette = 12
+    magenta: "#c792ea" # palette = 13
+    cyan: "#89ddff" # palette = 14
+    white: "#ffffff" # palette = 15
   normal:
-    black: "#090618"
-    blue: "#7e9cd8"
-    cyan: "#6a9589"
-    green: "#76946a"
-    magenta: "#957fb8"
-    red: "#c34043"
-    white: "#c8c093"
-    yellow: "#c0a36e"
+    black: "#546e7a" # palette = 0
+    red: "#ff5370" # palette = 1
+    green: "#c3e88d" # palette = 2
+    yellow: "#ffcb6b" # palette = 3
+    blue: "#82aaff" # palette = 4
+    magenta: "#c792ea" # palette = 5
+    cyan: "#89ddff" # palette = 6
+    white: "#ffffff" # palette = 7
   ui:
-    background: "#181616"
-    foreground: "#dcd7ba"
-    cursor: "#dcd7ba"
-    cursor_text: "#181616"
+    background: "#0f111a"
+    foreground: "#8f93a2"
+    cursor: "#ffcc00"
+    cursor_text: "#0f111a"
+    selection:
+      background: "#1f2233"
+      text: "#8f93a2"

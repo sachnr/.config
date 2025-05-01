@@ -5,11 +5,10 @@ font-style-bold = "Iosevka Term Bold"
 font-style-italic = "Iosevka Term Medium Italic"
 font-style-bold-italic = "Iosevka Term Bold Italic"
 font-size = 13.5
-theme = "mellow"
+theme = "MaterialOcean"
 window-padding-x = 4
 window-padding-y = 4
 window-decoration = "false"
-adjust-cell-height = 15%
 gtk-custom-css = tab-style.css
 
 ## Options
@@ -24,9 +23,9 @@ clipboard-read = "allow"
 clipboard-paste-protection = "false"
 
 # keybinds
-keybind = ctrl+a>j=goto_split:bottom
-keybind = ctrl+a>k=goto_split:top
-keybind = ctrl+a>h=goto_split:left
-keybind = ctrl+a>l=goto_split:right
-keybind = ctrl+a>v=new_split:right
-keybind = ctrl+a>s=new_split:down
+keybind = ctrl+g>j=goto_split:bottom
+keybind = ctrl+g>k=goto_split:top
+keybind = ctrl+g>h=goto_split:left
+keybind = ctrl+g>l=goto_split:right
+keybind = ctrl+g>v=new_split:right
+keybind = ctrl+g>s=new_split:down

@@ -1,0 +1,5 @@
+gui:
+  sidePanelWidth: 0.4
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 2
+  mainPanelSplitMode: flexible
