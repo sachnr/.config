@@ -12,34 +12,9 @@ return {
 		},
 
 		config = function()
-			local set = vim.keymap.set
-			local opts = {
-				silent = true,
-				noremap = true,
-			}
-			local merge = function(table1, table2)
-				return vim.tbl_deep_extend("force", table1, table2)
-			end
-			local lsp_attach = function(bufnr)
-				set("n", "<space>e", vim.diagnostic.open_float, merge(opts, { desc = "diagnostic float" }))
-				set("n", "[d", vim.diagnostic.goto_prev, merge(opts, { desc = "diagnostic goto prev" }))
-				set("n", "]d", vim.diagnostic.goto_next, merge(opts, { desc = "diagnostic goto next" }))
-				-- set("n", "<leader>lq", vim.diagnostic.setloclist, merge(opts, { desc = "diagnostic setlocklist" }))
-				local lsp_opts = merge(opts, { buffer = bufnr })
-				set("n", "ga", vim.lsp.buf.code_action, merge(lsp_opts, { desc = "code_action" }))
-				-- set("n", "ga", "<cmd> FzfLua lsp_code_actions <cr>", merge(lsp_opts, { desc = "code_action" }))
-				set("n", "gh", vim.lsp.buf.references, merge(lsp_opts, { desc = "goto references" }))
-				set("n", "gr", vim.lsp.buf.rename, merge(lsp_opts, { desc = "lsp rename" }))
-				set("n", "K", vim.lsp.buf.hover, merge(lsp_opts, { desc = "hover" }))
-				set("n", "gD", vim.lsp.buf.declaration, merge(lsp_opts, { desc = "goto declaration" }))
-				set("n", "gd", vim.lsp.buf.definition, merge(lsp_opts, { desc = "goto definition" }))
-				set("n", "gi", vim.lsp.buf.implementation, merge(lsp_opts, { desc = "goto implementation" }))
-				set("n", "<C-k>", vim.lsp.buf.signature_help, merge(lsp_opts, { desc = "signature_help" }))
-				set("n", "<leader>ld", vim.lsp.buf.type_definition, merge(lsp_opts, { desc = "Type Definition" }))
-			end
-
+			local helper = require("helper")
 			local lspconfig = require("lspconfig")
-
+			local icons = require("icons").diagnostics
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -47,16 +22,8 @@ return {
 				client.server_capabilities.semanticTokensProvider = nil
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentRangeFormattingProvider = false
-				lsp_attach(buffer)
+				helper.lsp_attach(buffer)
 			end
-
-			--lsp signs
-			local function lspSymbol(name, icon)
-				local hl = "DiagnosticSign" .. name
-				vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-			end
-
-			local icons = require("icons").diagnostics
 
 			vim.diagnostic.config({
 				virtual_text = {
@@ -101,6 +68,7 @@ return {
 				"yamlls",
 				"nil_ls",
 				"ocamllsp",
+				"templ",
 			}
 
 			for _, lsp in ipairs(servers) do
@@ -135,6 +103,7 @@ return {
 			})
 
 			lspconfig.clangd.setup({
+				filetypes = { "c", "cpp", "objc", "objcpp" },
 				cmd = {
 					"clangd",
 					"--clang-tidy",
@@ -178,7 +147,7 @@ return {
 					server = {
 						on_attach = function(client, bufnr)
 							on_attach_common(client, bufnr)
-							lsp_attach(bufnr)
+							helper.lsp_attach(bufnr)
 						end,
 						capabilities = capabilities,
 						settings = {
@@ -278,14 +247,34 @@ return {
 				},
 			})
 
-			lspconfig.tailwindcss.setup({
-				on_attach = function(client, buffer)
+			lspconfig.htmx.setup({
+				on_attach = function(client, bufnr)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
-					lsp_attach(buffer)
+					helper.lsp_attach(bufnr)
 				end,
 				capabilities = capabilities,
+				filetypes = { "html", "templ" },
 			})
+
+			lspconfig.html.setup({
+				on_attach = function(client, bufnr)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+					helper.lsp_attach(bufnr)
+				end,
+				capabilities = capabilities,
+				filetypes = { "html", "templ" },
+			})
+
+			-- lspconfig.tailwindcss.setup({
+			-- 	on_attach = function(client, buffer)
+			-- 		client.server_capabilities.documentFormattingProvider = false
+			-- 		client.server_capabilities.documentRangeFormattingProvider = false
+			-- 		lsp_attach(buffer)
+			-- 	end,
+			-- 	capabilities = capabilities,
+			-- })
 
 			lspconfig.zls.setup({
 				on_attach = function(client, bufnr)
@@ -301,7 +290,7 @@ return {
 					local root_dir = vim.fs.dirname(vim.fs.find({ ".theme-check.yml" }, { upward = true })[1])
 					local client = vim.lsp.start({
 						on_attach = function(_, bufnr)
-							lsp_attach(bufnr)
+							helper.lsp_attach(bufnr)
 						end,
 						capabilities = capabilities,
 						name = "shopify_ls",

@@ -66,6 +66,7 @@ return {
 					sql = { "pg_format" },
 					toml = { "taplo" },
 					template = { "prettierd", "prettier", stop_after_first = true },
+					templ = { "templ" },
 					typescript = { "prettierd", "prettier", stop_after_first = true },
 					typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 					vue = { "prettierd", "prettier", stop_after_first = true },

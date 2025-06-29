@@ -11,6 +11,7 @@ return {
 	-- "sainnhe/sonokai",
 	-- "catppuccin/nvim",
 	-- "navarasu/onedark.nvim",
-	-- "ribru17/bamboo.nvim",
+	"ribru17/bamboo.nvim",
 	-- "ramojus/mellifluous.nvim",
+	"vague2k/vague.nvim",
 }
