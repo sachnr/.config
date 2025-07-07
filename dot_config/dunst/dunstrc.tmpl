@@ -1,0 +1,23 @@
+[global]
+    mouse_middle_click = context,close_current #close_current is optional
+    width = 400
+    height = 400
+    min_icon_size = 64
+    max_icon_size = 128
+    offset = "30x50"
+    origin = "top-right"
+    transparency = 10
+    font = "{{ .font.family }}"
+    frame_color = "{{ .colors.bright.green }}"
+    fgcolor = "{{ .colors.ui.foreground }}"
+    bgcolor = "{{ .colors.ui.background }}"
+
+[urgency_normal]
+    background = "{{ .colors.ui.background }}"
+    foreground = "{{ .colors.ui.foreground }}"
+    timeout = 10
+
+[urgency_critical]
+    background = "{{ .colors.normal.red }}"
+    foreground = "{{ .colors.ui.cursor_text }}"
+    timeout = 10

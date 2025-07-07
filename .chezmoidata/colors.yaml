@@ -54,3 +54,6 @@ colors:
     selection:
       background: "#ffffff"
       text: "#5e5c64"
+
+font:
+  family: "Iosevka Term"
