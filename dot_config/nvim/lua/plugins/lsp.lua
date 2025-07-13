@@ -2,7 +2,6 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufRead", "BufWinEnter", "BufNewFile" },
 		dependencies = {
 			{
 				"nvim-lua/plenary.nvim",
@@ -222,10 +221,29 @@ return {
 				},
 				capabilities = capabilities,
 				settings = {
-					tsserver_file_preferences = {
-						includeInlayParameterNameHints = "all",
-						includeInlayVariableTypeHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
+					javascript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
 					},
 				},
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },

@@ -33,7 +33,6 @@ return {
 	{
 		"NvChad/nvim-colorizer.lua",
 		enabled = true,
-		event = { "BufRead", "BufWinEnter", "BufNewFile" },
 		opts = {
 			user_default_options = {
 				names = false,

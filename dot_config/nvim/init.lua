@@ -17,7 +17,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
-	colorscheme = "material-deep-ocean",
 	defaults = {
 		lazy = false, -- should plugins be lazy-loaded?
 	},
@@ -64,7 +63,8 @@ local opts = {
 require("keys").defaults()
 require("lazy").setup("plugins", opts)
 require("statusline").setup()
-vim.cmd.colorscheme("bamboo")
+vim.opt.background = "light"
+vim.cmd.colorscheme("nightfox")
 
 local CloseAllFloatingWindows = function()
 	local closed_windows = {}

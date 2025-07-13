@@ -6,7 +6,6 @@ return {
 		keys = {
 			{ "<leader>gb", "<cmd> lua require('gitsigns').blame_line <cr>", { desc = "git blame" } },
 		},
-		event = { "BufRead", "BufWinEnter", "BufNewFile" },
 		config = function()
 			require("gitsigns").setup({
 				numhl = false,
