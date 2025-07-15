@@ -4,7 +4,13 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		keys = {
-			{ "<leader>gb", "<cmd> lua require('gitsigns').blame_line <cr>", { desc = "git blame" } },
+			{
+				"<leader>gb",
+				function()
+					require("gitsigns").blame_line()
+				end,
+				{ desc = "git blame" },
+			},
 		},
 		config = function()
 			require("gitsigns").setup({
