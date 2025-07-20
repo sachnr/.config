@@ -16,6 +16,7 @@ return {
 			local icons = require("icons").diagnostics
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			vim.filetype.add({ extension = { templ = "templ" } })
 
 			local on_attach_common = function(client, buffer)
 				client.server_capabilities.semanticTokensProvider = nil
@@ -139,6 +140,14 @@ return {
 						},
 					},
 				},
+			})
+
+			lspconfig.qmlls.setup({
+				cmd = { "qmlls", "-E" },
+				on_attach = function(_, buffer)
+					helper.lsp_attach(buffer)
+				end,
+				capabilities = capabilities,
 			})
 
 			vim.g.rustaceanvim = function()

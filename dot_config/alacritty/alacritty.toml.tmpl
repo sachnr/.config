@@ -19,14 +19,14 @@ white = "{{ .colors.normal.white }}"
 yellow = "{{ .colors.normal.yellow }}"
 
 [colors.primary]
-background = "{{ .colors.ui.background }}"
-bright_foreground = "{{ .colors.ui.foreground }}"
+background = "{{ .colors.primary.background }}"
+bright_foreground = "{{ .colors.primary.foreground }}"
 dim_foreground = "{{ .colors.normal.white }}"
-foreground = "{{ .colors.ui.foreground }}"
+foreground = "{{ .colors.primary.foreground }}"
 
 [colors.cursor]
-cursor = "{{ .colors.ui.cursor }}"
-text = "{{ .colors.ui.cursor_text }}"
+cursor = "{{ .colors.primary.accent }}"
+text = "{{ .colors.primary.background }}"
 
 [cursor]
 style = "Block"

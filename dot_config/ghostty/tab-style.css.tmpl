@@ -10,12 +10,12 @@ tabbar tabbox {
 }
 
 tabbar tabbox tab {
-  background: {{ .colors.ui.background }}
-  border: 1px solid {{ .colors.ui.background }};
+  background: {{ .colors.primary.background }}
+  border: 1px solid {{ .colors.primary.background }};
   border-radius: 0;
 }
 
 tabbar tabbox tab:selected {
-  background: {{ .colors.ui.background }}
-  color: {{ .colors.ui.cursor }};
+  background: {{ .colors.primary.background }}
+  color: {{ .colors.primary.accent }};
 }

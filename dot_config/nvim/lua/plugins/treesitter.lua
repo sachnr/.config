@@ -60,6 +60,7 @@ return {
 					"typescript",
 					"vue",
 					"vimdoc",
+                    "qmljs",
 					"yaml",
 					"zig",
 				},

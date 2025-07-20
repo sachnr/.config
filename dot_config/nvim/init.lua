@@ -63,8 +63,7 @@ local opts = {
 require("keys").defaults()
 require("lazy").setup("plugins", opts)
 require("statusline").setup()
-vim.opt.background = "light"
-vim.cmd.colorscheme("nightfox")
+vim.cmd.colorscheme("kanagawa")
 
 local CloseAllFloatingWindows = function()
 	local closed_windows = {}

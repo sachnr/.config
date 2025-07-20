@@ -59,6 +59,7 @@ env = HYPRCURSOR_SIZE,24
 env = LIBVA_DRIVER_NAME,nvidia
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = NVD_BACKEND,direct
+env = XDG_CURRENT_DESKTOP,Hyprland
 
 
 #####################
@@ -75,7 +76,7 @@ general {
     border_size = 2
 
     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-    col.active_border = rgba({{ .colors.normal.green | replace "#" "" }}aa)
+    col.active_border = rgba({{ .colors.primary.accent | replace "#" "" }}aa)
     col.inactive_border = rgba({{ .colors.normal.black | replace "#" "" }}aa)
 
     # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -223,7 +224,8 @@ bind = $mainMod, F4, exit,
 bind = $mainMod, t, togglefloating,
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, D, togglesplit, # dwindle
-bind = ,Print,exec,grim -t png -g slurp ~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png
+
+bind = ,PAUSE, exec, grim -g "$(slurp -d)" - | wl-copy
 bind = $mainMod, F2, exec, hyprlock
 bind = $mainMod, f, fullscreen,0
 bind = $mainMod SHIFT, r, exec, hyprctl reload
@@ -234,6 +236,12 @@ bind = $mainMod , TAB, workspace, previous
  bind = $mainMod, L, movefocus, r
  bind = $mainMod, K, movefocus, u
  bind = $mainMod, J, movefocus, d
+
+# Move window with mainMod shift + hjkl
+ bind = $mainMod SHIFT, H, movewindow, l
+ bind = $mainMod SHIFT, L, movewindow, r
+ bind = $mainMod SHIFT, K, movewindow, u
+ bind = $mainMod SHIFT, J, movewindow, d
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1
@@ -307,4 +315,8 @@ windowrule = suppressevent maximize, class:.*
 windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 windowrulev2=float,class:^(Pavucontrol)$
 windowrulev2=float,class:^(GtkFileChooserDialog)$,title:^(Open File)$|^(Save File)$|^(Preferences)$
+windowrulev2=move 0 0,class:(flameshot),title:(flameshot)
+windowrulev2=pin,class:(flameshot),title:(flameshot)
+windowrulev2=fullscreenstate,class:(flameshot),title:(flameshot)
+windowrulev2=float,class:(flameshot),title:(flameshot)
 

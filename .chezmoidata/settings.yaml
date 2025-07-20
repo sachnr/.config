@@ -1,0 +1,36 @@
+## Rose Pine theme
+colors:
+  bright:
+    black: "#908caa"
+    red: "#eb6f92"
+    green: "#ABE9B3"
+    yellow: "#f6c177"
+    blue: "#8bbec7"
+    magenta: "#c4a7e7"
+    cyan: "#a3d6df"
+    white: "#e0def4"
+  normal:
+    black: "#16141f"
+    red: "#eb6f92"
+    green: "#ABE9B3"
+    yellow: "#f6c177"
+    blue: "#8bbec7"
+    magenta: "#bb9ede"
+    cyan: "#9ccfd8"
+    white: "#6e6a86"
+  primary:
+    background: "#191724"
+    background2: "#1c1a29"
+    background3: "#1e1c2b"
+    accent: "#ebbcba"
+    foreground: "#e0def4"
+    selection: "#403d52"
+
+font:
+  family: "Roboto"
+  monospace: "Iosevka"
+
+settings:
+  gtk: "rose-pine-gtk"
+  qt_style: "Adwaita-Dark"
+  icon: "icons_papirus"

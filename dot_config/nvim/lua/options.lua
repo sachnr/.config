@@ -68,3 +68,5 @@ vim.opt.inccommand = "split"
 vim.opt.timeout = true
 vim.opt.updatetime = 600
 vim.opt.timeoutlen = 400
+
+vim.filetype.add({ extension = { templ = "templ" } })

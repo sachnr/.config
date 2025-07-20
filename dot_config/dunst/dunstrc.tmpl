@@ -8,16 +8,16 @@
     origin = "top-right"
     transparency = 10
     font = "{{ .font.family }}"
-    frame_color = "{{ .colors.bright.green }}"
-    fgcolor = "{{ .colors.ui.foreground }}"
-    bgcolor = "{{ .colors.ui.background }}"
+    frame_color = "{{ .colors.primary.accent }}"
+    bgcolor = "{{ .colors.primary.background }}"
+    fgcolor = "{{ .colors.primary.foreground }}"
 
 [urgency_normal]
-    background = "{{ .colors.ui.background }}"
-    foreground = "{{ .colors.ui.foreground }}"
+    background = "{{ .colors.primary.background }}"
+    foreground = "{{ .colors.primary.foreground }}"
     timeout = 10
 
 [urgency_critical]
     background = "{{ .colors.normal.red }}"
-    foreground = "{{ .colors.ui.cursor_text }}"
+    foreground = "{{ .colors.normal.black }}"
     timeout = 10
