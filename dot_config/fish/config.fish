@@ -22,6 +22,8 @@ alias glog "git log --oneline --abbrev-commit --graph --all"
 alias ls "eza --icons --group-directories-first"
 alias la "eza -lah --icons --group-directories-first"
 alias tree "eza --tree --icons --group-directories-first"
+alias find "fd"
+alias cat "bat"
 alias vi "nvim"
 alias vim "nvim"
 alias f "yazi"
@@ -33,6 +35,10 @@ alias python "python3.12"
 
 direnv hook fish | source
 fish_vi_key_bindings
+bind --mode default \cf _fzf_search_directory
+bind --mode insert \cf _fzf_search_directory
+bind --mode default \cr _fzf_search_history   
+bind --mode insert \cr _fzf_search_history   
 
 
 # BEGIN opam configuration
