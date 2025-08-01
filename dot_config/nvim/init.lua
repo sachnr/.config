@@ -1,106 +1,85 @@
-require("options")
-local bootstrap
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+vim.g.mapleader = " "
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
+vim.opt.termguicolors = true
+vim.opt.cursorline = true
+-- vim.opt.fillchars = { stl = " ", eob = " " }
+vim.opt.fileencoding = "utf-8"
+-- vim.opt.equalalways = false
+vim.opt.scrolloff = 4
+vim.opt.sidescrolloff = 8
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.undofile = true
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+vim.opt.breakindent = true
+vim.opt.showbreak = string.rep(" ", 3)
+vim.opt.linebreak = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.updatetime = 600
+vim.opt.timeoutlen = 400
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-if not vim.loop.fs_stat(lazypath) then
-	bootstrap = vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-
----@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
-
-local opts = {
-	defaults = {
-		lazy = false, -- should plugins be lazy-loaded?
-	},
-	ui = {
-		border = "single",
-	},
-	change_detection = {
-		enabled = false,
-		notify = false,
-	},
-	performance = {
-		rtp = {
-			disabled_plugins = {
-				"2html_plugin",
-				"tohtml",
-				"getscript",
-				"getscriptPlugin",
-				"gzip",
-				"logipat",
-				"netrw",
-				"netrwPlugin",
-				"netrwSettings",
-				"netrwFileHandlers",
-				"tar",
-				"tarPlugin",
-				"rrhelper",
-				"spellfile_plugin",
-				"vimball",
-				"vimballPlugin",
-				"zip",
-				"zipPlugin",
-				"syntax",
-				"tutor",
-				"rplugin",
-				"synmenu",
-				"optwin",
-				"compiler",
-				"bugreport",
-			},
-		},
-	},
-}
-
-require("keys").defaults()
-require("lazy").setup("plugins", opts)
-require("statusline").setup()
-vim.cmd.colorscheme("kanagawa")
-
-local CloseAllFloatingWindows = function()
-	local closed_windows = {}
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		local config = vim.api.nvim_win_get_config(win)
-		if config.relative ~= "" then -- is_floating_window?
-			vim.api.nvim_win_close(win, false) -- do not force
-			table.insert(closed_windows, win)
-		end
-	end
-	print(string.format("Closed %d windows: %s", #closed_windows, vim.inspect(closed_windows)))
-end
-
-vim.api.nvim_create_user_command("ClearFloats", function()
-	CloseAllFloatingWindows()
-end, { nargs = 0 })
-
-vim.api.nvim_create_user_command("GetBufType", function()
-	local buftype = vim.bo.buftype
-	local filetype = vim.bo.filetype
-	print("buftype: " .. buftype .. " | filetype: " .. filetype)
-end, { nargs = 0 })
-
+-- keybinds
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, noremap = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { silent = true, noremap = true })
+vim.keymap.set("n", "<ESC>", "<cmd> noh <CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<space>s", "<cmd> w <CR>", { silent = true, noremap = true })
+vim.keymap.set("i", "<C-c>", "<ESC>", { silent = true, noremap = true })
+vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
 vim.api.nvim_create_user_command("InlayHintToggle", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
 end, { nargs = 0 })
-
 vim.keymap.set("n", "\\", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
 end, { silent = true, noremap = true, desc = "Toggle Inlay Hints" })
 
-if bootstrap then
-	vim.cmd("bw | silent! MasonInstallAll")
-	vim.cmd("Lazy load nvim-treesitter")
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"help",
+		"qf",
+		"lspinfo",
+		"man",
+		"quickfix",
+		"checkhealth",
+	},
+	command = [[
+            nnoremap <buffer><silent> q :close<CR>
+            set nobuflisted 
+        ]],
+})
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.uv.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
+
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins", {
+	change_detection = {
+		notify = false,
+	},
+})
+
+require("statusline").setup()
+require("lsp_progress")
 
 if vim.g.neovide then
 	vim.o.guifont = "Iosevka Term:h14"
@@ -111,3 +90,5 @@ if vim.g.neovide then
 	vim.g.neovide_refresh_rate = 180
 	vim.g.neovide_refresh_rate_idle = 5
 end
+
+vim.cmd.colorscheme("kanagawa")

@@ -1,5 +1,3 @@
-local keys = require("keys")
-
 return {
 	"nvim-lua/plenary.nvim",
 
@@ -23,11 +21,6 @@ return {
 				},
 			})
 		end,
-	},
-
-	{
-		"akinsho/toggleterm.nvim",
-		config = true,
 	},
 
 	{
@@ -82,10 +75,5 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
-	},
-
-	{
-		"echasnovski/mini.colors",
-		enabled = true,
 	},
 }

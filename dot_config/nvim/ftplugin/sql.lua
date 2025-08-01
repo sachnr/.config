@@ -4,8 +4,3 @@ if not ok then
 end
 
 cmp.setup.buffer({ sources = { { name = "vim-dadbod-completion" } } })
-
-local db_url = vim.fn.expand("$DATABASE_URL")
-if db_url then
-	vim.g.db = db_url
-end

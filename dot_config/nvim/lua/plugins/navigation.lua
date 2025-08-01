@@ -1,5 +1,3 @@
-local keys = require("keys")
-
 return {
 	{
 		"stevearc/oil.nvim",

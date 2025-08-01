@@ -46,6 +46,7 @@ exec-once = swww-daemon
 exec = pkill waybar; waybar
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = dunst
+exec= pkill hypridle; hypridle
 
 
 #############################
@@ -70,10 +71,10 @@ env = XDG_CURRENT_DESKTOP,Hyprland
 
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
-    gaps_in = 4
-    gaps_out = 6
+    gaps_in = 6
+    gaps_out = 12
 
-    border_size = 2
+    border_size = 6
 
     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
     col.active_border = rgba({{ .colors.primary.accent | replace "#" "" }}aa)
@@ -90,7 +91,7 @@ general {
 
 # https://wiki.hyprland.org/Configuring/Variables/#decoration
 decoration {
-    rounding = 10
+    rounding = 0
     rounding_power = 2
 
     # Change transparency of focused and unfocused windows
