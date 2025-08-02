@@ -42,11 +42,11 @@ $menu = rofi -show drun
 # exec-once = nm-applet &
 # exec-once = waybar & hyprpaper & firefox
 exec-once = nm-applet
-exec-once = swww-daemon
+exec= pkill swww-daemon; swww-daemon
 exec = pkill waybar; waybar
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = dunst
-exec= pkill hypridle; hypridle
+# exec= pkill hypridle; hypridle
 
 
 #############################

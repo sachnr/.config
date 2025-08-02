@@ -16,7 +16,6 @@ return {
 				version = "v2.*",
 				build = "make install_jsregexp",
 			},
-			-- "zbirenbaum/copilot-cmp",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 		config = function()

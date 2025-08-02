@@ -24,6 +24,7 @@ vim.opt.updatetime = 600
 vim.opt.timeoutlen = 400
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.signcolumn = "no"
 
 -- keybinds
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, noremap = true })
@@ -41,6 +42,10 @@ vim.keymap.set("n", "\\", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
 end, { silent = true, noremap = true, desc = "Toggle Inlay Hints" })
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
@@ -85,10 +90,15 @@ if vim.g.neovide then
 	vim.o.guifont = "Iosevka Term:h14"
 	vim.g.neovide_text_gamma = 0.0
 	vim.g.neovide_text_contrast = 0
-	vim.g.neovide_scroll_animation_length = 0.0
-	vim.g.neovide_cursor_trail_size = 0.0
+	-- vim.g.neovide_position_animation_length = 0
+	vim.g.neovide_cursor_animation_length = 0
+	vim.g.neovide_cursor_trail_size = 0
+	vim.g.neovide_cursor_animate_in_insert_mode = false
+	vim.g.neovide_cursor_animate_command_line = false
+	-- vim.g.neovide_scroll_animation_far_lines = 0
+	-- vim.g.neovide_scroll_animation_length = 0
 	vim.g.neovide_refresh_rate = 180
 	vim.g.neovide_refresh_rate_idle = 5
 end
 
-vim.cmd.colorscheme("kanagawa")
+vim.cmd.colorscheme("gruvbox")

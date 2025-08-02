@@ -15,7 +15,7 @@ m.lsp_attach = function(bufnr)
 	set("n", "]d", vim.diagnostic.goto_next, merge(opts, { desc = "diagnostic goto next" }))
 
 	local lsp_opts = merge(opts, { buffer = bufnr })
-	set("n", "ga", vim.lsp.buf.code_action, merge(lsp_opts, { desc = "code_action" }))
+	-- set("n", "ga", vim.lsp.buf.code_action, merge(lsp_opts, { desc = "code_action" }))
 	-- set("n", "gh", vim.lsp.buf.references, merge(lsp_opts, { desc = "goto references" }))
 	set("n", "gr", vim.lsp.buf.rename, merge(lsp_opts, { desc = "lsp rename" }))
 	set("n", "K", vim.lsp.buf.hover, merge(lsp_opts, { desc = "hover" }))

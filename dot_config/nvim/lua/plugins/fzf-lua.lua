@@ -40,6 +40,10 @@ return {
 			require("fzf-lua").live_grep()
 		end, common_opts)
 
+		set("n", "ga", function()
+			require("fzf-lua").lsp_code_actions()
+		end, vim.tbl_extend("force", common_opts, { nowait = true }))
+
 		set("n", "gh", function()
 			require("fzf-lua").lsp_references()
 		end, vim.tbl_extend("force", common_opts, { nowait = true }))
@@ -50,6 +54,10 @@ return {
 
 		set("n", "<leader>tS", function()
 			require("fzf-lua").lsp_workspace_symbols()
+		end, common_opts)
+
+		set("n", "<leader>tt", function()
+			require("fzf-lua").tabs()
 		end, common_opts)
 	end,
 }
