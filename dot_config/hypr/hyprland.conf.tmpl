@@ -26,7 +26,7 @@ monitor = DP-3, 2560x1440@180, 0x0, 1
 # See https://wiki.hyprland.org/Configuring/Keywords/
 
 # Set programs that you use
-$terminal = ghostty
+$terminal = ghostty --gtk-single-instance=true
 $fileManager = nemo
 $menu = rofi -show drun
 
@@ -45,6 +45,7 @@ exec-once = nm-applet
 exec= pkill swww-daemon; swww-daemon
 exec = pkill waybar; waybar
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once = ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
 exec-once = dunst
 # exec= pkill hypridle; hypridle
 
@@ -61,6 +62,7 @@ env = LIBVA_DRIVER_NAME,nvidia
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = NVD_BACKEND,direct
 env = XDG_CURRENT_DESKTOP,Hyprland
+env = MOZ_ENABLE_WAYLAND,1
 
 
 #####################
@@ -74,7 +76,7 @@ general {
     gaps_in = 6
     gaps_out = 12
 
-    border_size = 6
+    border_size = 4
 
     # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
     col.active_border = rgba({{ .colors.primary.accent | replace "#" "" }}aa)
@@ -91,7 +93,7 @@ general {
 
 # https://wiki.hyprland.org/Configuring/Variables/#decoration
 decoration {
-    rounding = 0
+    rounding = 4
     rounding_power = 2
 
     # Change transparency of focused and unfocused windows

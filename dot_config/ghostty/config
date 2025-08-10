@@ -9,7 +9,11 @@ theme = "ChezmoiTheme"
 window-padding-x = 4
 window-padding-y = 4
 window-decoration = "false"
-gtk-custom-css = tab-style.css
+# gtk-custom-css = tab-style.css
+
+window-theme = system
+gtk-titlebar = false
+gtk-wide-tabs = false
 
 ## Options
 shell-integration-features = "no-cursor"

@@ -25,6 +25,8 @@ vim.opt.timeoutlen = 400
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.signcolumn = "no"
+vim.opt.swapfile = false
+vim.o.winborder = "rounded"
 
 -- keybinds
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, noremap = true })
@@ -34,6 +36,8 @@ vim.keymap.set("n", "<space>s", "<cmd> w <CR>", { silent = true, noremap = true 
 vim.keymap.set("i", "<C-c>", "<ESC>", { silent = true, noremap = true })
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]])
+
 vim.api.nvim_create_user_command("InlayHintToggle", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
@@ -84,7 +88,7 @@ require("lazy").setup("plugins", {
 })
 
 require("statusline").setup()
-require("lsp_progress")
+require("lsp")
 
 if vim.g.neovide then
 	vim.o.guifont = "Iosevka Term:h14"
@@ -101,4 +105,4 @@ if vim.g.neovide then
 	vim.g.neovide_refresh_rate_idle = 5
 end
 
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("mellifluous")

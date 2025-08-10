@@ -1,0 +1,77 @@
+font={{ .font.monospace }}:size=12
+font-size-adjustment=0.5
+pad=6x6
+dpi-aware=yes
+underline-offset=2px
+
+[cursor]
+style=block
+blink=no
+beam-thickness=1.5
+
+[colors]
+alpha=1.0
+background={{ .colors.primary.background | trimPrefix "#" }}
+foreground={{ .colors.primary.foreground | trimPrefix "#" }}
+
+# flash highlight during visual bell
+flash={{ .colors.normal.green | trimPrefix "#" }}
+flash-alpha=0.5
+
+# 8-color “regular” palette
+regular0={{ .colors.normal.black   | trimPrefix "#" }}
+regular1={{ .colors.normal.red     | trimPrefix "#" }}
+regular2={{ .colors.normal.green   | trimPrefix "#" }}
+regular3={{ .colors.normal.yellow  | trimPrefix "#" }}
+regular4={{ .colors.normal.blue    | trimPrefix "#" }}
+regular5={{ .colors.normal.magenta | trimPrefix "#" }}
+regular6={{ .colors.normal.cyan    | trimPrefix "#" }}
+regular7={{ .colors.normal.white   | trimPrefix "#" }}
+
+# bright variants
+bright0={{ .colors.bright.black   | trimPrefix "#" }}
+bright1={{ .colors.bright.red     | trimPrefix "#" }}
+bright2={{ .colors.bright.green   | trimPrefix "#" }}
+bright3={{ .colors.bright.yellow  | trimPrefix "#" }}
+bright4={{ .colors.bright.blue    | trimPrefix "#" }}
+bright5={{ .colors.bright.magenta | trimPrefix "#" }}
+bright6={{ .colors.bright.cyan    | trimPrefix "#" }}
+bright7={{ .colors.bright.white   | trimPrefix "#" }}
+
+selection-foreground={{ .colors.bright.white   | trimPrefix "#" }}
+selection-background={{ .colors.primary.selection | trimPrefix "#" }}
+
+urls={{ .colors.normal.green | trimPrefix "#" }}
+
+[key-bindings]
+scrollback-up-page=Shift+Page_Up
+scrollback-down-page=Shift+Page_Down
+clipboard-copy=Control+Shift+c XF86Copy
+clipboard-paste=Control+Shift+v XF86Paste
+font-increase=Control+Shift+plus
+font-decrease=Control+Shift+underscore
+font-reset=Control+Shift+BackSpace
+primary-paste=none
+search-start=none
+spawn-terminal=none
+pipe-visible=none
+pipe-scrollback=none
+pipe-selected=none
+show-urls-launch=none
+prompt-prev=none
+prompt-next=none
+unicode-input=none
+
+[text-bindings]
+# \x03=Mod4+c  # Map Super+c -> Ctrl+c
+
+[scrollback]
+lines=1000
+multiplier=3.0
+indicator-position=relative
+indicator-format="● %d%%"
+
+[bell]
+urgent=no
+notify=no
+command-focused=no

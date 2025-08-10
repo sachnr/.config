@@ -1,11 +1,8 @@
 return {
 	"ibhagwan/fzf-lua",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	config = function()
 		require("fzf-lua").setup({
-			files = {
-				cmd = "fd --type f --exec stat -c '%Y %n' {} + | sort -rn | cut -d' ' -f2-",
-			},
 			keymap = {
 				fzf = {
 					["ctrl-q"] = "select-all+accept",

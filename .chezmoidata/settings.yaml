@@ -34,40 +34,77 @@
 #   gtk: "rose-pine-gtk"
 #   qt_style: "Adwaita-Dark"
 #   icon: "icons_papirus"
-#
+
 ## Gruvbox theme
+# colors:
+#   bright:
+#     black: "#928374"
+#     red: "#fb4934"
+#     green: "#b8bb26"
+#     yellow: "#fabd2f"
+#     blue: "#83a598"
+#     magenta: "#d3869b"
+#     cyan: "#8ec07c"
+#     white: "#ebdbb2"
+#   normal:
+#     black: "#282828"
+#     red: "#cc241d"
+#     green: "#98971a"
+#     yellow: "#d79921"
+#     blue: "#458588"
+#     magenta: "#b16286"
+#     cyan: "#689d6a"
+#     white: "#a89984"
+#   primary:
+#     background: "#282828"
+#     background2: "#3c3836"
+#     background3: "#504945"
+#     accent: "#fabd2f"
+#     foreground: "#ebdbb2"
+#     selection: "#504945"
+#
+# font:
+#   family: "Roboto"
+#   monospace: "Iosevka"
+#
+# settings:
+#   gtk: "Gruvbox-Dark"
+#   qt_style: "Adwaita-Dark"
+#   icon: "Gruvbox-Plus-Dark"
+
+## Mellifluous theme  ── generated from ramojus/mellifluous.nvim
 colors:
   bright:
-    black: "#928374"
-    red: "#fb4934"
-    green: "#b8bb26"
-    yellow: "#fabd2f"
-    blue: "#83a598"
-    magenta: "#d3869b"
-    cyan: "#8ec07c"
-    white: "#ebdbb2"
+    black: "#66665f"
+    red: "#ea8879"
+    green: "#93d29a"
+    yellow: "#e9e199"
+    blue: "#b5a0c9"
+    magenta: "#c99fb7"
+    cyan: "#9dd3c2"
+    white: "#deddd7"
   normal:
-    black: "#282828"
-    red: "#cc241d"
-    green: "#98971a"
-    yellow: "#d79921"
-    blue: "#458588"
-    magenta: "#b16286"
-    cyan: "#689d6a"
-    white: "#a89984"
+    black: "#1a1a19"
+    red: "#ea8879"
+    green: "#71c37c"
+    yellow: "#d3cb71"
+    blue: "#9b88b8"
+    magenta: "#b68ba9"
+    cyan: "#7dc2ae"
+    white: "#bcbcb6"
   primary:
-    background: "#282828"
-    background2: "#3c3836"
-    background3: "#504945"
-    accent: "#fabd2f"
-    foreground: "#ebdbb2"
-    selection: "#504945"
+    background: "#1a1a19"
+    background2: "#222220"
+    background3: "#2b2b28"
+    accent: "#CBAA88"
+    foreground: "#deddd7"
+    selection: "#35352f"
 
 font:
   family: "Roboto"
   monospace: "Iosevka"
 
 settings:
-  gtk: "Gruvbox-Dark"
+  gtk: "oomox-mellifluous-dark"
   qt_style: "Adwaita-Dark"
-  icon: "Gruvbox-Plus-Dark"
+  icon: "Papirus-Dark"
