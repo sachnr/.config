@@ -37,19 +37,20 @@ vim.keymap.set("i", "<C-c>", "<ESC>", { silent = true, noremap = true })
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]])
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
 
 vim.api.nvim_create_user_command("InlayHintToggle", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
 end, { nargs = 0 })
+
 vim.keymap.set("n", "\\", function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
 end, { silent = true, noremap = true, desc = "Toggle Inlay Hints" })
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = true })
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = true })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
@@ -65,6 +66,22 @@ vim.api.nvim_create_autocmd("FileType", {
             set nobuflisted 
         ]],
 })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("term-open", { clear = true }),
+	callback = function()
+		vim.opt.number = false
+		vim.opt.relativenumber = false
+	end,
+})
+
+vim.keymap.set("n", "<leader>st", function()
+	vim.cmd.vnew()
+	vim.cmd.term()
+	vim.cmd.wincmd("J")
+	vim.api.nvim_win_set_height(0, 10)
+	vim.cmd("startinsert")
+end)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

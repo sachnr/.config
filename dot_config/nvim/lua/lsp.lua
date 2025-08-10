@@ -53,19 +53,13 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
-local map = function(keys, func, desc)
-	vim.keymap.set("n", keys, func, { silent = true, desc = "LSP: " .. desc })
-end
-local prev_diagnostic = function()
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { silent = true, desc = "LSP: diagnostic open" })
+vim.keymap.set("n", "[d", function()
 	vim.diagnostic.jump({ count = -1 })
-end
-local next_diagnostic = function()
+end, { silent = true, desc = "LSP: diagnostic goto prev" })
+vim.keymap.set("n", "]d", function()
 	vim.diagnostic.jump({ count = 1 })
-end
-
-map("<leader>e", vim.diagnostic.open_float, "diagnostic open")
-map("[d", prev_diagnostic, "diagnostic goto prev")
-map("]d", next_diagnostic, "diagnostic goto next")
+end, { silent = true, desc = "LSP: diagnostic goto next" })
 
 vim.cmd("set completeopt+=noselect")
 
@@ -89,6 +83,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			group = highlight_augroup,
 			callback = vim.lsp.buf.document_highlight,
 		})
+
 		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 			buffer = event.buf,
 			group = highlight_augroup,
@@ -103,11 +98,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			end,
 		})
 
-		local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-		if client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-		end
+		-- local client = vim.lsp.get_client_by_id(event.data.client_id)
+		--
+		-- if client:supports_method("textDocument/completion") then
+		-- 	vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
+		-- end
 	end,
 })
 
