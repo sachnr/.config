@@ -3,6 +3,11 @@ return {
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	config = function()
 		require("fzf-lua").setup({
+			lsp = {
+				code_actions = {
+					previewer = false,
+				},
+			},
 			keymap = {
 				fzf = {
 					["ctrl-q"] = "select-all+accept",

@@ -28,23 +28,6 @@ return {
 			Snacks.git.blame_line()
 		end, { silent = true, noremap = true })
 
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "OilActionsPost",
-			callback = function(event)
-				if event.data.actions.type == "move" then
-					Snacks.rename.on_rename_file(event.data.actions.src_url, event.data.actions.dest_url)
-				end
-			end,
-		})
-
-		vim.api.nvim_create_autocmd("BufHidden", {
-			pattern = "*.png,*.jpg,*.jpeg,*.gif",
-			callback = function(args)
-				local bufnr = args.buf
-				Snacks.bufdelete.delete({ buf = bufnr, force = true })
-			end,
-		})
-
 		vim.notify = Snacks.notifier.notify
 	end,
 }

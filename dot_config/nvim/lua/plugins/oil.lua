@@ -1,6 +1,7 @@
 return {
 	{
 		"stevearc/oil.nvim",
+		lazy = false,
 		dependencies = { { "echasnovski/mini.icons", opts = {} } },
 		keys = {
 			{
@@ -14,9 +15,15 @@ return {
 			local oil = require("oil")
 			oil.setup({
 				use_default_keymaps = false,
-				default_file_explorer = false,
+				delete_to_trash = true,
+				default_file_explorer = true,
 				skip_confirm_for_simple_edits = true,
 				columns = { "icon" },
+				lsp_file_methods = {
+					enabled = false,
+					timeout_ms = 1000,
+					autosave_changes = false,
+				},
 				keymaps = {
 					["<C-F5>"] = "actions.refresh",
 					["H"] = "actions.parent",
@@ -37,7 +44,7 @@ return {
 							return
 						end
 						local path = dir .. entry.name
-						vim.cmd("!xdg-open '" .. path .. "'")
+						vim.ui.open(path)
 					end,
 					["L"] = "actions.select",
 					["<M-j><M-k>"] = "actions.open_cwd",
