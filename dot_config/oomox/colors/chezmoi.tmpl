@@ -1,0 +1,106 @@
+NAME="chezmoi_theme"
+
+# ── core colors ───────────────────────────────
+BG={{ .colors.primary.background | trimPrefix "#" }}
+FG={{ .colors.primary.foreground | trimPrefix "#" }}
+COLOR_TEXT={{ .colors.primary.foreground | trimPrefix "#" }}
+COLOR_CURSOR={{ .colors.normal.red | trimPrefix "#" }}
+
+# ── accents & selections ──────────────────────
+ACCENT_BG={{ .colors.primary.accent | trimPrefix "#" }}
+SEL_BG={{ .colors.primary.accent | trimPrefix "#" }}        
+SEL_FG={{ .colors.primary.background | trimPrefix "#" }}    
+INACTIVE_FG={{ .colors.bright.black | trimPrefix "#" }}    
+
+# ── headerbar / titlebar ──────────────────────
+HDR_BG={{ .colors.primary.background2 | trimPrefix "#" }} 
+HDR_FG={{ .colors.primary.foreground | trimPrefix "#" }}
+HDR_BTN_BG={{ .colors.primary.background3 | trimPrefix "#" }}
+HDR_BTN_FG={{ .colors.primary.foreground | trimPrefix "#" }}
+INACTIVE_HDR_FG={{ .colors.bright.black | trimPrefix "#" }}
+
+# ── buttons ───────────────────────────────────
+BTN_BG={{ .colors.primary.background3 | trimPrefix "#" }}
+BTN_FG={{ .colors.primary.foreground | trimPrefix "#" }}
+BTN_OUTLINE_WIDTH=0
+BTN_OUTLINE_OFFSET=0
+INACTIVE_TXT_FG={{ .colors.bright.black | trimPrefix "#" }}
+
+# ── menus & pop-ups ───────────────────────────
+MENU_BG={{ .colors.primary.background3 | trimPrefix "#" }}
+MENU_FG={{ .colors.primary.foreground | trimPrefix "#" }}
+MENU_BORDER_COLOR={{ .colors.primary.accent | trimPrefix "#" }}
+TXT_BG={{ .colors.primary.background2 | trimPrefix "#" }}
+TXT_FG={{ .colors.primary.foreground | trimPrefix "#" }}
+
+# ── wm borders / outlines ─────────────────────
+WM_BORDER_FOCUS={{ .colors.primary.accent | trimPrefix "#" }}
+WM_BORDER_UNFOCUS={{ .colors.primary.background3 | trimPrefix "#" }}
+OUTLINE_WIDTH=1
+ROUNDNESS=3
+ROUNDNESS_GTK2_HIDPI=1
+SPACING=2
+
+# ── visual effects ────────────────────────────
+GRADIENT=0.06
+CARET1_FG={{ .colors.normal.yellow | trimPrefix "#" }}   
+CARET2_FG={{ .colors.bright.yellow | trimPrefix "#" }}
+CARET_SIZE=0.06
+
+# ── icon theme hints ──────────────────────────
+ICONS_LIGHT={{ .colors.normal.blue | trimPrefix "#" }}   
+ICONS_MEDIUM={{ .colors.bright.black | trimPrefix "#" }}
+ICONS_DARK={{ .colors.primary.background | trimPrefix "#" }}
+ICONS_LIGHT_FOLDER={{ .colors.primary.accent | trimPrefix "#" }}
+ICONS_SYMBOLIC_ACTION={{ .colors.normal.blue | trimPrefix "#" }}
+ICONS_SYMBOLIC_PANEL={{ .colors.bright.blue | trimPrefix "#" }}
+ICONS_STYLE=numix
+ICONS_NUMIX_STYLE=4
+
+# ── terminal palette ──────────────────────────
+TERMINAL_BACKGROUND={{ .colors.primary.background | trimPrefix "#" }}
+TERMINAL_FOREGROUND={{ .colors.primary.foreground | trimPrefix "#" }}
+TERMINAL_ACCENT_COLOR={{ .colors.primary.accent | trimPrefix "#" }}
+TERMINAL_COLOR0={{ .colors.normal.black | trimPrefix "#" }}
+TERMINAL_COLOR1={{ .colors.normal.red | trimPrefix "#" }}
+TERMINAL_COLOR2={{ .colors.normal.green | trimPrefix "#" }}
+TERMINAL_COLOR3={{ .colors.normal.yellow | trimPrefix "#" }}
+TERMINAL_COLOR4={{ .colors.normal.blue | trimPrefix "#" }}
+TERMINAL_COLOR5={{ .colors.normal.magenta | trimPrefix "#" }}
+TERMINAL_COLOR6={{ .colors.normal.cyan | trimPrefix "#" }}
+TERMINAL_COLOR7={{ .colors.normal.white | trimPrefix "#" }}
+TERMINAL_COLOR8={{ .colors.bright.black | trimPrefix "#" }}
+TERMINAL_COLOR9={{ .colors.bright.red | trimPrefix "#" }}
+TERMINAL_COLOR10={{ .colors.bright.green | trimPrefix "#" }}
+TERMINAL_COLOR11={{ .colors.bright.yellow | trimPrefix "#" }}
+TERMINAL_COLOR12={{ .colors.bright.blue | trimPrefix "#" }}
+TERMINAL_COLOR13={{ .colors.bright.magenta | trimPrefix "#" }}
+TERMINAL_COLOR14={{ .colors.bright.cyan | trimPrefix "#" }}
+TERMINAL_COLOR15={{ .colors.bright.white | trimPrefix "#" }}
+TERMINAL_BASE_TEMPLATE=tempus_summer
+TERMINAL_THEME_ACCURACY=128
+TERMINAL_THEME_AUTO_BGFG=False
+TERMINAL_THEME_EXTEND_PALETTE=False
+TERMINAL_THEME_MODE=smarty
+
+# ── advanced theming params ───────────────────
+ARC_TRANSARENCY=True
+ARC_WIDGET_BORDER_COLOR={{ .colors.primary.background3 | trimPrefix "#" }}
+GTK3_GENERATE_DARK=True
+BASE16_GENERATE_DARK=False
+BASE16_INVERT_TERMINAL=False
+BASE16_MILD_TERMINAL=False
+CINNAMON_OPACITY=1.0
+MATERIA_PANEL_OPACITY=0.8
+MATERIA_SELECTION_OPACITY=0.35
+MATERIA_STYLE_COMPACT=False
+THEME_STYLE=oomox
+
+# ── application-specific theming ──────────────
+SPOTIFY_PROTO_BG={{ .colors.primary.background3 | trimPrefix "#" }}
+SPOTIFY_PROTO_FG={{ .colors.primary.foreground | trimPrefix "#" }}
+SPOTIFY_PROTO_SEL={{ .colors.primary.accent | trimPrefix "#" }}
+SURUPLUS_GRADIENT1={{ .colors.primary.foreground | trimPrefix "#" }}
+SURUPLUS_GRADIENT2={{ .colors.normal.blue | trimPrefix "#" }}  
+SURUPLUS_GRADIENT_ENABLED=False
+UNITY_DEFAULT_LAUNCHER_STYLE=False

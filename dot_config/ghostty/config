@@ -1,35 +1,21 @@
-## Theme
-font-family = "Iosevka Term"
-font-style = "Iosevka Term Medium"
-font-style-bold = "Iosevka Term Bold"
-font-style-italic = "Iosevka Term Medium Italic"
-font-style-bold-italic = "Iosevka Term Bold Italic"
-font-size = 13.5
-theme = "ChezmoiTheme"
-window-padding-x = 4
-window-padding-y = 4
-window-decoration = "false"
-# gtk-custom-css = tab-style.css
-
-window-theme = system
+background-opacity = 0.8 
+clipboard-paste-protection = "false"
+clipboard-read = "allow"
+cursor-invert-fg-bg = "true"
+cursor-style = "block"
+cursor-style-blink = "false"
+font-family = "Iosevka Curly Slab"
+font-size = 13
+font-style = "Iosevka Curly Slab"
+font-style-bold = "Iosevka Curly Slab Bold"
+font-style-bold-italic = "Iosevka Curly Slab Bold Italic"
+font-style-italic = "Iosevka Curly Slab Italic"
 gtk-titlebar = false
 gtk-wide-tabs = false
-
-## Options
-shell-integration-features = "no-cursor"
-cursor-style-blink = "false"
-cursor-style = "block"
-cursor-invert-fg-bg = "true"
 mouse-hide-while-typing = "true"
-
-## Clipboard
-clipboard-read = "allow"
-clipboard-paste-protection = "false"
-
-# keybinds
-keybind = ctrl+g>j=goto_split:bottom
-keybind = ctrl+g>k=goto_split:top
-keybind = ctrl+g>h=goto_split:left
-keybind = ctrl+g>l=goto_split:right
-keybind = ctrl+g>v=new_split:right
-keybind = ctrl+g>s=new_split:down
+shell-integration-features = "no-cursor"
+theme = "ChezmoiTheme"
+window-decoration = "false"
+window-padding-x = 4
+window-padding-y = 4
+window-theme = system

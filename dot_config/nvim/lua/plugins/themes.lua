@@ -12,6 +12,7 @@ return {
 	-- "catppuccin/nvim",
 	-- "navarasu/onedark.nvim",
 	-- "ribru17/bamboo.nvim",
-	"ramojus/mellifluous.nvim",
+	-- "ramojus/mellifluous.nvim",
+	"scottmckendry/cyberdream.nvim",
 	-- "vague2k/vague.nvim",
 }

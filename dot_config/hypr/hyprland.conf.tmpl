@@ -48,7 +48,12 @@ exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
 exec-once = dunst
 # exec= pkill hypridle; hypridle
-
+exec = gsettings set org.gnome.desktop.interface gtk-theme {{ .settings.gtk }}
+exec = gsettings set org.gnome.desktop.interface icon-theme {{ .settings.icon }}
+exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+exec = gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
+exec = gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
+exec = gsettings set org.gnome.desktop.interface text-scaling-factor 1.05
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -108,13 +113,18 @@ decoration {
     }
 
     # https://wiki.hyprland.org/Configuring/Variables/#blur
-    blur {
-        enabled = true
-        size = 3
-        passes = 1
-
-        vibrancy = 0.1696
-    }
+	blur {
+	    enabled            = true
+	    size               = 10      
+	    passes             = 4       
+	    new_optimizations  = true
+	    ignore_opacity     = true
+	    xray               = true
+	    noise              = 0.020   
+	    contrast           = 0.85    
+	    brightness         = 0.80    
+	    vibrancy           = 0.22    
+	}
 }
 
 # https://wiki.hyprland.org/Configuring/Variables/#animations

@@ -73,38 +73,85 @@
 #   icon: "Gruvbox-Plus-Dark"
 
 ## Mellifluous theme  ── generated from ramojus/mellifluous.nvim
+# colors:
+#   bright:
+#     black: "#66665f"
+#     red: "#ea8879"
+#     green: "#93d29a"
+#     yellow: "#e9e199"
+#     blue: "#b5a0c9"
+#     magenta: "#c99fb7"
+#     cyan: "#9dd3c2"
+#     white: "#deddd7"
+#   normal:
+#     black: "#1a1a19"
+#     red: "#ea8879"
+#     green: "#71c37c"
+#     yellow: "#d3cb71"
+#     blue: "#9b88b8"
+#     magenta: "#b68ba9"
+#     cyan: "#7dc2ae"
+#     white: "#bcbcb6"
+#   primary:
+#     background: "#1a1a19"
+#     background2: "#222220"
+#     background3: "#2b2b28"
+#     accent: "#CBAA88"
+#     foreground: "#deddd7"
+#     selection: "#4a453f"
+#     selection_text: "#deddd7"
+#     hover: "#383832"
+#     border: "#454540"
+#
+# font:
+#   size : 12
+#   family: "Inter Display"
+#   monospace: "Iosevka"
+#
+# settings:
+#   gtk: "oomox-chezmoi"
+#   qt_style: "Adwaita-Dark"
+#   icon: "oomox-chezmoi"
+
+# cyberdream
 colors:
-  bright:
-    black: "#66665f"
-    red: "#ea8879"
-    green: "#93d29a"
-    yellow: "#e9e199"
-    blue: "#b5a0c9"
-    magenta: "#c99fb7"
-    cyan: "#9dd3c2"
-    white: "#deddd7"
   normal:
-    black: "#1a1a19"
-    red: "#ea8879"
-    green: "#71c37c"
-    yellow: "#d3cb71"
-    blue: "#9b88b8"
-    magenta: "#b68ba9"
-    cyan: "#7dc2ae"
-    white: "#bcbcb6"
+    black: "#16181a"
+    red: "#ff6e5e"
+    green: "#5eff6c"
+    yellow: "#f1ff5e"
+    blue: "#5ea1ff"
+    magenta: "#ff5ef1"
+    cyan: "#5ef1ff"
+    white: "#7b8496"
+
+  bright:
+    black: "#3c4048"
+    red: "#ff6e5e"
+    green: "#5eff6c"
+    yellow: "#f1ff5e"
+    blue: "#5ea1ff"
+    magenta: "#ff5ef1"
+    cyan: "#5ef1ff"
+    white: "#ffffff"
+
   primary:
-    background: "#1a1a19"
-    background2: "#222220"
-    background3: "#2b2b28"
-    accent: "#CBAA88"
-    foreground: "#deddd7"
-    selection: "#35352f"
+    background: "#16181a"
+    background2: "#1e2124"
+    background3: "#3c4048"
+    accent: "#ff5ef1"
+    foreground: "#ffffff"
+    selection: "#3c4048"
+    selection_text: "#ffffff"
+    hover: "#1e2124"
+    border: "#3c4048"
 
 font:
-  family: "Roboto"
+  size: 12
+  family: "Inter Display"
   monospace: "Iosevka"
 
 settings:
-  gtk: "oomox-mellifluous-dark"
+  gtk: "oomox-chezmoi"
   qt_style: "Adwaita-Dark"
-  icon: "Papirus-Dark"
+  icon: "oomox-chezmoi"
