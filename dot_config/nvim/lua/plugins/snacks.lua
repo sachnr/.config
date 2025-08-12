@@ -9,10 +9,7 @@ return {
 			image = { enabled = true },
 			bigfile = { enabled = true },
 			zen = { enabled = true },
-			terminal = { enabled = true },
-			rename = { enabled = true },
 			bufdelete = { enabled = true },
-			statuscolumn = { enabled = true },
 			git = { enabled = true },
 			notifier = {
 				enabled = true,

@@ -41,6 +41,9 @@ vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = true })
 vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = true })
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<leader>gh", ":diffget //2<CR>", { desc = "Get left" })
+vim.keymap.set("n", "<leader>gl", ":diffget //3<CR>", { desc = "Get right" })
+vim.keymap.set("n", "<leader>gs", ":Gvdiffsplit! <CR>", { desc = "threeway split" })
 
 vim.api.nvim_create_user_command("InlayHintToggle", function()
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -65,14 +68,6 @@ vim.api.nvim_create_autocmd("FileType", {
             nnoremap <buffer><silent> q :close<CR>
             set nobuflisted 
         ]],
-})
-
-vim.api.nvim_create_autocmd("TermOpen", {
-	group = vim.api.nvim_create_augroup("term-open", { clear = true }),
-	callback = function()
-		vim.opt.number = false
-		vim.opt.relativenumber = false
-	end,
 })
 
 vim.keymap.set("n", "<leader>st", function()

@@ -9,7 +9,6 @@ vim.lsp.enable({
 	"golangci_lint_ls",
 	"gopls",
 	"html",
-	"htmx",
 	"lua_ls",
 	"nil_ls",
 	"pyright",
@@ -61,6 +60,20 @@ vim.keymap.set("n", "]d", function()
 	vim.diagnostic.jump({ count = 1 })
 end, { silent = true, desc = "LSP: diagnostic goto next" })
 
+vim.api.nvim_create_user_command("LspRestart", function()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	local client_names = {}
+
+	for _, client in ipairs(clients) do
+		table.insert(client_names, client.name)
+	end
+
+	if #client_names > 0 then
+		vim.lsp.enable(client_names, false)
+		vim.lsp.enable(client_names, true)
+	end
+end, { desc = "Restart all LSP clients for current buffer" })
+
 vim.cmd("set completeopt+=noselect")
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -75,28 +88,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		mapbuf("gi", vim.lsp.buf.implementation, "Goto Implementation")
 		mapbuf("<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 		mapbuf("<leader>ld", vim.lsp.buf.type_definition, "Type Definition")
-
-		local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
-
-		vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-			buffer = event.buf,
-			group = highlight_augroup,
-			callback = vim.lsp.buf.document_highlight,
-		})
-
-		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-			buffer = event.buf,
-			group = highlight_augroup,
-			callback = vim.lsp.buf.clear_references,
-		})
-
-		vim.api.nvim_create_autocmd("LspDetach", {
-			group = vim.api.nvim_create_augroup("lsp-detach", { clear = true }),
-			callback = function(event2)
-				vim.lsp.buf.clear_references()
-				vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event2.buf })
-			end,
-		})
 
 		-- local client = vim.lsp.get_client_by_id(event.data.client_id)
 		--
