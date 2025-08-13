@@ -88,11 +88,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		mapbuf("gi", vim.lsp.buf.implementation, "Goto Implementation")
 		mapbuf("<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 		mapbuf("<leader>ld", vim.lsp.buf.type_definition, "Type Definition")
-
-		-- local client = vim.lsp.get_client_by_id(event.data.client_id)
-		--
-		-- if client:supports_method("textDocument/completion") then
-		-- 	vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = true })
-		-- end
 	end,
 })

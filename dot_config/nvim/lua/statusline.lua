@@ -390,7 +390,7 @@ MiniStatusline.section_lsp = function(args)
 	end
 
 	local use_icons = H.use_icons or H.get_config().use_icons
-	local icon = args.icon or (use_icons and "󰰎" or "LSP")
+	local icon = args.icon or (use_icons and " " or "LSP")
 	return icon .. " " .. attached
 end
 
@@ -402,7 +402,7 @@ end
 ---
 ---@param args __statusline_args
 ---
----@return __statusline_section
+---@return __stapusline_section
 MiniStatusline.section_filename = function(args)
 	-- In terminal always use plain name
 	if vim.bo.buftype == "terminal" then
