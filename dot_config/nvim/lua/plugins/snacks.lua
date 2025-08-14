@@ -1,6 +1,6 @@
 return {
 	{
-		"echasnovski/mini.nvim",
+		"echasnovski/mini.notify",
 		config = function()
 			require("mini.notify").setup({})
 		end,
