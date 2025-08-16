@@ -2,7 +2,7 @@ return {
 	{
 		"stevearc/oil.nvim",
 		lazy = false,
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		dependencies = { { "echasnovski/mini.icons" } },
 		keys = {
 			{
 				"<M-j><M-k>",
@@ -16,7 +16,11 @@ return {
 			oil.setup({
 				use_default_keymaps = false,
 				skip_confirm_for_simple_edits = true,
-				columns = { "icon" },
+				columns = { "icon", "size" },
+				lsp_file_methods = {
+					enabled = false,
+					timeout_ms = 0,
+				},
 				keymaps = {
 					["<C-F5>"] = "actions.refresh",
 					["H"] = "actions.parent",
@@ -48,7 +52,8 @@ return {
 				view_options = {
 					show_hidden = false,
 					is_hidden_file = function(name, bufnr)
-						return vim.startswith(name, ".")
+						local m = name:match("^%.")
+						return m ~= nil
 					end,
 					is_always_hidden = function(name, bufnr)
 						return name == ".."

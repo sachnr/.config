@@ -1,8 +1,8 @@
 return {
 	"saghen/blink.cmp",
+	version = "1.*",
 	opts = {
 		keymap = {
-			-- set to 'none' to disable the 'default' preset
 			preset = "none",
 			["<Tab>"] = { "select_next", "fallback" },
 			["<S-Tab>"] = { "select_prev", "fallback" },

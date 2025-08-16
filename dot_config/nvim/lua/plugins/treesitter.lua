@@ -1,11 +1,9 @@
----@diagnostic disable: missing-fields
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			local configs = require("nvim-treesitter.configs")
-			configs.setup({
+			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"bash",
 					"c",
@@ -21,39 +19,38 @@ return {
 					"gitcommit",
 					"gitignore",
 					"go",
-					"gosum",
 					"gomod",
+					"gosum",
 					"gotmpl",
 					"html",
 					"java",
 					"javascript",
+					"jsdoc",
 					"json",
 					"jsonc",
-					"jsdoc",
 					"latex",
 					"liquid",
 					"lua",
+					"make",
 					"markdown",
 					"markdown_inline",
-					"make",
 					"nix",
-					"python",
 					"proto",
+					"python",
+					"qmljs",
 					"rust",
 					"scss",
 					"sql",
 					"toml",
 					"tsx",
 					"typescript",
-					"vue",
 					"vimdoc",
-					"qmljs",
+					"vue",
 					"yaml",
 					"zig",
 				},
 				sync_install = true,
 				auto_install = true,
-				ignore_install = {},
 				highlight = {
 					enable = true,
 					ignore = { "*.min.js" },

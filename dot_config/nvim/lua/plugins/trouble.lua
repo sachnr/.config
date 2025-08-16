@@ -4,10 +4,9 @@ return {
 		{
 			"<Leader>E",
 			mode = "n",
-			"<cmd> Trouble diagnostics <CR>",
-			desc = "trouble",
+			":Trouble diagnostics<CR>",
+			{ silent = true, noremap = true },
 		},
 	},
 	config = true,
-	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 }

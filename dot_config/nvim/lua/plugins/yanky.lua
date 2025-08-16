@@ -8,12 +8,11 @@ return {
 		{ "<c-p>", mode = "n", "<Plug>(YankyCycleBackward)", desc = "Yanky Cycle Back" },
 		{ "<leader>p", mode = { "n", "x" }, "<cmd> Telescope yank_history <CR>", desc = "Paste from Yanky" },
 	},
-	config = function()
-		require("yanky").setup({
-			storage = "shada",
-			system_clipboard = {
-				sync_with_ring = true,
-			},
-		})
-	end,
+	lazy = false,
+	opts = {
+		storage = "shada",
+		system_clipboard = {
+			sync_with_ring = true,
+		},
+	},
 }
