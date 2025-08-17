@@ -10,10 +10,10 @@ return {
 			{ "<leader>tg", ":FzfLua live_grep_native<CR>", opts },
 			{ "<leader>tq", ":FzfLua quickfix<CR>", opts },
 			{ "<leader>th", ":FzfLua lsp_document_symbols<CR>", opts },
-			{ "<leader>ga", ":FzfLua lsp_code_actions<CR>", opts },
-			{ "<leader>gh", ":FzfLua lsp_references<CR>", opts },
-			{ "<leader>gd", ":FzfLua lsp_definitions<CR>", opts },
 			{ "<leader>tt", ":FzfLua tabs<CR>", opts },
+			{ "ga", ":FzfLua lsp_code_actions<CR>", opts },
+			{ "gh", ":FzfLua lsp_references<CR>", opts },
+			{ "gd", ":FzfLua lsp_definitions<CR>", opts },
 		},
 		config = function()
 			require("fzf-lua").setup({
