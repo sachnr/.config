@@ -17,6 +17,7 @@ return {
 		},
 		config = function()
 			require("fzf-lua").setup({
+				"ivy",
 				lsp = {
 					code_actions = {
 						previewer = false,

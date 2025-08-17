@@ -4,7 +4,7 @@
     "snippets": [
       {
         "language": "cpp",
-        "path": "./langs//cpp.json"
+        "path": "./langs/cpp.json"
       }
     ]
   }

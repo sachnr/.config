@@ -19,24 +19,20 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 
 vim.opt.autoread = true
-vim.opt.ruler = false
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
-vim.opt.laststatus = 1
+vim.opt.laststatus = 0
 vim.opt.lazyredraw = true
-vim.opt.linebreak = true
 vim.opt.number = true
 vim.opt.redrawtime = 1500
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 4
 vim.opt.shiftwidth = 4
-vim.opt.showbreak = "↳ "
 vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes:1"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
-vim.opt.smoothscroll = true
 vim.opt.softtabstop = 4
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -48,6 +44,7 @@ vim.opt.wildoptions = "pum,fuzzy"
 vim.opt.pumheight = 15
 vim.opt.diffopt = "internal,filler,algorithm:histogram"
 vim.opt.showcmdloc = "statusline"
+vim.opt.winborder = "rounded"
 
 -- keybinds
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, noremap = true })

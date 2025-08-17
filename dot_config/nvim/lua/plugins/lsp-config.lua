@@ -137,6 +137,11 @@ return {
 				local mapbuf = function(keys, func, desc)
 					vim.keymap.set("n", keys, func, { buffer = event.buf, silent = true, desc = "LSP: " .. desc })
 				end
+
+				mapbuf("\\", function()
+					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+				end, "Toggle Inlay Hints")
+
 				mapbuf("gr", vim.lsp.buf.rename, "LSP Rename")
 				mapbuf("K", vim.lsp.buf.hover, "Hover")
 				mapbuf("gi", vim.lsp.buf.implementation, "Goto Implementation")
