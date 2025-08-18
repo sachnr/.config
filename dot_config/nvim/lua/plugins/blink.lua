@@ -20,12 +20,6 @@ return {
 		},
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
-			per_filetype = {
-				sql = { "dadbod" },
-			},
-			providers = {
-				dadbod = { module = "vim_dadbod_completion.blink" },
-			},
 		},
 		fuzzy = { implementation = "prefer_rust" },
 		signature = {
