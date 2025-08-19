@@ -3,6 +3,7 @@ local opts = { silent = true, noremap = true }
 return {
 	{
 		"ibhagwan/fzf-lua",
+		enabled = false,
 		keys = {
 			{ "<leader>tf", ":FzfLua files<CR>", opts },
 			{ "<leader>to", ":FzfLua oldfiles<CR>", opts },

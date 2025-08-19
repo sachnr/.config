@@ -18,6 +18,7 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
 
+vim.opt.equalalways = false
 vim.opt.autoread = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
