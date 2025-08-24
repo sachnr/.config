@@ -138,4 +138,4 @@ if vim.g.neovide then
 	vim.g.neovide_refresh_rate_idle = 5
 end
 
-vim.cmd.colorscheme("cyberdream")
+vim.cmd.colorscheme("alabaster")
