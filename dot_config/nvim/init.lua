@@ -138,4 +138,9 @@ if vim.g.neovide then
 	vim.g.neovide_refresh_rate_idle = 5
 end
 
+vim.g.alabaster_floatborder = true
+vim.g.alabaster_dim_comments = true
 vim.cmd.colorscheme("alabaster")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
