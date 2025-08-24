@@ -44,6 +44,7 @@ return {
 					end
 				end)
 			end,
+			mode = { "n", "t" },
 			opts,
 		},
 	},
