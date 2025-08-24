@@ -10,8 +10,8 @@ xset r rate 250 50
 fish_add_path $HOME/.npm/bin $HOME/.local/share/nvim/mason/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path (yarn global bin)
-fish_add_path $HOME/.local/share/gem/ruby/3.2.0/bin
 fish_add_path $HOME/go/bin
+fish_add_path $HOME/.local/bin
 
 # Aliases
 alias gg "lazygit"

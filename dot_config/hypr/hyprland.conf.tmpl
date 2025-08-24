@@ -26,8 +26,8 @@ monitor = DP-3, 2560x1440@180, 0x0, 1
 # See https://wiki.hyprland.org/Configuring/Keywords/
 
 # Set programs that you use
-$terminal = foot
-$fileManager = nemo
+$terminal = ~/.local/bin/ghostty --gtk-single-instance=true
+$fileManager = thunar
 $menu = rofi -show drun
 
 
@@ -45,6 +45,7 @@ exec-once = nm-applet
 exec= pkill swww-daemon; swww-daemon
 exec = pkill waybar; waybar
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec-once = ~/.local/bin/ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
 exec-once = dunst
 # exec= pkill hypridle; hypridle
 exec = gsettings set org.gnome.desktop.interface gtk-theme {{ .settings.gtk }}
@@ -331,3 +332,4 @@ windowrulev2=move 0 0,class:(flameshot),title:(flameshot)
 windowrulev2=pin,class:(flameshot),title:(flameshot)
 windowrulev2=fullscreenstate,class:(flameshot),title:(flameshot)
 windowrulev2=float,class:(flameshot),title:(flameshot)
+windowrulev2 = opacity 0.9,class:^(com.mitchellh.ghostty)$

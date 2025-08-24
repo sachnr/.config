@@ -1,0 +1,50 @@
+background-opacity = 1.0
+clipboard-paste-protection = false
+clipboard-read = "allow"
+cursor-invert-fg-bg = true
+cursor-style = "block"
+cursor-style-blink = false
+font-size = 13.5
+font-family = "{{ .font.monospace }}"
+font-style = "{{ .font.monospace }}"
+font-style-bold = "{{ .font.monospace }} Bold"
+font-style-bold-italic = "{{ .font.monospace }} Bold Italic" 
+font-style-italic = "{{ .font.monospace }} Italic"
+gtk-titlebar = false
+gtk-wide-tabs = false
+mouse-hide-while-typing = true
+window-decoration = false
+window-padding-x = 4
+window-padding-y = 4
+window-theme = "system"
+adjust-cell-height = 8%
+working-directory = "home"
+custom-shader = ./bloom.glsl
+custom-shader = ./cursor-blaze.glsl
+custom-shader = ./cursor-smear.glsl
+
+freetype-load-flags = no-hinting,no-force-autohint,no-monochrome
+
+background = "0a0a0a"
+# background = "{{ .colors.primary.background | trimPrefix "#" }}"
+foreground = "{{ .colors.primary.foreground | trimPrefix "#" }}"
+cursor-color = "{{ .colors.primary.foreground | trimPrefix "#" }}"
+selection-background = "{{ .colors.primary.selection | trimPrefix "#" }}"
+selection-foreground = "{{ .colors.bright.white | trimPrefix "#" }}"
+
+palette = 0={{ .colors.normal.black | trimPrefix "#" }}
+palette = 1={{ .colors.normal.red | trimPrefix "#" }}
+palette = 2={{ .colors.normal.green | trimPrefix "#" }}
+palette = 3={{ .colors.normal.yellow | trimPrefix "#" }}
+palette = 4={{ .colors.normal.blue | trimPrefix "#" }}
+palette = 5={{ .colors.normal.magenta | trimPrefix "#" }}
+palette = 6={{ .colors.normal.cyan | trimPrefix "#" }}
+palette = 7={{ .colors.normal.white | trimPrefix "#" }}
+palette = 8={{ .colors.bright.black | trimPrefix "#" }}
+palette = 9={{ .colors.bright.red | trimPrefix "#" }}
+palette = 10={{ .colors.bright.green | trimPrefix "#" }}
+palette = 11={{ .colors.bright.yellow | trimPrefix "#" }}
+palette = 12={{ .colors.bright.blue | trimPrefix "#" }}
+palette = 13={{ .colors.bright.magenta | trimPrefix "#" }}
+palette = 14={{ .colors.bright.cyan | trimPrefix "#" }}
+palette = 15={{ .colors.bright.white | trimPrefix "#" }}
