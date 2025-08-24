@@ -136,7 +136,7 @@ colors:
     white: "#ffffff"
 
   primary:
-    background: "#16181a"
+    background: "#0a0a0a"
     background2: "#1e2124"
     background3: "#3c4048"
     accent: "#ff5ef1"

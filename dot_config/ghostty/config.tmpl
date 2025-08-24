@@ -4,7 +4,7 @@ clipboard-read = "allow"
 cursor-invert-fg-bg = true
 cursor-style = "block"
 cursor-style-blink = false
-font-size = 13.5
+font-size = 14.5
 font-family = "{{ .font.monospace }}"
 font-style = "{{ .font.monospace }}"
 font-style-bold = "{{ .font.monospace }} Bold"
@@ -17,7 +17,7 @@ window-decoration = false
 window-padding-x = 4
 window-padding-y = 4
 window-theme = "system"
-adjust-cell-height = 8%
+adjust-cell-height = 10%
 working-directory = "home"
 window-inherit-working-directory = false
 custom-shader = ./bloom.glsl
@@ -26,8 +26,7 @@ custom-shader = ./cursor-smear.glsl
 
 freetype-load-flags = no-hinting,no-force-autohint,no-monochrome
 
-background = "0a0a0a"
-# background = "{{ .colors.primary.background | trimPrefix "#" }}"
+background = "{{ .colors.primary.background | trimPrefix "#" }}"
 foreground = "{{ .colors.primary.foreground | trimPrefix "#" }}"
 cursor-color = "{{ .colors.primary.foreground | trimPrefix "#" }}"
 selection-background = "{{ .colors.primary.selection | trimPrefix "#" }}"
