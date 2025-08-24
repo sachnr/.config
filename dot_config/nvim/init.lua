@@ -48,6 +48,8 @@ vim.opt.pumheight = 15
 vim.opt.diffopt = "internal,filler,algorithm:histogram"
 vim.opt.showcmdloc = "statusline"
 vim.opt.winborder = "rounded"
+vim.opt.timeoutlen = 300
+vim.opt.updatetime = 300
 
 -- keybinds
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, noremap = true })
@@ -83,8 +85,7 @@ vim.api.nvim_create_autocmd("FileType", {
         ]],
 })
 
--- quick terminal
-vim.keymap.set("n", "<leader>st", function()
+vim.keymap.set("n", "<M-j><M-l>", function()
 	vim.cmd.vnew()
 	vim.cmd.term()
 	vim.cmd.wincmd("J")
@@ -92,16 +93,29 @@ vim.keymap.set("n", "<leader>st", function()
 	vim.cmd("startinsert")
 end)
 
+-- prettier tabs
+vim.o.tabline = "%!v:lua.MyTabLine()"
+function MyTabLine()
+	local s = ""
+	for i = 1, vim.fn.tabpagenr("$") do
+		local winnr = vim.fn.tabpagewinnr(i)
+		local buflist = vim.fn.tabpagebuflist(i)
+		local bufnr = buflist[winnr]
+		local bufname = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":t")
+		s = s .. "%" .. i .. "T"
+		s = s .. (i == vim.fn.tabpagenr() and "%#TabLineSel#" or "%#TabLine#")
+		s = s .. " " .. i .. ": " .. (bufname ~= "" and bufname or "[No Name]") .. " "
+	end
+	s = s .. "%#TabLineFill#%T"
+	s = s .. "%=%#TabLine#%999XX"
+	return s
+end
+
 require("lazy").setup("plugins", {
 	change_detection = {
-		notify = false,
+		notify = true,
 	},
 })
-
-require("cyberdream").setup({
-	transparent = true,
-})
-vim.cmd.colorscheme("cyberdream")
 
 if vim.g.neovide then
 	vim.o.guifont = "Iosevka Curly Slab:h14"
@@ -123,3 +137,5 @@ if vim.g.neovide then
 	vim.g.neovide_refresh_rate = 180
 	vim.g.neovide_refresh_rate_idle = 5
 end
+
+vim.cmd.colorscheme("cyberdream")

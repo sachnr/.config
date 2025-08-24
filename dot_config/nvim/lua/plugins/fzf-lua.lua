@@ -1,5 +1,4 @@
 local opts = { silent = true, noremap = true }
-
 return {
 	{
 		"ibhagwan/fzf-lua",

@@ -5,43 +5,20 @@ return {
 	lazy = false,
 	priority = 1000,
 	keys = {
+		{ "<leader>tf", "<Cmd>lua Snacks.picker.files()<CR>", opts },
+		{ "<leader>to", "<Cmd>lua Snacks.picker.recent()<CR>", opts },
+		{ "<leader>t/", "<Cmd>lua Snacks.picker.lines()<CR>", opts },
+		{ "<leader>tg", "<Cmd>lua Snacks.picker.grep()<CR>", opts },
+		{ "<leader>tq", "<Cmd>lua Snacks.picker.qflist()<CR>", opts },
+		{ "<leader>th", "<Cmd>lua Snacks.picker.lsp_symbols()<CR>", opts },
+		{ "<leader>tb", "<Cmd>lua Snacks.picker.buffers()<CR>", opts },
+		{ "gh", "<Cmd>lua Snacks.picker.lsp_references()<CR>", { nowait = true } },
+		{ "gd", "<Cmd>lua Snacks.picker.lsp_definitions()<CR>", { desc = "Goto Definition" } },
+		{ "gy", "<Cmd>lua Snacks.picker.lsp_type_definitions()<CR>", { desc = "Goto Definition" } },
+		{ "<M-z>", "<Cmd>lua Snacks.zen()<CR>", opts },
+		{ "<leader>gb", "<Cmd>lua Snacks.git.blame_line()<CR>", opts },
 		{
-			"<leader>tf",
-			function()
-				require("snacks.picker").files()
-			end,
-			opts,
-		},
-		{
-			"<leader>to",
-			function()
-				require("snacks.picker").recent()
-			end,
-			opts,
-		},
-		{
-			"<leader>t/",
-			function()
-				require("snacks.picker").lines()
-			end,
-			opts,
-		},
-		{
-			"<leader>tg",
-			function()
-				require("snacks.picker").grep()
-			end,
-			opts,
-		},
-		{
-			"<leader>tq",
-			function()
-				require("snacks.picker").qflist()
-			end,
-			opts,
-		},
-		{
-			"<leader>tt",
+			"<C-b>",
 			function()
 				local tabs = {}
 				for i = 1, vim.fn.tabpagenr("$") do
@@ -56,7 +33,6 @@ return {
 						current = i == vim.fn.tabpagenr(),
 					})
 				end
-
 				vim.ui.select(tabs, {
 					prompt = "Select Tab:",
 					format_item = function(item)
@@ -70,50 +46,7 @@ return {
 			end,
 			opts,
 		},
-		{
-			"<leader>th",
-			function()
-				require("snacks.picker").lsp_symbols()
-			end,
-			opts,
-		},
-		{
-			"gh",
-			function()
-				require("snacks.picker").lsp_references()
-			end,
-			{ nowait = true },
-		},
-		{
-			"gd",
-			function()
-				require("snacks.picker").lsp_definitions()
-			end,
-			desc = "Goto Definition",
-		},
-		{
-			"gy",
-			function()
-				require("snacks.picker").lsp_type_definitions()
-			end,
-			desc = "Goto Definition",
-		},
-		{
-			"<M-z>",
-			function()
-				require("snacks").zen()
-			end,
-			opts,
-		},
-		{
-			"<leader>gb",
-			function()
-				require("snacks.git").blame_line()
-			end,
-			opts,
-		},
 	},
-
 	config = function()
 		local Snacks = require("snacks")
 		Snacks.setup({
@@ -123,19 +56,20 @@ return {
 				enabled = true,
 				layout = "ivy",
 				matcher = {
-					frecency = false, -- frecency bonus
+					frecency = true, -- frecency bonus
 				},
 				ui_select = true,
+				buffers = {},
 			},
 			zen = { enabled = true, toggles = {
 				dim = false,
 			} },
-			rename = { enabled = true },
 			git = { enabled = true },
 			notifier = {
 				enabled = true,
 				timeout = 3000,
 			},
+			notify = { enabled = true },
 		})
 		vim.notify = Snacks.notifier.notify
 	end,

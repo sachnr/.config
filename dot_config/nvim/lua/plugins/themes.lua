@@ -1,8 +1,10 @@
 return {
 	-- "mellow-theme/mellow.nvim",
-	-- "folke/tokyonight.nvim",
+	{ "folke/tokyonight.nvim", opts = { transparent = true } },
 	-- "rebelot/kanagawa.nvim",
 	-- "Shatur/neovim-ayu",
+	-- "Mofiqul/dracula.nvim",
+	-- "binhtran432k/dracula.nvim",
 	-- "ellisonleao/gruvbox.nvim",
 	-- "marko-cerovac/material.nvim",
 	-- "neanias/everforest-nvim",
@@ -12,7 +14,8 @@ return {
 	-- "catppuccin/nvim",
 	-- "navarasu/onedark.nvim",
 	-- "ribru17/bamboo.nvim",
+	-- "datsfilipe/vesper.nvim",
 	-- "ramojus/mellifluous.nvim",
-	"scottmckendry/cyberdream.nvim",
+	{ "scottmckendry/cyberdream.nvim", opts = { transparent = true } },
 	-- "vague2k/vague.nvim",
 }
