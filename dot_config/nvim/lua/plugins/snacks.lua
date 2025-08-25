@@ -20,23 +20,38 @@ return {
 		{
 			"<C-b>",
 			function()
+				local tab_count = vim.fn.tabpagenr("$")
+				local current_tab = vim.fn.tabpagenr()
+
+				if tab_count == 1 then
+					vim.notify("Only one tab", vim.log.levels.WARN)
+					return
+				end
+
+				if tab_count == 2 then
+					vim.cmd("tabnext")
+					return
+				end
+
 				local tabs = {}
-				for i = 1, vim.fn.tabpagenr("$") do
+				for i = 1, tab_count do
 					local buflist = vim.fn.tabpagebuflist(i)
 					local winnr = vim.fn.tabpagewinnr(i)
 					local bufnr = buflist[winnr]
 					local bufname = vim.fn.bufname(bufnr)
 					local name = bufname ~= "" and vim.fn.fnamemodify(bufname, ":t") or "[No Name]"
-					table.insert(tabs, {
+
+					tabs[i] = {
 						text = string.format("Tab %d: %s", i, name),
 						tabpage = i,
-						current = i == vim.fn.tabpagenr(),
-					})
+						current = (i == current_tab),
+					}
 				end
+
 				vim.ui.select(tabs, {
 					prompt = "Select Tab:",
 					format_item = function(item)
-						return item.current and item.text .. " (current)" or item.text
+						return item.current and "• " .. item.text or "  " .. item.text
 					end,
 				}, function(choice)
 					if choice then
