@@ -27,7 +27,6 @@ alias cat "bat"
 alias vi "nvim"
 alias vim "nvim"
 alias f "yazi"
-alias tm "tmux-fzy"
 alias top "btm -b"
 alias gotest "gotestsum -f testname"
 alias ca "chezmoi apply"
@@ -40,6 +39,29 @@ bind --mode insert \cf _fzf_search_directory
 bind --mode default \cr _fzf_search_history   
 bind --mode insert \cr _fzf_search_history   
 
+function tm
+    set -l cache_file ~/.cache/.tmux-fzy
+    
+    for line in (cat $cache_file)
+        set -l parts (string split ':|:' $line)
+        set -l path $parts[1]
+        set -l mindepth $parts[2]
+        set -l maxdepth $parts[3]
+        
+        if test -d $path
+            if test $mindepth -eq 0 -a $maxdepth -eq 0
+                echo $path
+            else
+                fd -H -t d --min-depth $mindepth --max-depth $maxdepth . $path
+            end
+        end
+    end | fzf --prompt="Select directory: " | read -l selected
+    
+    if test -n "$selected" -a -d "$selected"
+        cd "$selected"
+        echo "Changed to: $selected"
+    end
+end
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
