@@ -146,6 +146,7 @@ return {
 					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 				end, "Toggle Inlay Hints")
 
+				mapbuf("ga", vim.lsp.buf.code_action, "code action")
 				mapbuf("gr", vim.lsp.buf.rename, "LSP Rename")
 				mapbuf("K", vim.lsp.buf.hover, "Hover")
 				mapbuf("gi", vim.lsp.buf.implementation, "Goto Implementation")

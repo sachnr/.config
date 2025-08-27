@@ -14,9 +14,8 @@ window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
   border-radius: 6px;
-  border: 1px solid {{ .colors.primary.background2 }}; background-color: {{ .colors.primary.background }};
   color: {{ .colors.primary.foreground }};
-  background-color: alpha({{ .colors.primary.background }}, 0.4);
+  background-color: alpha({{ .colors.primary.background }}, 0.0);
 }
 
 tooltip {
@@ -34,7 +33,7 @@ tooltip label {
 .modules-right {
   margin: 4px 2px;
   border-radius: 4px;
-  background-color: {{ .colors.primary.background }};
+  background-color: alpha({{ .colors.primary.background }}, 0.4);
   color: {{ .colors.primary.foreground }};
 }
 

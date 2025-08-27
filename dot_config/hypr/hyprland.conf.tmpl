@@ -50,10 +50,10 @@ exec-once = dunst
 # exec= pkill hypridle; hypridle
 exec = gsettings set org.gnome.desktop.interface gtk-theme {{ .settings.gtk }}
 exec = gsettings set org.gnome.desktop.interface icon-theme {{ .settings.icon }}
+
 exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 exec = gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 exec = gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
-exec = gsettings set org.gnome.desktop.interface text-scaling-factor 1.05
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -332,8 +332,4 @@ windowrulev2=move 0 0,class:(flameshot),title:(flameshot)
 windowrulev2=pin,class:(flameshot),title:(flameshot)
 windowrulev2=fullscreenstate,class:(flameshot),title:(flameshot)
 windowrulev2=float,class:(flameshot),title:(flameshot)
-windowrulev2 = opacity 0.9,class:^(com.mitchellh.ghostty)$
-
-windowrulev2 = opacity 0.8 0.8,class:^(waybar)$
-layerrule = blur,waybar
-layerrule = ignorezero,waybar
+windowrulev2 = opacity 0.90,class:^(com.mitchellh.ghostty)$

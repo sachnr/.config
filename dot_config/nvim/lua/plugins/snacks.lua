@@ -14,6 +14,14 @@ return {
 		{ "<leader>tb", "<Cmd>lua Snacks.picker.buffers()<CR>", opts },
 		{ "gh", "<Cmd>lua Snacks.picker.lsp_references()<CR>", { nowait = true } },
 		{ "gd", "<Cmd>lua Snacks.picker.lsp_definitions()<CR>", { desc = "Goto Definition" } },
+		{
+			"<C-w>gd",
+			function()
+				vim.cmd.vsplit()
+				require("snacks").picker.lsp_definitions()
+			end,
+			{ desc = "Goto Definition" },
+		},
 		{ "gy", "<Cmd>lua Snacks.picker.lsp_type_definitions()<CR>", { desc = "Goto Definition" } },
 		{ "<M-z>", "<Cmd>lua Snacks.zen()<CR>", opts },
 		{ "<leader>gb", "<Cmd>lua Snacks.git.blame_line()<CR>", opts },

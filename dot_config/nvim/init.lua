@@ -85,11 +85,29 @@ vim.api.nvim_create_autocmd("FileType", {
         ]],
 })
 
-vim.keymap.set("n", "<M-j><M-l>", function()
+vim.keymap.set({ "n", "t" }, "<M-s><M-t>", function()
 	vim.cmd.vnew()
 	vim.cmd.term()
 	vim.cmd.wincmd("J")
 	vim.api.nvim_win_set_height(0, 10)
+	vim.cmd("startinsert")
+end)
+
+vim.keymap.set({ "n", "t" }, "<M-t>", function()
+	vim.cmd.tabnew()
+	vim.cmd.term()
+	vim.cmd("startinsert")
+end)
+
+vim.keymap.set({ "n", "t" }, "<M-v><M-t>", function()
+	vim.cmd.vsplit()
+	vim.cmd.term()
+	vim.cmd("startinsert")
+end)
+
+vim.keymap.set({ "n", "t" }, "<M-h><M-t>", function()
+	vim.cmd.split()
+	vim.cmd.term()
 	vim.cmd("startinsert")
 end)
 
