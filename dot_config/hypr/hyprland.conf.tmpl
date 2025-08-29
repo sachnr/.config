@@ -38,16 +38,13 @@ $menu = rofi -show drun
 # Autostart necessary processes (like notifications daemons, status bars, etc.)
 # Or execute your favorite apps at launch like this:
 
-# exec-once = $terminal
-# exec-once = nm-applet &
-# exec-once = waybar & hyprpaper & firefox
 exec-once = nm-applet
 exec= pkill swww-daemon; swww-daemon
 exec = pkill waybar; waybar
+exec = pkill dunst; dunst
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec-once = ~/.local/bin/ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
-exec-once = dunst
-# exec= pkill hypridle; hypridle
+
 exec = gsettings set org.gnome.desktop.interface gtk-theme {{ .settings.gtk }}
 exec = gsettings set org.gnome.desktop.interface icon-theme {{ .settings.icon }}
 
@@ -237,6 +234,7 @@ bind = $mainMod, F4, exit,
 bind = $mainMod, t, togglefloating,
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, D, togglesplit, # dwindle
+bind = $mainMod SHIFT, T, exec, ~/.local/share/chezmoi/theme
 
 bind = ,PAUSE, exec, grim -g "$(slurp -d)" - | wl-copy
 bind = $mainMod, F2, exec, hyprlock

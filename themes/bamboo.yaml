@@ -1,0 +1,42 @@
+colors:
+  normal:
+    black: "#23372B"
+    red: "#FF5345"
+    green: "#549e6a"
+    yellow: "#459451"
+    blue: "#509475"
+    magenta: "#D2689C"
+    cyan: "#2DD5B7"
+    white: "#F6F5DD"
+  bright:
+    black: "#53685B"
+    red: "#db9f9c"
+    green: "#549e6a"
+    yellow: "#E5C736"
+    blue: "#ACD4CF"
+    magenta: "#75bbb3"
+    cyan: "#8CD3CB"
+    white: "#9eebb3"
+  primary:
+    background: "#111c18"
+    background2: "#1a2b20"
+    background3: "#23372B"
+    accent: "#2DD5B7"
+    foreground: "#C1C497"
+    selection: "#23372B"
+    selection_text: "#F6F5DD"
+    hover: "#1a2b20"
+    border: "#53685B"
+
+browser:
+  color: "17,34,28"
+
+font:
+  size: 12
+  family: "Inter Display"
+  monospace: "Iosevka"
+
+settings:
+  gtk: "oomox-chezmoi"
+  qt_style: "Adwaita-Dark"
+  icon: "oomox-chezmoi"

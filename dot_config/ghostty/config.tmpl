@@ -1,3 +1,4 @@
+# options
 adjust-cell-height = 10%
 background-opacity = 1.0
 bold-is-bright = true
@@ -6,19 +7,11 @@ clipboard-read = "allow"
 cursor-invert-fg-bg = true
 cursor-style = "block"
 cursor-style-blink = false
-custom-shader = ./bloom.glsl
-custom-shader = ./cursor-blaze.glsl
-custom-shader = ./cursor-smear.glsl
-font-size = 14.5
-font-family = "{{ .font.monospace }}"
-font-style = "{{ .font.monospace }}"
-font-style-bold = "{{ .font.monospace }} Bold"
-font-style-bold-italic = "{{ .font.monospace }} Bold Italic" 
-font-style-italic = "{{ .font.monospace }} Italic"
+freetype-load-flags = no-hinting,no-force-autohint,no-monochrome
 gtk-titlebar = false
 gtk-wide-tabs = false
 mouse-hide-while-typing = true
-shell-integration = ssh-env
+shell-integration-features = ssh-env
 window-decoration = false
 window-inherit-working-directory = false
 window-padding-x = 4
@@ -26,14 +19,25 @@ window-padding-y = 4
 window-theme = "system"
 working-directory = "home"
 
-freetype-load-flags = no-hinting,no-force-autohint,no-monochrome
+# fonts
+font-size = 14.5
+font-family = "{{ .font.monospace }}"
+font-style = "{{ .font.monospace }}"
+font-style-bold = "{{ .font.monospace }} Bold"
+font-style-bold-italic = "{{ .font.monospace }} Bold Italic" 
+font-style-italic = "{{ .font.monospace }} Italic"
 
+# shaders
+# custom-shader = ./bloom.glsl
+custom-shader = ./cursor-blaze.glsl
+custom-shader = ./cursor-smear.glsl
+
+# theme
 background = "{{ .colors.primary.background | trimPrefix "#" }}"
 foreground = "{{ .colors.primary.foreground | trimPrefix "#" }}"
 cursor-color = "{{ .colors.primary.foreground | trimPrefix "#" }}"
 selection-background = "{{ .colors.primary.selection | trimPrefix "#" }}"
 selection-foreground = "{{ .colors.bright.white | trimPrefix "#" }}"
-
 palette = 0={{ .colors.normal.black | trimPrefix "#" }}
 palette = 1={{ .colors.normal.red | trimPrefix "#" }}
 palette = 2={{ .colors.normal.green | trimPrefix "#" }}
