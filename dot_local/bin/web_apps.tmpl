@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+if [ $# -eq 0 ]; then
+    printf "󰇮 Gmail Chat\n󰚩 Perplexity AI\n"
+    exit 0
+fi
+case "$1" in
+    "󰇮 Gmail Chat")
+        nohup chromium --set-theme-color="{{ .browser.color }}" --app="https://mail.google.com/chat" >/dev/null 2>&1 &
+        ;;
+    "󰚩 Perplexity AI") 
+        nohup chromium --set-theme-color="{{ .browser.color }}" --app="https://perplexity.ai" >/dev/null 2>&1 &
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+exit 0

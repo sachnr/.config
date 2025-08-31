@@ -37,6 +37,6 @@ font:
   monospace: "Iosevka"
 
 settings:
-  gtk: "oomox-chezmoi"
+  gtk: "oomox-bamboo"
   qt_style: "Adwaita-Dark"
-  icon: "oomox-chezmoi"
+  icon: "oomox-bamboo"

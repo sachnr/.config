@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+if [ $# -eq 0 ]; then
+    printf "󰖔 Cyberdream\n󰌓 Bamboo\n󰄛 Catppuccin\n"
+    exit 0
+fi
+case "$1" in
+    "󰖔 Cyberdream")
+        notify-send "Theme Switcher" "Switching to Cyberdream theme"
+        nohup fish -c '"change_theme.sh" cyberdream' >/dev/null 2>&1 &
+        ;;
+    "󰌓 Bamboo")
+        notify-send "Theme Switcher" "Switching to Bamboo theme"
+        nohup fish -c '"change_theme.sh" bamboo' >/dev/null 2>&1 &
+        ;;
+    "󰄛 Catppuccin")
+        notify-send "Theme Switcher" "Switching to Catppuccin theme"
+        nohup fish -c '"change_theme.sh" catppuccin' >/dev/null 2>&1 &
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+exit 0

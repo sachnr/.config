@@ -76,7 +76,7 @@ env = MOZ_ENABLE_WAYLAND,1
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
     gaps_in = 6
-    gaps_out = 12
+    gaps_out = 6
 
     border_size = 4
 
@@ -112,15 +112,15 @@ decoration {
     # https://wiki.hyprland.org/Configuring/Variables/#blur
 	blur {
 	    enabled            = true
-	    size               = 6      
-	    passes             = 2       
+	    size               = 8      
+	    passes             = 1       
 	    new_optimizations  = true
 	    ignore_opacity     = true
-	    xray               = true
+	    xray               = false
 	    noise              = 0.020   
-	    contrast           = 0.85    
-	    brightness         = 0.80    
-	    vibrancy           = 0.22    
+	    contrast           = 0.8916
+	    brightness         = 0.8172
+	    vibrancy           = 0.1696
 	}
 }
 
@@ -234,7 +234,6 @@ bind = $mainMod, F4, exit,
 bind = $mainMod, t, togglefloating,
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, D, togglesplit, # dwindle
-bind = $mainMod SHIFT, T, exec, ~/.local/share/chezmoi/theme
 
 bind = ,PAUSE, exec, grim -g "$(slurp -d)" - | wl-copy
 bind = $mainMod, F2, exec, hyprlock
@@ -330,4 +329,4 @@ windowrulev2=move 0 0,class:(flameshot),title:(flameshot)
 windowrulev2=pin,class:(flameshot),title:(flameshot)
 windowrulev2=fullscreenstate,class:(flameshot),title:(flameshot)
 windowrulev2=float,class:(flameshot),title:(flameshot)
-windowrulev2 = opacity 0.90,class:^(com.mitchellh.ghostty)$
+windowrulev2 = opacity 0.98,class:^(.*)$

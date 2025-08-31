@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+
+VALID_THEMES=("cyberdream" "bamboo" "catppuccin")
+THEME_TARGET_DIR="$HOME/.themes"
+ICONS_TARGET_DIR="$HOME/.icons"
+CHEZMOI_DIR="$HOME/.local/share/chezmoi"
+THEMES_SUBDIR="themes"
+SETTINGS_FILE=".chezmoidata/settings.yaml"
+WALLPAPER_DIR="$HOME/wallpapers"
+THEME_COLOR_FILE="$HOME/.config/theme.chromium"
+DESKTOP_FILE="$HOME/.local/share/applications/chromium.desktop"
+SYSTEM_DESKTOP_FILE="/usr/share/applications/chromium.desktop"
+DEFAULT_THEME_COLOR="28,32,39"
+LOCAL_BIN_DIR="$HOME/.local/bin"
+APPLICATIONS_DIR="$HOME/.local/share/applications"
+OOMOX_CLI_PATH="$HOME/.config/oomox/colors/chezmoi"
+
+validate_theme() {
+    local theme=$1
+    for valid in "${VALID_THEMES[@]}"; do
+        [[ "$theme" == "$valid" ]] && return 0
+    done
+    return 1
+}
+
+link_theme_yaml() {
+    local theme=$1
+    cd "$CHEZMOI_DIR" || exit 1
+    local src="$THEMES_SUBDIR/${theme}.yaml"
+    local dest="$SETTINGS_FILE"
+    if [[ ! -f "$src" ]]; then
+        echo "Theme file $src does not exist" >&2
+        exit 2
+    fi
+    [[ -e "$dest" || -L "$dest" ]] && rm "$dest"
+    ln -nsf "$(realpath "$src")" "$dest"
+}
+
+build_oomox_themes() {
+    local theme_name="$1"
+    
+    if [[ ! -d "$THEME_TARGET_DIR/oomox-$theme_name" ]]; then
+        pushd /opt/oomox/plugins/theme_oomox
+        echo "Generating theme oomox-$theme_name..."
+        mkdir -p "$THEME_TARGET_DIR"
+        ./change_color.sh -o "oomox-$theme_name" -m all -t "$THEME_TARGET_DIR" "$OOMOX_CLI_PATH"
+        popd
+    fi
+
+    if [[ ! -d "$ICONS_TARGET_DIR/oomox-$theme_name" ]]; then
+        pushd /opt/oomox/plugins/icons_numix/
+        echo "Generating theme oomox-$theme_name..."
+        mkdir -p "$ICONS_TARGET_DIR/oomox-$theme_name"
+        ./change_color.sh -o "oomox-$theme_name" -d "$ICONS_TARGET_DIR/oomox-$theme_name" "$OOMOX_CLI_PATH"
+        popd
+    fi
+}
+
+apply_gnome_themes() {
+    local theme="$1"
+    gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" 2>/dev/null
+    gsettings set org.gnome.desktop.interface gtk-theme "oomox-$theme" 2>/dev/null
+    gsettings set org.gnome.desktop.wm.preferences theme "oomox-$theme" 2>/dev/null
+    gsettings set org.gnome.desktop.interface icon-theme "oomox-$theme" 2>/dev/null
+}
+
+change_wallpapers() {
+    local theme=$1
+    local wallpaper_dir="$WALLPAPER_DIR/$theme"
+    if [[ -d "$wallpaper_dir" ]]; then
+        local wallpaper=$(find "$wallpaper_dir" -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' \) | shuf -n 1)
+        if [[ -n "$wallpaper" ]]; then
+            swww img "$wallpaper" --transition-type wipe --transition-duration 1 2>/dev/null
+        fi
+    fi
+}
+
+update_chromium_theme() {
+    if [[ ! -f "$DESKTOP_FILE" ]]; then
+        cp "$SYSTEM_DESKTOP_FILE" "$DESKTOP_FILE"
+    fi
+    if [[ -f "$THEME_COLOR_FILE" ]]; then
+        local theme_color="$(<"$THEME_COLOR_FILE")"
+    else
+        local theme_color="$DEFAULT_THEME_COLOR"
+    fi
+    sed -i "s|^Exec=.*|Exec=/usr/bin/chromium --ozone-platform=wayland --ozone-platform-hint=wayland --set-theme-color=${theme_color} %U|" "$DESKTOP_FILE"
+    update-desktop-database "$APPLICATIONS_DIR" 2>/dev/null
+}
+
+restart_components() {
+    pkill -SIGUSR2 ghostty 2>/dev/null &
+    if [[ -f "$THEME_COLOR_FILE" ]]; then
+        local theme_color="$(<"$THEME_COLOR_FILE")"
+        chromium --no-startup-window --set-theme-color="$theme_color" >/dev/null 2>&1 &
+    else
+        chromium --no-startup-window --set-theme-color="$DEFAULT_THEME_COLOR" >/dev/null 2>&1 &
+    fi
+    hyprctl reload 2>/dev/null &
+    fc-cache -fv >/dev/null 2>&1 &
+    wait
+}
+
+selected_theme="$1"
+
+if ! validate_theme "$selected_theme"; then
+    echo "Invalid theme: $selected_theme" >&2
+    echo "Available themes: ${VALID_THEMES[*]}"
+    exit 2
+fi
+
+link_theme_yaml "$selected_theme"
+if chezmoi apply --force >/dev/null 2>&1; then
+    chmod +x "$LOCAL_BIN_DIR"/*
+    build_oomox_themes "$selected_theme"
+    apply_gnome_themes "$selected_theme"
+    change_wallpapers "$selected_theme"
+    update_chromium_theme
+    restart_components
+fi

@@ -7,7 +7,8 @@ set -g fish_greeting
 xset r rate 250 50
 
 # paths
-fish_add_path $HOME/.npm/bin $HOME/.local/share/nvim/mason/bin
+fish_add_path $HOME/.npm/bin
+fish_add_path $HOME/.local/share/nvim/mason/bin
 fish_add_path $HOME/.cargo/bin
 fish_add_path (yarn global bin)
 fish_add_path $HOME/go/bin
@@ -29,7 +30,7 @@ alias vim "nvim"
 alias f "yazi"
 alias top "btm -b"
 alias gotest "gotestsum -f testname"
-alias ca "chezmoi apply"
+alias ca "chezmoi apply && chmod +x ~/.local/bin/*"
 alias python "python3.12"
 
 direnv hook fish | source

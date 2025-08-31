@@ -1,133 +1,78 @@
 * {
-  font-size: 14px;
-  font-family: "{{ .font.family }}";
-  min-width: 6px;
-  min-height: 0px;
   border: none;
-  border-radius: 0;
-  box-shadow: none;
-  text-shadow: none;
-  padding: 0px;
+  font-family: "{{ .font.family }}";
+  font-weight: bold;
+  font-size: 14px;
 }
 
 window#waybar {
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  border-radius: 6px;
-  color: {{ .colors.primary.foreground }};
-  background-color: alpha({{ .colors.primary.background }}, 0.0);
-}
-
-tooltip {
-  border-radius: 6px;
-  padding: 4px;
-  border: 1px solid {{ .colors.primary.accent }};
-  background-color: {{ .colors.primary.background }};
-  color: {{ .colors.primary.foreground }};
-}
-
-tooltip label {
-  color: {{ .colors.primary.foreground }};
-}
-
-.modules-right {
-  margin: 4px 2px;
-  border-radius: 4px;
-  background-color: alpha({{ .colors.primary.background }}, 0.4);
-  color: {{ .colors.primary.foreground }};
-}
-
-.modules-left {
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  margin: 4px 2px;
-  border-radius: 4px;
-  background-color: {{ .colors.primary.background }};
+  background-color: alpha({{ .colors.primary.background }}, 0.8);
   color: {{ .colors.primary.foreground }};
 }
 
 #workspaces {
-  margin: 4px 2px;
-  padding: 4px 2px;
-  border-radius: 6px;
-  font-weight: bold;
+  background-color: {{ .colors.primary.background }};
+  margin: 4px 6px;
+  border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid {{ .colors.primary.selection }};
 }
 
 #workspaces button {
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  padding: 4px 2px;
-  background-color: transparent;
+  all: initial;
+  padding: 0 0.4em;
   border-radius: 4px;
-  color: {{ .colors.normal.white }};
-}
-
-#workspaces button.urgent {
-  padding: 4px 2px;
-  font-weight: bold;
-  background-color: {{ .colors.bright.red }};
+  background-color: {{ .colors.primary.background }};
   color: {{ .colors.primary.foreground }};
 }
 
 #workspaces button.active {
-  padding: 4px 2px;
-  background-color: alpha({{ .colors.primary.accent }}, 1.0);
   color: {{ .colors.primary.background }};
-  border-radius: 4px;
+  background-color: {{ .colors.primary.accent }};
 }
 
+#workspaces button.focused {
+  color: {{ .colors.primary.accent }};
+}
+
+#workspaces button.urgent {
+  color: {{ .colors.bright.red }};
+}
+
+#workspaces button.persistent {
+  color: {{ .colors.bright.black }};
+}
+
+#battery,
+#pulseaudio,
+#network,
+#clock,
+#date,
+#mpd,
+#tray,
 #cpu,
 #memory,
-#network,
-#pulseaudio,
-#battery,
-#tray {
-  border-radius: 4px;
-  padding: 4px 2px;
-  margin: 4px 2px;
-  font-weight: bold;
-  background-color: {{ .colors.primary.background2 }};
-  border: 1px solid {{ .colors.primary.selection }};
+#custom-playerctl {
+  padding: 0 0.4em;
+  margin: 4px;
+  background-color: {{ .colors.primary.background }};
   color: {{ .colors.primary.foreground }};
-}
-
-#clock {
   border-radius: 4px;
-  padding: 4px 2px;
-  margin: 4px 2px;
+  border: 1px solid {{ .colors.primary.selection }};
+}
+
+#mpd {
+  padding: 0 2em;
+  margin: 4px 6px;
+}
+
+tooltip {
+  border-radius: 8px;
+  padding: 10px;
+  margin: 30px;
+}
+
+tooltip label {
   font-weight: bold;
-  background-color: alpha({{ .colors.primary.accent }}, 1.0);
-  color: {{ .colors.primary.background }};
-}
-
-
-#cpu.critical,
-#memory.critical {
-  background-color: {{ .colors.bright.red }};
-  color: {{ .colors.primary.background }};
-  border: 1px solid {{ .colors.normal.red }};
-}
-
-#battery.warning {
-  background-color: {{ .colors.normal.yellow }};
-  border: 1px solid {{ .colors.bright.yellow }};
-  color: {{ .colors.primary.background }};
-}
-
-#battery.critical {
-  background-color: {{ .colors.bright.red }};
-  border: 1px solid {{ .colors.normal.red }};
-  color: {{ .colors.primary.background }};
-}
-
-#network.disconnected {
-  background-color: {{ .colors.bright.red }};
-  border: 1px solid {{ .colors.normal.red }};
-  color: {{ .colors.primary.background }};
-}
-
-#pulseaudio.muted {
-  background-color: {{ .colors.normal.black }};
-  border: 1px solid {{ .colors.bright.black }};
-  color: {{ .colors.normal.white }};
+  padding: 20px;
 }
