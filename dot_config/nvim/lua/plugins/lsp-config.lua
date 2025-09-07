@@ -44,10 +44,12 @@ return {
 		vim.lsp.config("clangd", {
 			cmd = {
 				"clangd",
+				"--background-index",
+				"--completion-style=detailed",
 				"--compile-commands-dir=.",
 				"--cross-file-rename",
-				"--header-insertion-decorators",
-				"--header-insertion=iwyu",
+				"--function-arg-placeholders",
+				"--header-insertion=never",
 			},
 		})
 		vim.lsp.log.set_level("ERROR")
@@ -113,6 +115,7 @@ return {
 			"html",
 			"lua_ls",
 			"nil_ls",
+			"ols",
 			"pyright",
 			"rust_analyzer",
 			"sqlls",

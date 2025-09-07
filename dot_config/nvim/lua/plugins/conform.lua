@@ -59,6 +59,7 @@ return {
 					nix = { "nixfmt" },
 					norg = { "norgfmt" },
 					ocaml = { "ocamlformat" },
+					odin = { "odinfmt" },
 					python = { "black" },
 					rust = { "leptosfmt", "rustfmt", stop_after_first = true },
 					scss = { "prettierd", "prettier", stop_after_first = true },

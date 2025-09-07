@@ -158,7 +158,7 @@ end
 
 vim.g.alabaster_floatborder = true
 vim.g.alabaster_dim_comments = true
-vim.cmd.colorscheme("alabaster")
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+vim.cmd.colorscheme("cyberdream")
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })

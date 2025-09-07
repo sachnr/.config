@@ -18,5 +18,6 @@ return {
 	-- "ramojus/mellifluous.nvim",
 	{ "scottmckendry/cyberdream.nvim", opts = { transparent = true } },
 	"p00f/alabaster.nvim",
+	"timmyha/henna.nvim",
 	-- "vague2k/vague.nvim",
 }

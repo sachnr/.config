@@ -31,12 +31,12 @@ colors:
     border: "#3c4048"
 
 browser:
-  color: "105,51,100"
+  color: "28,18,23"
 
 font:
-  size: 12
-  family: "Inter Display"
-  monospace: "Iosevka"
+  size: 12.5
+  family: "Roboto"
+  monospace: "JetBrains Mono"
 
 settings:
   gtk: "oomox-cyberdream"

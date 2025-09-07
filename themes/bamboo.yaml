@@ -32,7 +32,7 @@ browser:
   color: "17,34,28"
 
 font:
-  size: 12
+  size: 12.5
   family: "Inter Display"
   monospace: "Iosevka"
 
