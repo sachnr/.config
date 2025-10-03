@@ -1,0 +1,42 @@
+colors:
+  normal:
+    black: "#201d1a"
+    red: "#d0a18a"
+    green: "#accba4"
+    yellow: "#bccea1"
+    blue: "#bf9ac1"
+    magenta: "#bc9fad"
+    cyan: "#51b937"
+    white: "#e1dddb"
+  bright:
+    black: "#3b3430"
+    red: "#cbd19e"
+    green: "#74d65c"
+    yellow: "#c3c4ab"
+    blue: "#812d86"
+    magenta: "#a32964"
+    cyan: "#33bc10"
+    white: "#ebe9e7"
+  primary:
+    background: "#201d1a"
+    background2: "#2d2825"
+    background3: "#3b3430"
+    accent: "#cbd19e"
+    foreground: "#e1dddb"
+    selection: "#2d2825"
+    selection_text: "#e1dddb"
+    hover: "#2d2825"
+    border: "#3b3430"
+
+browser:
+  color: "32,29,26"
+
+font:
+  size: 13
+  family: "Roboto"
+  monospace: "Iosevka Comfy"
+
+settings:
+  gtk: "oomox-melliflous"
+  qt_style: "Adwaita-Dark"
+  icon: "oomox-melliflous"

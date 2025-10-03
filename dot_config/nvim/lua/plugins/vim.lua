@@ -5,4 +5,5 @@ return {
 	"mbbill/undotree",
 	{ "echasnovski/mini.icons", opts = {} },
 	{ "kevinhwang91/nvim-bqf", opts = {} },
+	{ "nvim-mini/mini.statusline", version = false, opts = {} },
 }

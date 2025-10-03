@@ -36,7 +36,7 @@ browser:
 font:
   size: 12.5
   family: "Roboto"
-  monospace: "JetBrains Mono"
+  monospace: "Iosevka Fixed"
 
 settings:
   gtk: "oomox-cyberdream"

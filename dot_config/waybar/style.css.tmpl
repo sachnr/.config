@@ -1,27 +1,23 @@
 * {
   border: none;
-  font-family: "{{ .font.family }}";
+  font-family: "{{ .font.monospace }}";
   font-weight: bold;
   font-size: 14px;
 }
 
 window#waybar {
-  background-color: alpha({{ .colors.primary.background }}, 0.8);
+  background-color: alpha({{ .colors.primary.background }}, 1.0);
   color: {{ .colors.primary.foreground }};
 }
 
 #workspaces {
   background-color: {{ .colors.primary.background }};
-  margin: 4px 6px;
-  border-radius: 4px;
-  border-radius: 4px;
-  border: 1px solid {{ .colors.primary.selection }};
+  margin: 0px 6px;
 }
 
 #workspaces button {
   all: initial;
   padding: 0 0.4em;
-  border-radius: 4px;
   background-color: {{ .colors.primary.background }};
   color: {{ .colors.primary.foreground }};
 }
@@ -52,22 +48,13 @@ window#waybar {
 #tray,
 #cpu,
 #memory,
+#mpd,
 #custom-playerctl {
-  padding: 0 0.4em;
-  margin: 4px;
   background-color: {{ .colors.primary.background }};
-  color: {{ .colors.primary.foreground }};
-  border-radius: 4px;
-  border: 1px solid {{ .colors.primary.selection }};
-}
-
-#mpd {
-  padding: 0 2em;
-  margin: 4px 6px;
+  padding: 0 0.8em;
 }
 
 tooltip {
-  border-radius: 8px;
   padding: 10px;
   margin: 30px;
 }

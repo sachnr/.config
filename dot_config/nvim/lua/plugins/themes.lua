@@ -1,5 +1,5 @@
 return {
-	-- "mellow-theme/mellow.nvim",
+	"mellow-theme/mellow.nvim",
 	{ "folke/tokyonight.nvim", opts = { transparent = true } },
 	-- "rebelot/kanagawa.nvim",
 	-- "Shatur/neovim-ayu",
@@ -13,11 +13,11 @@ return {
 	-- "sainnhe/sonokai",
 	-- "catppuccin/nvim",
 	-- "navarasu/onedark.nvim",
-	-- "ribru17/bamboo.nvim",
-	-- "datsfilipe/vesper.nvim",
-	-- "ramojus/mellifluous.nvim",
+	{ "ribru17/bamboo.nvim", opts = { transparent = false } },
+	"datsfilipe/vesper.nvim",
+	"ramojus/mellifluous.nvim",
 	{ "scottmckendry/cyberdream.nvim", opts = { transparent = true } },
 	"p00f/alabaster.nvim",
 	"timmyha/henna.nvim",
-	-- "vague2k/vague.nvim",
+	"vague2k/vague.nvim",
 }

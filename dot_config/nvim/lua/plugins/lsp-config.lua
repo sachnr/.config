@@ -44,14 +44,11 @@ return {
 		vim.lsp.config("clangd", {
 			cmd = {
 				"clangd",
-				"--background-index",
-				"--completion-style=detailed",
-				"--compile-commands-dir=.",
-				"--cross-file-rename",
-				"--function-arg-placeholders",
+				"--function-arg-placeholders=false",
 				"--header-insertion=never",
 			},
 		})
+
 		vim.lsp.log.set_level("ERROR")
 
 		vim.lsp.config("gopls", {
@@ -106,7 +103,8 @@ return {
 
 		vim.lsp.enable({
 			"bashls",
-			"clangd",
+			-- "clangd",
+            "ccls",
 			"cssls",
 			"eslint",
 			"glsl_analyzer",

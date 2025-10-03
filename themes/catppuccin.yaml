@@ -1,0 +1,44 @@
+colors:
+  normal:
+    black: "#45475a" # Surface1
+    red: "#f38ba8" # Red
+    green: "#a6e3a1" # Green
+    yellow: "#f9e2af" # Yellow
+    blue: "#89b4fa" # Blue
+    magenta: "#f5c2e7" # Pink
+    cyan: "#94e2d5" # Teal
+    white: "#cdd6f4" # Text
+
+  bright:
+    black: "#585b70" # Surface2
+    red: "#f38ba8" # Red
+    green: "#a6e3a1" # Green
+    yellow: "#f9e2af" # Yellow
+    blue: "#89b4fa" # Blue
+    magenta: "#f5c2e7" # Pink
+    cyan: "#94e2d5" # Teal
+    white: "#cdd6f4" # Text
+
+  primary:
+    background: "#1e1e2e" # Base
+    background2: "#313244" # Surface0
+    background3: "#45475a" # Surface1
+    accent: "#cba6f7" # Mauve
+    foreground: "#cdd6f4" # Text
+    selection: "#313244" # Surface0
+    selection_text: "#cdd6f4" # Text
+    hover: "#585b70" # Surface2
+    border: "#6c7086" # Overlay0
+
+browser:
+  color: "30,30,46" # Base RGB values
+
+font:
+  size: 13
+  family: "Roboto"
+  monospace: "Iosevka Fixed"
+
+settings:
+  gtk: "oomox-catppuccin"
+  qt_style: "Adwaita-Dark"
+  icon: "oomox-catppuccin"

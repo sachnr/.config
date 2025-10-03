@@ -23,7 +23,7 @@ vim.opt.autoread = true
 vim.opt.cursorline = true
 vim.opt.expandtab = true
 vim.opt.ignorecase = true
-vim.opt.laststatus = 0
+vim.opt.laststatus = 2
 vim.opt.lazyredraw = true
 vim.opt.number = true
 vim.opt.redrawtime = 1500
@@ -49,6 +49,8 @@ vim.opt.showcmdloc = "statusline"
 vim.opt.winborder = "rounded"
 vim.opt.timeoutlen = 300
 vim.opt.updatetime = 300
+vim.o.cmdheight = 0
+vim.o.ruler = false
 vim.opt.guicursor = "n-v-c-i:block"
 
 -- keybinds
@@ -158,7 +160,4 @@ end
 
 vim.g.alabaster_floatborder = true
 vim.g.alabaster_dim_comments = true
-vim.cmd.colorscheme("cyberdream")
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+vim.cmd.colorscheme("mellifluous")
