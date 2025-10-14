@@ -34,9 +34,9 @@ browser:
   color: "28,18,23"
 
 font:
-  size: 12.5
+  size: 13
   family: "Roboto"
-  monospace: "Iosevka Fixed"
+  monospace: "Iosevka Comfy"
 
 settings:
   gtk: "oomox-cyberdream"

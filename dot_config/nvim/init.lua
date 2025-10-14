@@ -131,14 +131,38 @@ function MyTabLine()
 	return s
 end
 
+function CommentHr()
+	local textwidth = vim.bo.textwidth > 0 and vim.bo.textwidth or 80
+	local indent = vim.fn.indent(".")
+	local commentstring = vim.bo.commentstring
+
+	if commentstring == "" then
+		vim.notify("No commentstring", vim.log.levels.WARN)
+		return
+	end
+
+	local prefix, suffix = commentstring:match("^(.*)%%s(.*)$")
+	local clen = #prefix + #suffix
+	local linelen = textwidth - indent - clen
+	local hr = prefix .. string.rep("-", linelen) .. suffix
+
+	vim.fn.append(".", hr)
+end
+
+vim.keymap.set("n", "<leader>cs", CommentHr)
+
 require("lazy").setup("plugins", {
+	ui = {
+		border = "single",
+		backdrop = 60,
+	},
 	change_detection = {
 		notify = true,
 	},
 })
 
 if vim.g.neovide then
-	vim.o.guifont = "Iosevka Curly Slab:h14"
+	vim.o.guifont = "Aporetic Sans Mono:h13"
 	vim.g.neovide_text_gamma = 0.0
 	vim.g.neovide_text_contrast = 0
 
@@ -156,8 +180,18 @@ if vim.g.neovide then
 
 	vim.g.neovide_refresh_rate = 180
 	vim.g.neovide_refresh_rate_idle = 5
+
+	vim.keymap.set({ "n", "v" }, "<c-=>", function()
+		vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1
+	end)
+	vim.keymap.set({ "n", "v" }, "<c-->", function()
+		vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1
+	end)
+	vim.keymap.set({ "n", "v" }, "<c-0>", function()
+		vim.g.neovide_scale_factor = 1
+	end)
 end
 
 vim.g.alabaster_floatborder = true
 vim.g.alabaster_dim_comments = true
-vim.cmd.colorscheme("mellifluous")
+vim.cmd.colorscheme("cyberdream")
