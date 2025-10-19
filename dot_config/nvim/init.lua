@@ -162,7 +162,7 @@ require("lazy").setup("plugins", {
 })
 
 if vim.g.neovide then
-	vim.o.guifont = "Aporetic Sans Mono:h13"
+	vim.o.guifont = "Iosevka Comfy:h13"
 	vim.g.neovide_text_gamma = 0.0
 	vim.g.neovide_text_contrast = 0
 
@@ -190,6 +190,8 @@ if vim.g.neovide then
 	vim.keymap.set({ "n", "v" }, "<c-0>", function()
 		vim.g.neovide_scale_factor = 1
 	end)
+
+	vim.g.neovide_transparency = 0.8
 end
 
 vim.g.alabaster_floatborder = true
