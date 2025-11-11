@@ -1,0 +1,10 @@
+vim.g.alabaster_floatborder = true
+vim.g.alabaster_dim_comments = true
+vim.cmd.colorscheme("{{ .settings.nvim }}")
+
+vim.api.nvim_create_autocmd("Signal", {
+    pattern = "SIGUSR1",
+    callback = function()
+        vim.cmd.colorscheme("{{ .settings.nvim }}" or "default")
+    end,
+})

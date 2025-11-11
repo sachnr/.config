@@ -4,6 +4,7 @@ set -gx EDITOR nvim
 set -gx PYTHONPATH $HOME/.config/pip/site-packages $PYTHONPATH
 set -gx FZF_DEFAULT_OPTS "--layout=reverse"
 set -g fish_greeting
+set -gx EDITOR nvim
 xset r rate 250 50
 
 # paths

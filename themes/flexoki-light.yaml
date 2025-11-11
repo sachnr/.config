@@ -1,0 +1,44 @@
+colors:
+  normal:
+    black: "#100F0F"
+    red: "#AF3029"
+    green: "#66800B"
+    yellow: "#AD8301"
+    blue: "#205EA6"
+    magenta: "#A02F6F"
+    cyan: "#24837B"
+    white: "#CECDC3"
+  bright:
+    black: "#6F6E69"
+    red: "#D14D41"
+    green: "#879A39"
+    yellow: "#D0A215"
+    blue: "#4385BE"
+    magenta: "#CE5D97"
+    cyan: "#3AA99F"
+    white: "#FFFCF0"
+  primary:
+    background: "#100F0F"
+    background2: "#1C1B1A"
+    background3: "#2B2928"
+    accent: "#D0A215"
+    foreground: "#CECDC3"
+    selection: "#2B2928"
+    selection_text: "#FFFCF0"
+    hover: "#1C1B1A"
+    border: "#6F6E69"
+
+browser:
+  color: "242,240,229"
+
+font:
+  size: 14
+  family: "Roboto"
+  monospace: "Iosevka"
+
+settings:
+  dpi: 108
+  gtk: "oomox-flexoki"
+  qt_style: "Adwaita-Dark"
+  icon: "oomox-flexoki"
+  nvim: "flexoki-light"

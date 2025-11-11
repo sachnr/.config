@@ -34,11 +34,13 @@ browser:
   color: "28,18,23"
 
 font:
-  size: 13
+  size: 13.5
   family: "Roboto"
-  monospace: "Iosevka Comfy"
+  monospace: "Iosevka"
 
 settings:
+  dpi: 108
   gtk: "oomox-cyberdream"
   qt_style: "Adwaita-Dark"
   icon: "oomox-cyberdream"
+  nvim: "dayfox"

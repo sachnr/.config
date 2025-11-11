@@ -15,8 +15,9 @@
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,auto,auto
-monitor = DP-3, 2560x1440@180, 0x0, 1
+monitor = eDP-1,1920x1200@60,0x0,1
+# monitor = DP-3, 2560x1440@180, 0x1200, 1
+monitor = HDMI-A-1, 1920x1080@60, 1920x0, 1
 
 ###################
 ### MY PROGRAMS ###
@@ -25,10 +26,9 @@ monitor = DP-3, 2560x1440@180, 0x0, 1
 # See https://wiki.hyprland.org/Configuring/Keywords/
 
 # Set programs that you use
-$terminal = ~/.local/bin/ghostty --gtk-single-instance=true
+$terminal = foot
 $fileManager = thunar
 $menu = rofi -show drun
-
 
 #################
 ### AUTOSTART ###
@@ -42,7 +42,7 @@ exec= pkill swww-daemon; swww-daemon
 exec-once = dms run
 # exec = pkill dunst; dunst
 exec-once = /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec-once = ~/.local/bin/ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
+# exec-once = ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false
 
 exec = gsettings set org.gnome.desktop.interface gtk-theme {{ .settings.gtk }}
 exec = gsettings set org.gnome.desktop.interface icon-theme {{ .settings.icon }}
@@ -50,6 +50,8 @@ exec = gsettings set org.gnome.desktop.interface icon-theme {{ .settings.icon }}
 exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 exec = gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'
 exec = gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'
+
+exec-once = wl-paste --watch cliphist store
 
 #############################
 ### ENVIRONMENT VARIABLES ###
@@ -59,12 +61,11 @@ exec = gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight
 
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
-env = LIBVA_DRIVER_NAME,nvidia
-env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = NVD_BACKEND,direct
 env = XDG_CURRENT_DESKTOP,Hyprland
 env = MOZ_ENABLE_WAYLAND,1
 env = DMS_DISABLE_MATUGEN,1
+env = GTK_THEME,{{ .settings.gtk }}
 
 #####################
 ### LOOK AND FEEL ###
@@ -111,7 +112,7 @@ decoration {
     # https://wiki.hyprland.org/Configuring/Variables/#blur
 	blur {
 	    enabled            = true
-	    size               = 8      
+	    size               = 4      
 	    passes             = 2       
 	    new_optimizations  = true
 	    ignore_opacity     = true
@@ -197,7 +198,7 @@ input {
 
     sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
 
-    repeat_delay = 300
+    repeat_delay = 200
     repeat_rate = 50
 
     touchpad {
@@ -214,6 +215,20 @@ gestures {
 device {
     name = epic-mouse-v1
     sensitivity = -0.5
+}
+
+device {
+    name = huion-huion-tablet_hs611
+    output = HDMI-A-1
+}
+
+device {
+    name = huion-huion-tablet_hs611-1
+    output = HDMI-A-1
+}
+
+xwayland {
+	force_zero_scaling = true
 }
 
 

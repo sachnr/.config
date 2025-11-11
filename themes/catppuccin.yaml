@@ -34,11 +34,13 @@ browser:
   color: "30,30,46" # Base RGB values
 
 font:
-  size: 13
+  size: 12
   family: "Roboto"
-  monospace: "Iosevka Fixed"
+  monospace: "Iosevka"
 
 settings:
+  dpi: 108
   gtk: "oomox-catppuccin"
   qt_style: "Adwaita-Dark"
   icon: "oomox-catppuccin"
+  nvim: "catppuccin"

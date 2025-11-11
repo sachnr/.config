@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VALID_THEMES=("cyberdream" "bamboo" "dracula" "catppuccin" "melliflous")
+VALID_THEMES=("cyberdream" "bamboo" "dracula" "catppuccin" "melliflous" "flexoki-light")
 THEME_TARGET_DIR="$HOME/.themes"
 ICONS_TARGET_DIR="$HOME/.icons"
 CHEZMOI_DIR="$HOME/.local/share/chezmoi"
@@ -98,6 +98,7 @@ restart_components() {
     fi
     hyprctl reload 2>/dev/null &
     fc-cache -fv >/dev/null 2>&1 &
+    pkill -USR1 nvim
     wait
 }
 

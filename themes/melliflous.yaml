@@ -32,11 +32,13 @@ browser:
   color: "32,29,26"
 
 font:
-  size: 13
+  size: 14
   family: "Roboto"
-  monospace: "Iosevka Comfy"
+  monospace: "Iosevka"
 
 settings:
+  dpi: 108
   gtk: "oomox-melliflous"
   qt_style: "Adwaita-Dark"
   icon: "oomox-melliflous"
+  nvim: "mellifluous"

@@ -1,0 +1,100 @@
+clear_all_shortcuts yes
+
+# Fonts
+font_family {{ .font.monospace }}
+symbol_map U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E634,U+E700-U+E7C5,U+EA60-U+EBEB,U+F000-U+F2E0,U+F300-U+F32F,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font Mono
+font_size {{ .font.size }}
+modify_font underline_position 125%
+disable_ligatures never
+box_drawing_scale 0.001, 1, 1.5, 2
+
+# Options
+cursor_blink_interval 0
+cursor_stop_blinking_after 15.0
+scrollback_lines 10000
+scrollback_pager less
+wheel_scroll_multiplier 5.0
+url_style double
+open_url_modifiers ctrl+shift
+open_url_with default
+copy_on_select yes
+click_interval 0.5
+mouse_hide_wait 0
+focus_follows_mouse no
+visual_bell_duration 0.0
+enable_audio_bell yes
+bell_on_tab yes
+shell fish
+close_on_child_death no
+allow_remote_control yes
+
+# Window
+remember_window_size no
+initial_window_width 700
+initial_window_height 400
+window_border_width 0
+window_margin_width 0
+window_padding_width 2
+inactive_text_alpha 1.0
+dynamic_background_opacity yes
+background_opacity 0.96
+placement_strategy center
+hide_window_decorations yes
+
+# Theme
+color0 {{ .colors.normal.black }}
+color1 {{ .colors.normal.red }}
+color2 {{ .colors.normal.green }}
+color3 {{ .colors.normal.yellow }}
+color4 {{ .colors.normal.blue }}
+color5 {{ .colors.normal.magenta }}
+color6 {{ .colors.normal.cyan }}
+color7 {{ .colors.normal.white }}
+color8 {{ .colors.bright.black }}
+color9 {{ .colors.bright.red }}
+color10 {{ .colors.bright.green }}
+color11 {{ .colors.bright.yellow }}
+color12 {{ .colors.bright.blue }}
+color13 {{ .colors.bright.magenta }}
+color14 {{ .colors.bright.cyan }}
+color15 {{ .colors.bright.white }}
+background {{ .colors.primary.background }}
+foreground {{ .colors.primary.foreground }}
+cursor {{ .colors.primary.foreground }}
+cursor_text_color {{ .colors.primary.background }}
+selection_foreground {{ .colors.primary.background }}
+selection_background {{ .colors.primary.selection }}
+active_border_color {{ .colors.primary.accent }}
+inactive_border_color {{ .colors.primary.background }}
+url_color {{ .colors.bright.green }}
+active_tab_foreground {{ .colors.primary.accent }}
+active_tab_background {{ .colors.primary.background }}
+inactive_tab_foreground {{ .colors.normal.white }}
+inactive_tab_background {{ .colors.primary.background }}
+tab_bar_background {{ .colors.normal.black }}
+
+# Keybindings
+map ctrl+shift+up scroll_page_up
+map ctrl+shift+down scroll_page_down
+map ctrl+shift+left previous_tab
+map ctrl+shift+right next_tab
+map ctrl+shift+v paste_from_clipboard
+map ctrl+shift+c copy_to_clipboard
+map ctrl+shift+equal change_font_size current +0.5
+map ctrl+shift+minus change_font_size current -0.5
+map ctrl+shift+backspace restore_font_size
+map ctrl+alt+s set_background_opacity +0.02
+map ctrl+alt+a set_background_opacity -0.02
+map ctrl+shift+t new_tab_with_cwd
+map ctrl+shift+d close_tab
+map ctrl+shift+, set_tab_title
+map ctrl+shift+1 goto_tab 1
+map ctrl+shift+2 goto_tab 2
+map ctrl+shift+3 goto_tab 3
+map ctrl+shift+4 goto_tab 4
+map ctrl+shift+5 goto_tab 5
+map ctrl+shift+6 goto_tab 6
+map ctrl+shift+7 goto_tab 7
+map ctrl+shift+8 goto_tab 8
+map ctrl+shift+9 goto_tab 9
+

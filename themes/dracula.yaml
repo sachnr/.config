@@ -30,10 +30,12 @@ colors:
 browser:
   color: "40,42,54"
 font:
-  size: 12.5
-  family: "Inter Display"
+  size: 14
+  family: "Roboto"
   monospace: "Iosevka"
 settings:
+  dpi: 108
   gtk: "oomox-dracula"
   qt_style: "Adwaita-Dark"
   icon: "oomox-dracula"
+  nvim: "dracula"

@@ -162,7 +162,7 @@ require("lazy").setup("plugins", {
 })
 
 if vim.g.neovide then
-	vim.o.guifont = "Iosevka Comfy:h13"
+	vim.o.guifont = "Iosevka:h14"
 	vim.g.neovide_text_gamma = 0.0
 	vim.g.neovide_text_contrast = 0
 
@@ -194,6 +194,4 @@ if vim.g.neovide then
 	vim.g.neovide_transparency = 0.8
 end
 
-vim.g.alabaster_floatborder = true
-vim.g.alabaster_dim_comments = true
-vim.cmd.colorscheme("cyberdream")
+require("colorscheme")
