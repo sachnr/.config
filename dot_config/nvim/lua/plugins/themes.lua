@@ -21,4 +21,5 @@ return {
 	"timmyha/henna.nvim",
 	"vague2k/vague.nvim",
     { "kepano/flexoki-neovim", name = "flexoki" },
+    { "bjarneo/aether.nvim", name = "aether" }
 }

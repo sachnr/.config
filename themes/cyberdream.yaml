@@ -35,7 +35,7 @@ browser:
 
 font:
   size: 13.5
-  family: "Roboto"
+  family: "Liberation Sans"
   monospace: "Iosevka"
 
 settings:
@@ -43,4 +43,4 @@ settings:
   gtk: "oomox-cyberdream"
   qt_style: "Adwaita-Dark"
   icon: "oomox-cyberdream"
-  nvim: "dayfox"
+  nvim: "cyberdream"

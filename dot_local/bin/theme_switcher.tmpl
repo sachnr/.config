@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ $# -eq 0 ]; then
-    printf "󰖔 Cyberdream\n󰌓 Bamboo\n󰅚 Dracula\n󰄛 Catppuccin\n󰉊 Melliflous\n󰏘 Flexoki"
+    printf "󰖔 Cyberdream\n󰌓 Bamboo\n󰅚 Dracula\n󰄛 Catppuccin\n󰉊 Melliflous\n󰏘 Ember"
     exit 0
 fi
 case "$1" in
@@ -24,9 +24,9 @@ case "$1" in
         notify-send "Theme Switcher" "Switching to Melliflous theme"
         nohup fish -c '"change_theme.sh" melliflous' >/dev/null 2>&1 &
         ;;
-    "󰏘 Flexoki")
-        notify-send "Theme Switcher" "Switching to flexoki theme"
-        nohup fish -c '"change_theme.sh" flexoki-light' >/dev/null 2>&1 &
+    "󰏘 Ember")
+        notify-send "Theme Switcher" "Switching to ember theme"
+        nohup fish -c '"change_theme.sh" ember' >/dev/null 2>&1 &
         ;;
     *)
         exit 1

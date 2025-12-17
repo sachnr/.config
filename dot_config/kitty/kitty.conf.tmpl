@@ -12,7 +12,8 @@ box_drawing_scale 0.001, 1, 1.5, 2
 cursor_blink_interval 0
 cursor_stop_blinking_after 15.0
 scrollback_lines 10000
-scrollback_pager less
+# scrollback_pager less
+scrollback_pager nvim -u NONE -c 'setlocal buftype=nofile' -
 wheel_scroll_multiplier 5.0
 url_style double
 open_url_modifiers ctrl+shift
