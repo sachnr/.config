@@ -34,8 +34,8 @@ browser:
   color: "30,30,46" # Base RGB values
 
 font:
-  size: 12
-  family: "Roboto"
+  size: 14
+  family: "Liberation Sans"
   monospace: "Iosevka"
 
 settings:

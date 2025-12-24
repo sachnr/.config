@@ -89,7 +89,6 @@ update_chromium_theme() {
 }
 
 restart_components() {
-    pkill -SIGUSR2 ghostty 2>/dev/null &
     if [[ -f "$THEME_COLOR_FILE" ]]; then
         local theme_color="$(<"$THEME_COLOR_FILE")"
         chromium --no-startup-window --set-theme-color="$theme_color" >/dev/null 2>&1 &
@@ -98,7 +97,10 @@ restart_components() {
     fi
     hyprctl reload 2>/dev/null &
     fc-cache -fv >/dev/null 2>&1 &
-    pkill -USR1 nvim
+    kill -USR1 $(pgrep ghostty)
+    kill -USR1 $(pgrep kitty)
+    kill -USR1 $(pgrep nvim)
+
     wait
 }
 
