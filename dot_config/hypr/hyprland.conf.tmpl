@@ -15,9 +15,9 @@
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor = eDP-1,1920x1200@60,0x0,1
-# monitor = DP-3, 2560x1440@180, 0x1200, 1
-monitor = HDMI-A-1, 1920x1080@60, 1920x0, 1
+# monitor = eDP-1,1920x1200@60,0x0,1
+monitor = DP-3, 2560x1440@180, 0x0, 1
+# monitor = HDMI-A-1, 1920x1080@60, 1920x0, 1
 
 ###################
 ### MY PROGRAMS ###
@@ -65,6 +65,7 @@ env = NVD_BACKEND,direct
 env = XDG_CURRENT_DESKTOP,Hyprland
 env = MOZ_ENABLE_WAYLAND,1
 env = DMS_DISABLE_MATUGEN,1
+# env = DMS_RUN_GREETER,1
 env = GTK_THEME,{{ .settings.gtk }}
 
 #####################
