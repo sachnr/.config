@@ -202,6 +202,7 @@ input {
     repeat_rate = 50
 
     touchpad {
+        disable_while_typing = true
         natural_scroll = false
     }
 }
@@ -247,9 +248,10 @@ bind = $mainMod, F4, exit,
 bind = $mainMod, t, togglefloating,
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, D, togglesplit, # dwindle
+bind = , mouse:274, exec, /home/sachnr/toggle_touchpad.sh
 
 bind = ,PRINT, exec, grim -g "$(slurp -d)" - | wl-copy
-bind = $mainMod, F2, exec, hyprlock
+bind = $mainMod, F2, exec, dms ipc lock lock
 bind = $mainMod, f, fullscreen,0
 bind = $mainMod SHIFT, r, exec, hyprctl reload
 bind = $mainMod , TAB, workspace, previous
@@ -332,10 +334,10 @@ bindl = , XF86AudioPrev, exec, playerctl previous
 # windowrule = float,class:^(kitty)$,title:^(kitty)$
 
 # Ignore maximize requests from apps. You'll probably like this.
-windowrule = suppressevent maximize, class:.*
+windowrule = suppress_event maximize, match:class .*
 
 # Fix some dragging issues with XWayland
-windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+windowrulev2=no_focus on,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 windowrulev2=float,class:^(Pavucontrol)$
 windowrulev2=float,class:^(GtkFileChooserDialog)$,title:^(Open File)$|^(Save File)$|^(Preferences)$
 windowrulev2=move 0 0,class:(flameshot),title:(flameshot)

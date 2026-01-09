@@ -108,7 +108,6 @@ return {
 			"cssls",
 			"eslint",
 			"glsl_analyzer",
-			"golangci_lint_ls",
 			"gopls",
 			"html",
 			"lua_ls",
