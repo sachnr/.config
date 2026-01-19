@@ -19,8 +19,8 @@ colors:
     white: "#ffffff"
   primary:
     background: "#282a36"
-    background2: "#44475a"
-    background3: "#6272a4"
+    background2: "#2e3042"
+    background3: "#343b53"
     accent: "#bd93f9"
     foreground: "#f8f8f2"
     selection: "#44475a"

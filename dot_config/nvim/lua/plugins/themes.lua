@@ -20,6 +20,7 @@ return {
 	"p00f/alabaster.nvim",
 	"timmyha/henna.nvim",
 	"vague2k/vague.nvim",
+    { "rose-pine/neovim", name = "rose-pine" },
     { "kepano/flexoki-neovim", name = "flexoki" },
     { "bjarneo/aether.nvim", name = "aether" }
 }
