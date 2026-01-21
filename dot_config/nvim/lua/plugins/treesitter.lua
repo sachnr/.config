@@ -43,6 +43,7 @@ return {
 					"sql",
 					"toml",
 					"tsx",
+					"typst",
 					"typescript",
 					"vimdoc",
 					"vue",
