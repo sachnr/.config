@@ -12,7 +12,7 @@ return {
 	"tomasiser/vim-code-dark",
 	"EdenEast/nightfox.nvim",
 	"sainnhe/sonokai",
-    {"catppuccin/nvim", name = "catppuccin"},
+	{ "catppuccin/nvim", name = "catppuccin" },
 	"navarasu/onedark.nvim",
 	{ "ribru17/bamboo.nvim", opts = { transparent = false } },
 	"datsfilipe/vesper.nvim",
@@ -20,7 +20,8 @@ return {
 	"p00f/alabaster.nvim",
 	"timmyha/henna.nvim",
 	"vague2k/vague.nvim",
-    { "rose-pine/neovim", name = "rose-pine" },
-    { "kepano/flexoki-neovim", name = "flexoki" },
-    { "bjarneo/aether.nvim", name = "aether" }
+	{ "rose-pine/neovim", name = "rose-pine" },
+	{ "kepano/flexoki-neovim", name = "flexoki" },
+	{ "bjarneo/aether.nvim", name = "aether" },
+	"maxmx03/solarized.nvim",
 }

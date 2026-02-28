@@ -32,7 +32,6 @@ alias f "yazi"
 alias top "btm -b"
 alias gotest "gotestsum -f testname"
 alias ca "chezmoi apply && chmod +x ~/.local/bin/*"
-alias python "python3.12"
 alias tm "tmux-fzy"
 
 direnv hook fish | source

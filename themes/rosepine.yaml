@@ -33,12 +33,12 @@ browser:
 
 font:
   size: 14
-  family: "Liberation Sans"
-  monospace: "Iosevka"
+  family: "liberation sans"
+  monospace: "iosevka"
 
 settings:
   dpi: 108
   gtk: "oomox-rosepine"
-  qt_style: "Adwaita-Dark"
+  qt_style: "adwaita-dark"
   icon: "oomox-rosepine"
   nvim: "rose-pine"

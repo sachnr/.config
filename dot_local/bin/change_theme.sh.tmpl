@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-VALID_THEMES=("cyberdream" "bamboo" "dracula" "catppuccin" "melliflous" "kanagawa" "rosepine")
+set -euo pipefail
+
+VALID_THEMES=("cyberdream" "bamboo" "dracula" "catppuccin" "melliflous" "kanagawa" "rosepine" "solarized")
 THEME_TARGET_DIR="$HOME/.themes"
 ICONS_TARGET_DIR="$HOME/.icons"
 CHEZMOI_DIR="$HOME/.local/share/chezmoi"
@@ -36,6 +38,10 @@ link_theme_yaml() {
     ln -nsf "$(realpath "$src")" "$dest"
 }
 
+update_greeter_theme() {
+    dms greeter sync
+}
+
 build_oomox_themes() {
     local theme_name="$1"
     
@@ -67,10 +73,13 @@ apply_gnome_themes() {
 change_wallpapers() {
     local theme=$1
     local wallpaper_dir="$WALLPAPER_DIR/$theme"
+
     if [[ -d "$wallpaper_dir" ]]; then
-        local wallpaper=$(find "$wallpaper_dir" -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' \) | shuf -n 1)
+        local wallpaper
+        wallpaper="$(find "$wallpaper_dir" -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' -o -iname '*.webp' \) | shuf -n 1)"
+
         if [[ -n "$wallpaper" ]]; then
-            swww img "$wallpaper" --transition-type wipe --transition-duration 1 2>/dev/null
+            dms ipc call wallpaper set "$wallpaper" >/dev/null 2>&1
         fi
     fi
 }
@@ -95,11 +104,13 @@ restart_components() {
     else
         chromium --no-startup-window --set-theme-color="$DEFAULT_THEME_COLOR" >/dev/null 2>&1 &
     fi
+
     hyprctl reload 2>/dev/null &
     fc-cache -fv >/dev/null 2>&1 &
-    kill -USR1 $(pgrep ghostty)
-    kill -USR1 $(pgrep kitty)
-    kill -USR1 $(pgrep nvim)
+
+    pkill -USR1 ghostty 2>/dev/null || true
+    pkill -USR1 kitty   2>/dev/null || true
+    pkill -USR1 nvim    2>/dev/null || true
 
     wait
 }
@@ -118,6 +129,5 @@ if chezmoi apply --force >/dev/null 2>&1; then
     build_oomox_themes "$selected_theme"
     apply_gnome_themes "$selected_theme"
     change_wallpapers "$selected_theme"
-    update_chromium_theme
     restart_components
 fi

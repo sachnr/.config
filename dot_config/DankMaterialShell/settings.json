@@ -217,7 +217,7 @@
   "updaterCustomCommand": "",
   "updaterTerminalAdditionalParams": "",
   "screenPreferences": {
-    "wallpaper": [],
+    "wallpaper": ["all"],
     "notepad": []
   },
   "showOnLastDisplay": {},
