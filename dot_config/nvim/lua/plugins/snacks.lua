@@ -8,7 +8,15 @@ return {
 		{ "<leader>tf", "<Cmd>lua Snacks.picker.files()<CR>", opts },
 		{ "<leader>to", "<Cmd>lua Snacks.picker.recent()<CR>", opts },
 		{ "<leader>t/", "<Cmd>lua Snacks.picker.lines()<CR>", opts },
-		{ "<leader>tg", "<Cmd>lua Snacks.picker.grep()<CR>", opts },
+		{
+			"<leader>tg",
+			function()
+				local snacks = require("snacks")
+				local root = snacks.git.get_root(0) or (vim.uv or vim.loop).cwd()
+				snacks.picker.grep({ cwd = root })
+			end,
+			opts,
+		},
 		{ "<leader>tq", "<Cmd>lua Snacks.picker.qflist()<CR>", opts },
 		{ "<leader>th", "<Cmd>lua Snacks.picker.lsp_symbols()<CR>", opts },
 		{ "<leader>tb", "<Cmd>lua Snacks.picker.buffers()<CR>", opts },

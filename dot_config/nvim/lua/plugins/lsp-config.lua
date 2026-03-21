@@ -101,10 +101,29 @@ return {
 			},
 		})
 
+		local function resolve_odin_lsp()
+			if vim.fn.executable("odinls") == 1 then
+				return { "odinls" }
+			elseif vim.fn.executable("ols") == 1 then
+				return { "ols" }
+			else
+				return nil
+			end
+		end
+
+		local cmd = resolve_odin_lsp()
+
+		if cmd then
+			vim.lsp.config("ols", {
+				cmd = cmd,
+				filetypes = { "odin" },
+			})
+		end
+
 		vim.lsp.enable({
 			"bashls",
 			-- "clangd",
-            "ccls",
+			"ccls",
 			"cssls",
 			"eslint",
 			"glsl_analyzer",
@@ -112,8 +131,8 @@ return {
 			"html",
 			"lua_ls",
 			"nil_ls",
-			"ols",
 			"pyright",
+			"ols",
 			"rust_analyzer",
 			"sqlls",
 			"tailwindcss",
