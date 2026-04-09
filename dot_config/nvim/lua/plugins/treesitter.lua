@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+        enabled = false,
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
@@ -28,7 +29,6 @@ return {
 					"jsdoc",
 					"json",
 					"jsonc",
-					"latex",
 					"liquid",
 					"lua",
 					"make",
@@ -50,8 +50,8 @@ return {
 					"yaml",
 					"zig",
 				},
-				sync_install = true,
-				auto_install = true,
+				sync_install = false,
+				auto_install = false,
 				highlight = {
 					enable = true,
 					ignore = { "*.min.js" },

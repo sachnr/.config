@@ -129,5 +129,6 @@ if chezmoi apply --force >/dev/null 2>&1; then
     build_oomox_themes "$selected_theme"
     apply_gnome_themes "$selected_theme"
     change_wallpapers "$selected_theme"
+    update_chromium_theme
     restart_components
 fi

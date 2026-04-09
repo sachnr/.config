@@ -15,7 +15,7 @@
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
-# monitor = eDP-1,1920x1200@60,0x0,1
+monitor = eDP-1,1920x1200@60,0x0,1
 monitor = DP-3, 2560x1440@180, 0x0, 1
 # monitor = HDMI-A-1, 1920x1080@60, 1920x0, 1
 
@@ -252,6 +252,7 @@ bind = $mainMod, D, togglesplit, # dwindle
 bind = , mouse:274, exec, /home/sachnr/toggle_touchpad.sh
 
 bind = ,PRINT, exec, grim -g "$(slurp -d)" - | wl-copy
+bind = SHIFT, PRINT, exec, grim - | satty --filename - --copy-command wl-copy
 bind = $mainMod, F2, exec, dms ipc lock lock
 bind = $mainMod, f, fullscreen,0
 bind = $mainMod SHIFT, r, exec, hyprctl reload
