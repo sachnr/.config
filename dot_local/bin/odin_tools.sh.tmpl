@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REPO="DanielGavin/ols"
+ASSET_NAME="ols-x86_64-unknown-linux-gnu.zip"
+INSTALL_DIR="${HOME}/.local/bin"
+
+if [ -t 1 ]; then
+  C_RESET='\033[0m'
+  C_TITLE='\033[1;38;5;39m'
+  C_OK='\033[1;38;5;42m'
+  C_WARN='\033[1;38;5;214m'
+  C_INFO='\033[38;5;111m'
+  C_DIM='\033[2m'
+else
+  C_RESET=''
+  C_TITLE=''
+  C_OK=''
+  C_WARN=''
+  C_INFO=''
+  C_DIM=''
+fi
+
+say() { printf '%b%s%b\n' "$C_INFO" "$1" "$C_RESET"; }
+ok() { printf '%b%s%b\n' "$C_OK" "$1" "$C_RESET"; }
+warn() { printf '%b%s%b\n' "$C_WARN" "$1" "$C_RESET"; }
+title() { printf '%b%s%b\n' "$C_TITLE" "$1" "$C_RESET"; }
+
+run_step() {
+  local label="$1"
+  shift
+  printf '%b%s%b ' "$C_INFO" "$label" "$C_RESET"
+
+  local log_file="$tmp_dir/step.log"
+  if "$@" >"$log_file" 2>&1; then
+    printf '%b%s%b\n' "$C_OK" "done" "$C_RESET"
+  else
+    printf '%b%s%b\n' "$C_WARN" "failed" "$C_RESET"
+    if [ -s "$log_file" ]; then
+      printf '%b%s%b\n' "$C_DIM" "--- error details ---" "$C_RESET"
+      cat "$log_file"
+      printf '%b%s%b\n' "$C_DIM" "---------------------" "$C_RESET"
+    fi
+    return 1
+  fi
+}
+
+mkdir -p "$INSTALL_DIR"
+
+tmp_dir="$(mktemp -d /tmp/odin-tools.XXXXXX)"
+cleanup() {
+  rm -rf "$tmp_dir"
+}
+trap cleanup EXIT
+
+title "Odin Tools Updater"
+printf '%bworkspace%b %s\n' "$C_DIM" "$C_RESET" "$tmp_dir"
+
+try_version() {
+  local cmd="$1"
+  local out
+  local runner=("$cmd")
+
+  if command -v timeout >/dev/null 2>&1; then
+    runner=(timeout 3s "$cmd")
+  fi
+
+  for flag in --version -version version -v; do
+    if out="$("${runner[@]}" "$flag" </dev/null 2>/dev/null | head -n 1)" && [ -n "$out" ]; then
+      printf '%s\n' "$out"
+      return 0
+    fi
+  done
+  return 1
+}
+
+print_installed_info() {
+  local tool="$1"
+  if command -v "$tool" >/dev/null 2>&1; then
+    local tool_path
+    tool_path="$(command -v "$tool")"
+    printf '%s found at: %s\n' "$tool" "$tool_path"
+    if ver="$(try_version "$tool")"; then
+      printf '%s version: %s\n' "$tool" "$ver"
+    else
+      printf '%s version: unavailable (no version flag exposed)\n' "$tool"
+    fi
+  else
+    printf '%s not found on PATH\n' "$tool"
+  fi
+}
+
+say "Checking installed Odin tools"
+print_installed_info ols
+print_installed_info odinfmt
+
+run_step "Fetching latest release metadata" \
+  curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" -o "$tmp_dir/release.json"
+release_json="$(cat "$tmp_dir/release.json")"
+
+tag_name="$(printf '%s' "$release_json" | sed -n 's/.*"tag_name"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | head -n 1)"
+if [ -z "$tag_name" ]; then
+  warn "Failed to determine latest release tag"
+  exit 1
+fi
+
+asset_url="$(printf '%s' "$release_json" | sed -n 's/.*"browser_download_url"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' | grep "/$ASSET_NAME$" | head -n 1)"
+if [ -z "$asset_url" ]; then
+  warn "Failed to find asset $ASSET_NAME in release $tag_name"
+  exit 1
+fi
+
+ok "Latest release tag: $tag_name"
+zip_path="$tmp_dir/$ASSET_NAME"
+run_step "Downloading $ASSET_NAME" curl -fL "$asset_url" -o "$zip_path"
+
+run_step "Extracting archive" unzip -q "$zip_path" -d "$tmp_dir/extracted"
+
+ols_src="$(find "$tmp_dir/extracted" -type f \( -name 'ols' -o -name 'ols-*' \) | head -n 1 || true)"
+odinfmt_src="$(find "$tmp_dir/extracted" -type f \( -name 'odinfmt' -o -name 'odinfmt-*' \) | head -n 1 || true)"
+
+if [ -z "$ols_src" ] || [ -z "$odinfmt_src" ]; then
+  warn "Could not locate both 'ols' and 'odinfmt' binaries in extracted files"
+  exit 1
+fi
+
+run_step "Installing ols" install -m 0755 "$ols_src" "$INSTALL_DIR/ols"
+run_step "Installing odinfmt" install -m 0755 "$odinfmt_src" "$INSTALL_DIR/odinfmt"
+
+ok "Installed: $INSTALL_DIR/ols"
+ok "Installed: $INSTALL_DIR/odinfmt"
+
+say "Re-checking installed versions"
+print_installed_info ols
+print_installed_info odinfmt
+
+ok "Cleanup complete"
