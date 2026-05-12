@@ -1,0 +1,11 @@
+local settings = {}
+
+settings.colors = {
+    accent = "{{ .colors.primary.accent }}",
+    black = "{{ .colors.normal.black }}",
+}
+
+settings.icon = "{{ .settings.icon }}"
+settings.gtk = "{{ .settings.gtk }}"
+
+return settings

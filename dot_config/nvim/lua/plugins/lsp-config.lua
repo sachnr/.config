@@ -137,7 +137,6 @@ return {
 			"sqlls",
 			"tailwindcss",
 			"templ",
-			"ts_ls",
 			"vue_ls",
 			"zls",
 		})
