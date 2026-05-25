@@ -1,13 +1,15 @@
 # options
 adjust-cell-height = 0%
-background-opacity = 1
+background-opacity = 0.86
+background-opacity-cells = true
+alpha-blending = native
 bold-is-bright = true
 clipboard-paste-protection = false
 clipboard-read = "allow"
 cursor-invert-fg-bg = true
 cursor-style = "block"
 cursor-style-blink = false
-freetype-load-flags = hinting,no-force-autohint,no-monochrome
+freetype-load-flags = no-hinting,no-force-autohint,no-monochrome
 gtk-titlebar = false
 gtk-wide-tabs = false
 mouse-hide-while-typing = true
@@ -20,13 +22,14 @@ window-theme = "system"
 working-directory = "home"
 
 # fonts
-font-size = {{ .font.size }}
+font-size = {{ subf .font.size 0.5 }}
 font-family = "{{ .font.monospace }}"
+font-thicken = true
 
 # shaders
-# custom-shader = ./bloom.glsl
-# custom-shader = ./cursor-blaze.glsl
-# custom-shader = ./cursor-smear.glsl
+custom-shader = ./bloom.glsl
+custom-shader = ./cursor-blaze.glsl
+custom-shader = ./cursor-smear.glsl
 
 # theme
 background = "{{ .colors.primary.background | trimPrefix "#" }}"

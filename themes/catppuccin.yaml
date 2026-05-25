@@ -24,6 +24,7 @@ colors:
     background2: "#313244" # Surface0
     background3: "#45475a" # Surface1
     accent: "#cba6f7" # Mauve
+    shader_trail_color: "0.796, 0.651, 0.969, 1.0"
     foreground: "#cdd6f4" # Text
     selection: "#313244" # Surface0
     selection_text: "#cdd6f4" # Text

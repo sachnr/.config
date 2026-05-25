@@ -35,7 +35,8 @@ float lum(vec4 c) {
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   vec2 uv = fragCoord.xy / iResolution.xy;
 
-  vec4 color = texture(iChannel0, uv);
+  vec4 base = texture(iChannel0, uv);
+  vec3 color = base.rgb;
 
   vec2 step = vec2(1.414) / iResolution.xy;
 
@@ -44,9 +45,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec4 c = texture(iChannel0, uv + s.xy * step);
     float l = lum(c);
     if (l > 0.2) {
-      color += l * s.z * c * 0.025;
+      color += l * s.z * c.rgb * 0.025;
     }
   }
 
-  fragColor = color;
+  fragColor = vec4(clamp(color, 0.0, 1.0), base.a);
 }

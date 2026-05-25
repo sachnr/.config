@@ -108,9 +108,10 @@ restart_components() {
     hyprctl reload 2>/dev/null &
     fc-cache -fv >/dev/null 2>&1 &
 
-    pkill -USR1 ghostty 2>/dev/null || true
-    pkill -USR1 kitty   2>/dev/null || true
-    pkill -USR1 nvim    2>/dev/null || true
+    pkill -USR1 ghostty  2>/dev/null || true
+    pkill -USR1 kitty    2>/dev/null || true
+    pkill -USR1 nvim     2>/dev/null || true
+    pkill -USR2 opencode 2>/dev/null || true
 
     wait
 }

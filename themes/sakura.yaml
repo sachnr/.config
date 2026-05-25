@@ -22,6 +22,7 @@ colors:
     background2: "#1a0f15"
     background3: "#2a1f25"
     accent: "#D9A56C"
+    shader_trail_color: "0.851, 0.647, 0.424, 1.0"
     foreground: "#f0eaed"
     selection: "#4a3c45"
     selection_text: "#f0eaed"

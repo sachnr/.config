@@ -31,6 +31,7 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 4
 vim.opt.shiftwidth = 4
 vim.opt.sidescrolloff = 8
+vim.opt.smoothscroll = true
 vim.opt.signcolumn = "yes:1"
 vim.opt.smartcase = true
 vim.opt.breakindent = true
@@ -51,7 +52,8 @@ vim.opt.timeoutlen = 300
 vim.opt.updatetime = 300
 vim.o.cmdheight = 0
 vim.o.ruler = false
-vim.opt.guicursor = "n-v-c-i:block"
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver5,r-cr:hor20" -- custom
+-- vim.opt.guicursor = "n-v-c-i:block" -- just block just the 
 
 -- keybinds
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, noremap = true })
@@ -197,10 +199,9 @@ end
 require("colorscheme")
 
 vim.api.nvim_create_autocmd("Signal", {
-    pattern = "SIGUSR1",
-    callback = function()
-        package.loaded['colorscheme'] = nil
-        require('colorscheme')
-    end,
+	pattern = "SIGUSR1",
+	callback = function()
+		package.loaded["colorscheme"] = nil
+		require("colorscheme")
+	end,
 })
-

@@ -22,7 +22,7 @@ hl.monitor({
 	scale = "auto",
 })
 
-local terminal = "kitty"
+local terminal = "ghostty"
 local filemanager = "nautilus"
 local menu = "rofi -show drun"
 
@@ -53,7 +53,7 @@ hl.env("NVD_BACKEND", "direct")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("MOZ_ENABLE_WAYLAND", 1)
 hl.env("DMS_DISABLE_MATUGEN", 1)
-hl.env("GTK_THEME", "{{ .settings.gtk }}")
+hl.env("GTK_THEME", settings.gtk)
 hl.env("WLR_NO_HARDWARE_CURSORS", 1)
 hl.env("GDK_BACKEND", "wayland, x11")
 
