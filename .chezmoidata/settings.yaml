@@ -1,1 +1,10 @@
-/home/sachnr/.local/share/chezmoi/themes/cyberdream.yaml
+font:
+  size: 14
+  family: "Roboto"
+  monospace: "Iosevka"
+settings:
+  dpi: 108
+  gtk: "oomox-dracula"
+  qt_style: "Adwaita-Dark"
+  icon: "oomox-dracula"
+  nvim: "dracula"

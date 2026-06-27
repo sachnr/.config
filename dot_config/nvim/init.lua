@@ -197,13 +197,3 @@ if vim.g.neovide then
 
 	vim.g.neovide_transparency = 0.96
 end
-
-require("colorscheme")
-
-vim.api.nvim_create_autocmd("Signal", {
-	pattern = "SIGUSR1",
-	callback = function()
-		package.loaded["colorscheme"] = nil
-		require("colorscheme")
-	end,
-})

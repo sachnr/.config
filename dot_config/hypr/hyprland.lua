@@ -1,8 +1,5 @@
 -- https://wiki.hypr.land/Configuring/Start/
 
-local settings = require("hyprsettings")
-local colors = settings.colors
-
 ------------------
 ---- MONITORS ----
 ------------------
@@ -22,9 +19,8 @@ hl.monitor({
 	scale = "auto",
 })
 
-local terminal = "ghostty"
-local filemanager = "nautilus"
-local menu = "rofi -show drun"
+local terminal = "kitty"
+local ipc = "noctalia msg"
 
 -------------------
 ---- AUTOSTART ----
@@ -32,16 +28,15 @@ local menu = "rofi -show drun"
 
 hl.on("hyprland.start", function()
 	hl.exec_cmd("nm-applet")
-	hl.exec_cmd("dms run")
+	hl.exec_cmd("noctalia")
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("wl-paste --watch cliphist store")
 end)
 
-hl.exec_cmd("gsettings set org.gnome.desktop.interface icon-theme " .. settings.icon)
-hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme " .. settings.gtk)
 hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
 hl.exec_cmd("gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'rgba'")
 hl.exec_cmd("gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'slight'")
+hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'")
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -52,11 +47,10 @@ hl.env("HYPRCURSOR_SIZE", 24)
 hl.env("NVD_BACKEND", "direct")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("MOZ_ENABLE_WAYLAND", 1)
-hl.env("DMS_DISABLE_MATUGEN", 1)
-hl.env("GTK_THEME", settings.gtk)
 hl.env("WLR_NO_HARDWARE_CURSORS", 1)
 hl.env("GDK_BACKEND", "wayland, x11")
 hl.env("GDK_SCALE", "2")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -88,10 +82,6 @@ hl.config({
 		gaps_in = 5,
 		gaps_out = 10,
 		border_size = 2,
-		col = {
-			active_border = colors.accent,
-			inactive_border = colors.black,
-		},
 		resize_on_border = false,
 		allow_tearing = true,
 		layout = "dwindle",
@@ -105,7 +95,6 @@ hl.config({
 			enabled = false,
 			range = 2,
 			render_power = 3,
-			color = colors.black,
 		},
 		blur = {
 			enabled = true,
@@ -237,7 +226,7 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind("ALT + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind("ALT + SPACE", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
 hl.bind(mainMod .. " + F4", hl.dsp.exit())
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
@@ -245,7 +234,7 @@ hl.bind(mainMod .. " + D", hl.dsp.layout("togglesplit"))
 -- hl.bind("mouse:274", hl.dsp.exec_cmd("/home/sachnr/toggle_touchpad.sh"))
 hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("grim - | satty --filename - --copy-command wl-copy"))
-hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("dms ipc lock lock"))
+hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd(ipc .. " session lock"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen(0))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" }))
@@ -425,4 +414,15 @@ hl.window_rule({
 	name = "Blender Operator Presets float",
 	match = { class = "^(blender)$", title = "^(Operator Presets)$" },
 	float = true,
+})
+
+hl.layer_rule({
+	name = "noctalia",
+	match = {
+		namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$",
+	},
+	no_anim = true,
+	ignore_alpha = 0.5,
+	blur = true,
+	blur_popups = true,
 })

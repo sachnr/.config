@@ -1,0 +1,51 @@
+[bar.default]
+capsule = true
+capsule_padding = 10.0
+capsule_radius = 6
+font_family = "Iosevka"
+margin_edge = 0
+margin_ends = 0
+radius = 0
+
+[dock]
+position = "top"
+
+[hooks]
+colors_changed = "/home/sachnr/.config/noctalia/hooks/theme-changed.sh"
+
+[widget.workspaces]
+anchor = true
+capsule = true
+font_family = "Iosevka"
+font_weight = 700
+scale = 1.2
+
+[theme]
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-tonal-spot"
+
+[theme.templates]
+builtin_ids = [
+  "btop",
+  "cava",
+  "gtk3",
+  "gtk4",
+  "ghostty",
+  "hyprland",
+  "kcolorscheme",
+  "kitty",
+  "qt",
+]
+community_ids = [
+  "zen-browser",
+  "neovim",
+  "papirus-icons",
+  "steam",
+  "yazi",
+  "zathura",
+]
+
+[wallpaper]
+directory = "/home/sachnr/wallpapers/"
+fill_mode = "center"
