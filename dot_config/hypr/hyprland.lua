@@ -10,7 +10,7 @@ local colors = settings.colors
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
 	output = "",
-	mode = "preferred",
+	mode = "highres",
 	position = "auto",
 	scale = "auto",
 })
@@ -56,6 +56,7 @@ hl.env("DMS_DISABLE_MATUGEN", 1)
 hl.env("GTK_THEME", settings.gtk)
 hl.env("WLR_NO_HARDWARE_CURSORS", 1)
 hl.env("GDK_BACKEND", "wayland, x11")
+hl.env("GDK_SCALE", "2")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -80,6 +81,9 @@ hl.env("GDK_BACKEND", "wayland, x11")
 -----------------------
 
 hl.config({
+	cursor = {
+		no_warps = true,
+	},
 	general = {
 		gaps_in = 5,
 		gaps_out = 10,
@@ -119,6 +123,9 @@ hl.config({
 	},
 	animations = {
 		enabled = true,
+	},
+	xwayland = {
+		force_zero_scaling = true,
 	},
 })
 
@@ -235,7 +242,7 @@ hl.bind(mainMod .. " + F4", hl.dsp.exit())
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + D", hl.dsp.layout("togglesplit"))
-hl.bind("mouse:274", hl.dsp.exec_cmd("/home/sachnr/toggle_touchpad.sh"))
+-- hl.bind("mouse:274", hl.dsp.exec_cmd("/home/sachnr/toggle_touchpad.sh"))
 hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("grim - | satty --filename - --copy-command wl-copy"))
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("dms ipc lock lock"))
@@ -275,15 +282,14 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-
 hl.bind("SUPER + R", hl.dsp.submap("resize"))
 hl.define_submap("resize", function()
-    hl.bind("H", hl.dsp.window.resize({ x = -20, y =   0, relative = true }), { repeating = true })
-    hl.bind("L", hl.dsp.window.resize({ x =  20, y =   0, relative = true }), { repeating = true })
-    hl.bind("K", hl.dsp.window.resize({ x =   0, y =  20, relative = true }), { repeating = true })
-    hl.bind("J", hl.dsp.window.resize({ x =   0, y = -20, relative = true }), { repeating = true })
-    hl.bind("escape",   hl.dsp.submap("reset"))
-    hl.bind("SUPER + R", hl.dsp.submap("reset"))
+	hl.bind("H", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+	hl.bind("L", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+	hl.bind("K", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
+	hl.bind("J", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+	hl.bind("escape", hl.dsp.submap("reset"))
+	hl.bind("SUPER + R", hl.dsp.submap("reset"))
 end)
 
 -- Laptop multimedia keys for volume and LCD brightness
@@ -372,4 +378,51 @@ hl.window_rule({
 	float = true,
 	size = "2560 1440",
 	center = true,
+})
+
+-- Force Blender Preferences and Save/Load dialogs to float and center
+
+hl.window_rule({
+	name = "Blender Preferences float+center",
+	match = { class = "^(blender)$", title = "^(Blender Preferences)$" },
+	float = true,
+	center = true,
+})
+
+hl.window_rule({
+	name = "Blender Open File float+center",
+	match = { class = "^(blender)$", title = "^(Open File.*)$" },
+	float = true,
+	center = true,
+})
+
+hl.window_rule({
+	name = "Blender Save As float+center",
+	match = { class = "^(blender)$", title = "^(Save As.*)$" },
+	float = true,
+	center = true,
+})
+
+hl.window_rule({
+	name = "Blender Export float",
+	match = { class = "^(blender)$", title = "^(Export.*)$" },
+	float = true,
+})
+
+hl.window_rule({
+	name = "Blender Import float",
+	match = { class = "^(blender)$", title = "^(Import.*)$" },
+	float = true,
+})
+
+hl.window_rule({
+	name = "Blender Make Dummy float",
+	match = { class = "^(blender)$", title = "^(Make Dummy.*)$" },
+	float = true,
+})
+
+hl.window_rule({
+	name = "Blender Operator Presets float",
+	match = { class = "^(blender)$", title = "^(Operator Presets)$" },
+	float = true,
 })

@@ -17,6 +17,7 @@ vim.g.mapleader = " "
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
+vim.opt.confirm = true
 
 vim.opt.equalalways = false
 vim.opt.autoread = true
@@ -52,8 +53,9 @@ vim.opt.timeoutlen = 300
 vim.opt.updatetime = 300
 vim.o.cmdheight = 0
 vim.o.ruler = false
+vim.opt.colorcolumn = "90"
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver5,r-cr:hor20" -- custom
--- vim.opt.guicursor = "n-v-c-i:block" -- just block just the 
+-- vim.opt.guicursor = "n-v-c-i:block" -- just block just the
 
 -- keybinds
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { silent = true, noremap = true })
@@ -170,11 +172,11 @@ if vim.g.neovide then
 
 	vim.g.neovide_position_animation_length = 0.04
 	vim.g.neovide_cursor_animation_length = 0.05
-	vim.g.neovide_cursor_short_animation_length = 0.02
+	vim.g.neovide_cursor_short_animation_length = 0.13
 	vim.g.neovide_scroll_animation_length = 0.08
 	vim.g.neovide_scroll_animation_far_lines = 2
 
-	vim.g.neovide_cursor_trail_size = 0
+	vim.g.neovide_cursor_trail_size = 0.8
 
 	vim.g.neovide_cursor_animate_in_insert_mode = true
 	vim.g.neovide_cursor_animate_command_line = true

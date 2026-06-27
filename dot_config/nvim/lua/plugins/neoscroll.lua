@@ -1,6 +1,7 @@
 return {
 	{
 		"karb94/neoscroll.nvim",
+		enabled = false,
 		config = function()
 			local neoscroll = require("neoscroll")
 
@@ -11,7 +12,7 @@ return {
 				cursor_scrolls_alone = true,
 				duration_multiplier = 0.30,
 				easing = "cubic",
-				performance_mode = true,
+				performance_mode = false,
 				ignored_events = {
 					"WinScrolled",
 					"CursorMoved",
