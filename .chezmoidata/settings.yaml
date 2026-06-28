@@ -1,10 +1,6 @@
 font:
   size: 14
-  family: "Roboto"
+  family: "Liberation Sans"
   monospace: "Iosevka"
 settings:
   dpi: 108
-  gtk: "oomox-dracula"
-  qt_style: "Adwaita-Dark"
-  icon: "oomox-dracula"
-  nvim: "dracula"

@@ -1,0 +1,105 @@
+[bar.default]
+background_opacity = 0.80
+border_width = 1.0
+capsule = true
+capsule_fill = "on_secondary"
+capsule_padding = 8.0
+capsule_radius = 8
+capsule_thickness = 1.0
+end = [
+  "media",
+  "tray",
+  "clipboard",
+  "ram",
+  "network",
+  "bluetooth",
+  "volume",
+  "brightness",
+  "battery",
+  "control-center",
+  "session",
+  "notifications",
+]
+font_family = "{{ .font.family }}"
+icon_color = "primary"
+margin_edge = 0
+margin_ends = 0
+radius = 6
+
+[dock]
+auto_hide = true
+enabled = true
+position = "bottom"
+reserve_space = false
+
+[location]
+auto_locate = true
+
+[plugins]
+enabled = ["noctalia/wallhaven"]
+
+[shell]
+font_family = "Liberation Sans"
+lang = "en"
+settings_show_advanced = true
+
+[shell.animation]
+speed = 0.6
+
+[shell.panel]
+floating_offset = 0
+open_near_click_control_center = true
+open_near_click_launcher = true
+transparency_mode = "soft"
+wallpaper_placement = "floating"
+
+[theme]
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+[theme.templates]
+builtin_ids = [
+  "btop",
+  "cava",
+  "gtk3",
+  "gtk4",
+  "ghostty",
+  "hyprland",
+  "kcolorscheme",
+  "kitty",
+  "qt",
+]
+community_ids = [
+  "zen-browser",
+  "neovim",
+  "papirus-icons",
+  "steam",
+  "yazi",
+  "zathura",
+]
+
+[wallpaper]
+directory = "/home/sachnr/wallpapers/"
+fill_mode = "center"
+
+[widget.clock]
+anchor = true
+format = "{:%a %d %b %I:%M %p}"
+
+[widget.media]
+hide_when_no_media = true
+title_scroll = "always"
+
+[widget.network]
+show_label = false
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.wallhaven]
+type = "noctalia/wallhaven:wallhaven"
+
+[widget.workspaces]
+font_weight = 700
+scale = 1.2

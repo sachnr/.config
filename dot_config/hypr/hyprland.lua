@@ -198,7 +198,6 @@ hl.config({
 		kb_model = "",
 		kb_options = "",
 		kb_rules = "",
-		follow_mouse = 1,
 		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 		touchpad = {
 			natural_scroll = false,
@@ -210,11 +209,6 @@ hl.gesture({
 	fingers = 3,
 	direction = "horizontal",
 	action = "workspace",
-})
-
-hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
 })
 
 ---------------------
@@ -231,7 +225,6 @@ hl.bind(mainMod .. " + F4", hl.dsp.exit())
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + D", hl.dsp.layout("togglesplit"))
--- hl.bind("mouse:274", hl.dsp.exec_cmd("/home/sachnr/toggle_touchpad.sh"))
 hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("grim - | satty --filename - --copy-command wl-copy"))
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd(ipc .. " session lock"))
@@ -426,3 +419,6 @@ hl.layer_rule({
 	blur = true,
 	blur_popups = true,
 })
+
+local noctalia = require("noctalia")
+noctalia.apply_theme()
