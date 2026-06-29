@@ -9,7 +9,7 @@ hl.monitor({
 	output = "",
 	mode = "highres",
 	position = "auto",
-	scale = "auto",
+	scale = "1.0",
 })
 
 hl.monitor({
@@ -199,7 +199,9 @@ hl.config({
 		kb_options = "",
 		kb_rules = "",
 		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+		follow_mouse = false,
 		touchpad = {
+			disable_while_typing = true,
 			natural_scroll = false,
 		},
 	},
@@ -221,6 +223,7 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
+hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd(ipc .. " wallpaper-random"))
 hl.bind(mainMod .. " + F4", hl.dsp.exit())
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())

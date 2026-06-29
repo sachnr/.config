@@ -39,7 +39,7 @@ auto_locate = true
 enabled = ["noctalia/wallhaven"]
 
 [shell]
-font_family = "Liberation Sans"
+font_family = "{{ .font.family }}"
 lang = "en"
 settings_show_advanced = true
 
@@ -78,6 +78,11 @@ community_ids = [
   "yazi",
   "zathura",
 ]
+
+[theme.templates.user.chromium]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/chromium.desktop"
+output_path = "$XDG_DATA_HOME/applications/chromium.desktop"
+post_hook = "update-desktop-database $XDG_DATA_HOME/applications/ && chromium --no-startup-window --set-theme-color={{ "{{" }} colors.surface.default.rgb_csv {{ "}}" }} >/dev/null 2>&1 &"
 
 [wallpaper]
 directory = "/home/sachnr/wallpapers/"
