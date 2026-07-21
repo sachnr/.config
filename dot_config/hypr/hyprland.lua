@@ -13,10 +13,17 @@ hl.monitor({
 })
 
 hl.monitor({
+	output = "HDMI-A-1",
+	mode = "1920x1080@60",
+	position = "0x1440",
+	scale = "1.5",
+})
+
+hl.monitor({
 	output = "DP-3",
 	mode = "2560x1440@180",
 	position = "0x0",
-	scale = "auto",
+	scale = "1.0",
 })
 
 local terminal = "kitty"
@@ -48,8 +55,8 @@ hl.env("NVD_BACKEND", "direct")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("MOZ_ENABLE_WAYLAND", 1)
 hl.env("WLR_NO_HARDWARE_CURSORS", 1)
-hl.env("GDK_BACKEND", "wayland, x11")
-hl.env("GDK_SCALE", "2")
+hl.env("GDK_BACKEND", "wayland")
+hl.env("QT_QPA_PLATFORM", "wayland")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 -----------------------
@@ -141,6 +148,9 @@ hl.animation({ leaf = "workspaces", enabled = false, speed = 0, bezier = "ease" 
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+
+-- Pin workspace 9 permanently to the HDMI monitor
+hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1", persistent = true })
 -- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
 -- hl.window_rule({
 --     name  = "no-gaps-wtv1",
@@ -204,6 +214,9 @@ hl.config({
 			disable_while_typing = true,
 			natural_scroll = false,
 		},
+		tablet = {
+			output = "HDMI-A-1",
+		},
 	},
 })
 
@@ -234,7 +247,16 @@ hl.bind(mainMod, "PRINT", hl.dsp.exec_cmd("grim - | satty --filename - --copy-co
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd(ipc .. " session lock"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen(0))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("hyprctl monitor HDMI-A-1 enable"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("hyprctl monitor HDMI-A-1 disable"))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" }))
+hl.bind(mainMod .. " + P", function()
+	hl.dispatch(hl.dsp.dpms({ action = "disable", monitor = "HDMI-A-1" }))
+end)
+
+hl.bind(mainMod .. " + O", function()
+	hl.dispatch(hl.dsp.dpms({ action = "enable", monitor = "HDMI-A-1" }))
+end)
 
 -- Move focus with mainMod + hjkl
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
@@ -373,6 +395,7 @@ hl.window_rule({
 	match = { class = "^(blender)$", title = "^(Blender Preferences)$" },
 	float = true,
 	center = true,
+	size = "1400 900",
 })
 
 hl.window_rule({
@@ -380,6 +403,7 @@ hl.window_rule({
 	match = { class = "^(blender)$", title = "^(Open File.*)$" },
 	float = true,
 	center = true,
+	size = "1400 900",
 })
 
 hl.window_rule({
@@ -387,30 +411,39 @@ hl.window_rule({
 	match = { class = "^(blender)$", title = "^(Save As.*)$" },
 	float = true,
 	center = true,
+	size = "1400 900",
 })
 
 hl.window_rule({
 	name = "Blender Export float",
 	match = { class = "^(blender)$", title = "^(Export.*)$" },
 	float = true,
+	center = true,
+	size = "1200 800",
 })
 
 hl.window_rule({
 	name = "Blender Import float",
 	match = { class = "^(blender)$", title = "^(Import.*)$" },
 	float = true,
+	center = true,
+	size = "1200 800",
 })
 
 hl.window_rule({
 	name = "Blender Make Dummy float",
 	match = { class = "^(blender)$", title = "^(Make Dummy.*)$" },
 	float = true,
+	center = true,
+	size = "800 600",
 })
 
 hl.window_rule({
 	name = "Blender Operator Presets float",
 	match = { class = "^(blender)$", title = "^(Operator Presets)$" },
 	float = true,
+	center = true,
+	size = "600 800",
 })
 
 hl.layer_rule({
@@ -423,6 +456,17 @@ hl.layer_rule({
 	blur = true,
 	blur_popups = true,
 })
+
+-- Main monitor: workspaces 1-5
+hl.workspace_rule({ workspace = "1", monitor = "DP-3", default = true })
+hl.workspace_rule({ workspace = "2", monitor = "DP-3" })
+hl.workspace_rule({ workspace = "3", monitor = "DP-3" })
+hl.workspace_rule({ workspace = "4", monitor = "DP-3" })
+hl.workspace_rule({ workspace = "5", monitor = "DP-3" })
+hl.workspace_rule({ workspace = "6", monitor = "DP-3" })
+hl.workspace_rule({ workspace = "7", monitor = "DP-3" })
+hl.workspace_rule({ workspace = "8", monitor = "DP-3" })
+hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1", default = true })
 
 local noctalia = require("noctalia")
 noctalia.apply_theme()
