@@ -1,0 +1,32 @@
+# Fully custom Textual theme for ytm-player, generated from the active
+# Noctalia (M3) wallpaper-derived palette. Both base Textual colors and
+# ytm-player's app-specific color overrides are set here, so the app
+# tracks the desktop theme on every wallpaper/theme change.
+#
+# NOTE: noctalia's colors.*.hex values already include the leading '#',
+# so no literal '#' is added here.
+[colors]
+# ── Base Textual theme palette (drives the whole app) ──
+background = "{{ colors.surface.default.hex }}"
+surface = "{{ colors.surface_container.default.hex }}"
+foreground = "{{ colors.on_surface.default.hex }}"
+primary = "{{ colors.primary.default.hex }}"
+secondary = "{{ colors.on_surface_variant.default.hex }}"
+accent = "{{ colors.primary.default.hex }}"
+success = "{{ colors.tertiary.default.hex }}"
+warning = "{{ colors.secondary.default.hex }}"
+error = "{{ colors.error.default.hex }}"
+border = "{{ colors.outline_variant.default.hex }}"
+text = "{{ colors.on_surface.default.hex }}"
+muted_text = "{{ colors.on_surface_variant.default.hex }}"
+
+# ── ytm-player app-specific overrides ──
+playback_bar_bg = "{{ colors.surface_container_low.default.hex }}"
+selected_item = "{{ colors.primary_container.default.hex }}"
+progress_filled = "{{ colors.primary.default.hex }}"
+progress_empty = "{{ colors.surface_variant.default.hex }}"
+lyrics_played = "{{ colors.on_surface_variant.default.hex }}"
+lyrics_current = "{{ colors.primary.default.hex }}"
+lyrics_upcoming = "{{ colors.on_surface.default.hex }}"
+active_tab = "{{ colors.on_surface.default.hex }}"
+inactive_tab = "{{ colors.on_surface_variant.default.hex }}"

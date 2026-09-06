@@ -84,6 +84,10 @@ input_path = "$XDG_CONFIG_HOME/noctalia/templates/chromium.desktop"
 output_path = "$XDG_DATA_HOME/applications/chromium.desktop"
 post_hook = "update-desktop-database $XDG_DATA_HOME/applications/ && chromium --no-startup-window --set-theme-color={{ "{{" }} colors.surface.default.rgb_csv {{ "}}" }} >/dev/null 2>&1 &"
 
+[theme.templates.user.ytm-player]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/ytm-player.theme.toml"
+output_path = "$XDG_CONFIG_HOME/ytm-player/theme.toml"
+
 [wallpaper]
 directory = "/home/sachnr/wallpapers/"
 fill_mode = "center"

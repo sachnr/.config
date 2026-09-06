@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cache_file="$HOME/.cache/.tmux-fzy"
+[[ -f "$cache_file" ]] || cache_file="$HOME/.cache/tmuxfzy"
+directories=()
+
+if [[ -f "$cache_file" ]]; then
+    while IFS=$'\t' read -r path min_depth max_depth; do
+        [[ -d "$path" ]] || continue
+
+        if [[ "$min_depth" == 0 && "$max_depth" == 0 ]]; then
+            directories+=("$path")
+        else
+            while IFS= read -r directory; do
+                directories+=("$directory")
+            done < <(fd -H -t d --min-depth "$min_depth" --max-depth "$max_depth" . "$path" 2>/dev/null)
+        fi
+    done < <(awk -F ':[|]:' '
+        NF >= 3 {
+            gsub(/[[:space:]]+$/, "", $1)
+            gsub(/^[[:space:]]+/, "", $1)
+            gsub(/[[:space:]]+$/, "", $3)
+            print $1 "\t" $2 "\t" $3
+        }
+    ' "$cache_file")
+else
+    directories+=("$HOME")
+fi
+
+selected="$(printf '%s\n' "${directories[@]}" | sort -u | fzf \
+    --prompt='Herdr project: ' \
+    --height=100% \
+    --layout=reverse \
+    --border)" || exit 0
+
+[[ -d "$selected" ]] || exit 0
+selected="$(realpath -- "$selected")"
+
+workspace_id="$(herdr api snapshot 2>/dev/null | jq -r --arg cwd "$selected" '
+    .result.snapshot.panes[]
+    | select(.cwd == $cwd or .foreground_cwd == $cwd)
+    | .workspace_id
+' | sed -n '1p')"
+
+if [[ -n "$workspace_id" ]]; then
+    herdr workspace focus "$workspace_id"
+    exit
+fi
+
+label="$(basename "$selected")"
+[[ "$selected" == / ]] && label=/
+herdr workspace create --cwd "$selected" --label "$label" --focus

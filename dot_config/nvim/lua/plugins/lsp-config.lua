@@ -72,6 +72,49 @@ return {
 			},
 		})
 
+		vim.lsp.config("tailwindcss", {
+			cmd = { vim.fn.expand("~/.local/share/tailwind-lsp/node_modules/.bin/tailwindcss-language-server"), "--stdio" },
+			filetypes = {
+				"html",
+				"css",
+				"scss",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"templ",
+			},
+			root_markers = {
+				"package.json",
+				"tailwind.config.js",
+				"tailwind.config.ts",
+				"tailwind.config.cjs",
+				"tailwind.config.mjs",
+				"postcss.config.js",
+				"postcss.config.mjs",
+				"postcss.config.cjs",
+				".git",
+			},
+			settings = {
+				tailwindCSS = {
+					experimental = {
+						classRegex = {
+							{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+							{ "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+						},
+					},
+					validate = true,
+					lint = {
+						cssConflict = "warning",
+						invalidApply = "error",
+						supportedValues = "warning",
+						unknownAtRules = "ignore",
+					},
+				},
+			},
+		})
+
 		vim.lsp.config("tsl_ls", {
 			settings = {
 				typescript = {
