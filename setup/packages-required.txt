@@ -1,0 +1,6 @@
+adwaita-fonts
+brightnessctl
+cliphist
+mpd
+playerctl
+python

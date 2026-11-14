@@ -22,7 +22,7 @@ end = [
   "control-center",
   "session",
 ]
-font_family = "Adwaita Sans"
+font_family = "{{ .font.ui }}"
 font_weight = 500
 icon_color = "primary"
 margin_edge = 0
@@ -52,7 +52,7 @@ auto_locate = true
 enabled = ["noctalia/wallhaven"]
 
 [shell]
-font_family = "Adwaita Sans"
+font_family = "{{ .font.ui }}"
 app_icon_color = "primary"
 lang = "en"
 settings_show_advanced = true
@@ -128,7 +128,7 @@ community_ids = [
 ]
 
 [wallpaper]
-directory = "/home/sachnr/wallpapers/"
+directory = "{{ .chezmoi.homeDir }}/wallpapers/"
 fill_mode = "center"
 
 [widget.clock]
@@ -151,7 +151,7 @@ type = "noctalia/wallhaven:wallhaven"
 
 [widget.workspaces]
 font_weight = 600
-scale = 1.05
+scale = 1.0
 
 [widget.tray]
 type = "tray"
@@ -159,6 +159,7 @@ colorize_icons = true
 icon_type = "symbolic"
 
 [widget.ram]
+capsule = true
 type = "sysmon"
 stat = "ram_pct"
 visualization = "none"

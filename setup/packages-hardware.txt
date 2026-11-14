@@ -1,0 +1,13 @@
+btrfs-progs
+cpupower
+dosfstools
+efibootmgr
+efitools
+exfatprogs
+intel-ucode
+linux
+linux-firmware
+linux-headers
+ntfs-3g
+nvidia-open
+nvidia-settings

@@ -1,4 +1,5 @@
 font:
+  ui: "Adwaita Sans"
   size: 14
   family: "Liberation Sans"
   monospace: "Iosevka"

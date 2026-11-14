@@ -18,6 +18,11 @@ dot_config/mpd/mpdstate
 themes
 make
 
+# Repository documentation and manual bootstrap tools are not home dotfiles.
+README.md
+setup
+setup/**
+
 # Tabliss is managed locally, not through chezmoi.
 .config/tabliss
 .config/tabliss/**

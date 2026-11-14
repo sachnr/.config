@@ -1,11 +1,11 @@
 # An example configuration file for MPD.
 # Read the user manual for documentation: http://www.musicpd.org/doc/user/
 
-music_directory        "/home/sachnr/Music"
-playlist_directory     "/home/sachnr/.config/mpd/playlists"
-db_file                "/home/sachnr/.config/mpd/mpd.db"
-state_file             "/home/sachnr/.config/mpd/mpdstate"
-log_file               "/home/sachnr/.config/mpd/mpd.log"
+music_directory        "{{ .chezmoi.homeDir }}/Music"
+playlist_directory     "{{ .chezmoi.homeDir }}/.config/mpd/playlists"
+db_file                "{{ .chezmoi.homeDir }}/.config/mpd/mpd.db"
+state_file             "{{ .chezmoi.homeDir }}/.config/mpd/mpdstate"
+log_file               "{{ .chezmoi.homeDir }}/.config/mpd/mpd.log"
 
 auto_update            "yes"
 

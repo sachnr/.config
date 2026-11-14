@@ -1,0 +1,6 @@
+# Curated foreign packages based on pacman -Qqem, excluding unwanted apps/debug.
+# Not guaranteed to exist in the AUR: review names and PKGBUILDs before --aur.
+blockbench-bin
+ldtk
+raddebugger-git
+yay
