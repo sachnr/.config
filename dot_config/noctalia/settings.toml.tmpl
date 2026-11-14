@@ -1,34 +1,47 @@
 [bar.default]
-background_opacity = 0.80
-border_width = 1.0
+position = "bottom"
+background_opacity = 0.92
+border_width = 0.0
 capsule = true
-capsule_fill = "on_secondary"
+capsule_fill = "surface_container_high"
+capsule_opacity = 0.85
+capsule_border_width = 0.0
 capsule_padding = 8.0
-capsule_radius = 8
-capsule_thickness = 1.0
+capsule_radius = 9
+capsule_thickness = 0.8
+start = ["launcher", "workspaces"]
+center = ["clock"]
 end = [
   "media",
   "tray",
-  "clipboard",
   "ram",
   "network",
   "bluetooth",
   "volume",
-  "brightness",
-  "battery",
+  "notifications",
   "control-center",
   "session",
-  "notifications",
 ]
-font_family = "{{ .font.family }}"
+font_family = "Adwaita Sans"
+font_weight = 500
 icon_color = "primary"
 margin_edge = 0
 margin_ends = 0
-radius = 6
+margin_opposite_edge = 0
+radius = 0
+radius_top_left = 0
+radius_top_right = 0
+radius_bottom_left = 0
+radius_bottom_right = 0
+concave_edge_corners = false
+shadow = false
+thickness = 40
+padding = 16
+widget_spacing = 6
 
 [dock]
 auto_hide = true
-enabled = true
+enabled = false
 position = "bottom"
 reserve_space = false
 
@@ -39,7 +52,8 @@ auto_locate = true
 enabled = ["noctalia/wallhaven"]
 
 [shell]
-font_family = "{{ .font.family }}"
+font_family = "Adwaita Sans"
+app_icon_color = "primary"
 lang = "en"
 settings_show_advanced = true
 
@@ -47,11 +61,28 @@ settings_show_advanced = true
 speed = 0.6
 
 [shell.panel]
-floating_offset = 0
+floating_offset = 10
+control_center_placement = "floating"
+session_placement = "floating"
 open_near_click_control_center = true
-open_near_click_launcher = true
+open_near_click_launcher = false
 transparency_mode = "soft"
 wallpaper_placement = "floating"
+
+[shell.launcher]
+layout = "simple"
+search_position = "top"
+compact = true
+categories = false
+show_navigation_labels = false
+show_session_button = false
+show_settings_button = true
+show_app_origin_indicator = false
+show_icons = true
+colorize_icons = false
+app_grid = false
+default_view = "recent"
+sort_by_usage = true
 
 [theme]
 mode = "dark"
@@ -71,22 +102,30 @@ builtin_ids = [
   "qt",
 ]
 community_ids = [
+  "codex",
+  "opencode",
+  "pi-agent",
+  "ytm-player",
+  "chromium-based",
   "zen-browser",
+  "blender",
+  "gimp",
+  "inkscape",
+  "libreoffice",
   "neovim",
-  "papirus-icons",
+  "obsidian",
   "steam",
-  "yazi",
+  "obs",
   "zathura",
+  "hyprtoolkit",
+  "papirus-icons",
+  "bat",
+  "fzf",
+  "glow",
+  "herdr",
+  "tmux",
+  "yazi",
 ]
-
-[theme.templates.user.chromium]
-input_path = "$XDG_CONFIG_HOME/noctalia/templates/chromium.desktop"
-output_path = "$XDG_DATA_HOME/applications/chromium.desktop"
-post_hook = "update-desktop-database $XDG_DATA_HOME/applications/ && chromium --no-startup-window --set-theme-color={{ "{{" }} colors.surface.default.rgb_csv {{ "}}" }} >/dev/null 2>&1 &"
-
-[theme.templates.user.ytm-player]
-input_path = "$XDG_CONFIG_HOME/noctalia/templates/ytm-player.theme.toml"
-output_path = "$XDG_CONFIG_HOME/ytm-player/theme.toml"
 
 [wallpaper]
 directory = "/home/sachnr/wallpapers/"
@@ -94,10 +133,11 @@ fill_mode = "center"
 
 [widget.clock]
 anchor = true
-format = "{:%a %d %b %I:%M %p}"
+format = "{:%a, %d %b  ·  %I:%M %p}"
 
 [widget.media]
 hide_when_no_media = true
+max_length = 180.0
 title_scroll = "always"
 
 [widget.network]
@@ -110,5 +150,19 @@ hide_when_no_unread = true
 type = "noctalia/wallhaven:wallhaven"
 
 [widget.workspaces]
-font_weight = 700
-scale = 1.2
+font_weight = 600
+scale = 1.05
+
+[widget.tray]
+type = "tray"
+colorize_icons = true
+icon_type = "symbolic"
+
+[widget.ram]
+type = "sysmon"
+stat = "ram_pct"
+visualization = "none"
+show_value = true
+
+[widget.ram.actions]
+left = "exec kitty --title 'Task Manager' -e btop"

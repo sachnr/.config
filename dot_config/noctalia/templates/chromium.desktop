@@ -3,7 +3,7 @@ Version=1.0
 Name=Chromium
 GenericName=Web Browser
 Comment=Access the Internet
-Exec=/usr/bin/chromium --ozone-platform=wayland --ozone-platform-hint=wayland --set-theme-color={{ colors.surface.default.rgb_csv }} %U
+Exec=/usr/bin/chromium %U
 StartupNotify=true
 Terminal=false
 Icon=chromium

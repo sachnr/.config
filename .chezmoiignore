@@ -17,3 +17,16 @@ dot_config/mpd/mpdstate
 
 themes
 make
+
+# Tabliss is managed locally, not through chezmoi.
+.config/tabliss
+.config/tabliss/**
+
+# OpenCode: keep credentials and machine-local runtime files out of dotfiles.
+.config/opencode/auth.json
+.config/opencode/auth.jsonc
+.config/opencode/providers/**
+.config/opencode/service.json
+.config/opencode/node_modules/**
+.config/opencode/.env
+.config/opencode/.env.*

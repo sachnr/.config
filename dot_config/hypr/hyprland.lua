@@ -82,6 +82,11 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 -----------------------
 
 hl.config({
+	-- Fullscreen apps were making Hyprland toggle HDR metadata on the output,
+	-- which forces a mode re-program and makes the monitor flash its input OSD.
+	render = {
+		cm_auto_hdr = 0,
+	},
 	cursor = {
 		no_warps = true,
 	},
@@ -242,8 +247,8 @@ hl.bind(mainMod .. " + F4", hl.dsp.exit())
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + D", hl.dsp.layout("togglesplit"))
-hl.bind("PRINT", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("grim - | satty --filename - --copy-command wl-copy"))
+hl.bind("PRINT", hl.dsp.exec_cmd(ipc .. " screenshot-region --copy-to-clipboard --no-save-to-file --no-pipe-to-command --no-annotate"))
+hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(ipc .. " screenshot-fullscreen all --annotate --copy-to-clipboard --no-save-to-file --no-pipe-to-command"))
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd(ipc .. " session lock"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen(0))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
@@ -368,6 +373,14 @@ hl.window_rule({
 	name = "float-pavucontrol",
 	match = { class = "^(Pavucontrol)$" },
 	float = true,
+})
+
+-- Keep CS2 on the 180 Hz Acer. When the XP-Pen HDMI panel is plugged in it can
+-- otherwise take the game fullscreen at 1080p/60 and feel laggy.
+hl.window_rule({
+	name = "cs2-on-acer",
+	match = { class = "^(cs2)$" },
+	monitor = "DP-3",
 })
 
 hl.window_rule({

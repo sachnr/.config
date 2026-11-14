@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "theme": {
+    "name": "system"
+  },
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "hide",
+    "scrollbar": false,
+    "thinking": "hide",
+    "tps": false,
+    "image_preview": false
+  },
+  "animations": false,
+  "highlights": false,
+  "tabs": {
+    "mode": "off"
+  }
+}
