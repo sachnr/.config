@@ -1,5 +1,5 @@
 [bar.default]
-position = "bottom"
+position = "top"
 background_opacity = 0.92
 border_width = 0.0
 capsule = true
@@ -9,12 +9,13 @@ capsule_border_width = 0.0
 capsule_padding = 8.0
 capsule_radius = 9
 capsule_thickness = 0.8
-start = ["launcher", "workspaces"]
+start = ["launcher", "wallpaper", "workspaces"]
 center = ["clock"]
 end = [
   "media",
   "tray",
   "ram",
+  "screen-capture",
   "network",
   "bluetooth",
   "volume",
@@ -49,7 +50,7 @@ reserve_space = false
 auto_locate = true
 
 [plugins]
-enabled = ["noctalia/wallhaven"]
+enabled = ["noctalia/wallhaven", "congluantran/calibre", "amaurisd97/screen-capture", "tordex/processes"]
 
 [shell]
 font_family = "{{ .font.ui }}"
@@ -166,4 +167,7 @@ visualization = "none"
 show_value = true
 
 [widget.ram.actions]
-left = "exec kitty --title 'Task Manager' -e btop"
+left = "panel-toggle tordex/processes:panel mem"
+
+[widget.screen-capture]
+type = "amaurisd97/screen-capture:widget"
