@@ -1,6 +1,13 @@
 adwaita-fonts
 brightnessctl
+bubblewrap
 cliphist
+fontconfig
+gstreamer
+gst-plugins-base
+gtk4
+gtksourceview5
 mpd
 playerctl
+poppler-glib
 python

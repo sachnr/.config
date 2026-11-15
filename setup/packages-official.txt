@@ -12,6 +12,7 @@ bluez-utils
 bottom
 btop
 btrfs-progs
+bubblewrap
 calibre
 chezmoi
 chromium
@@ -27,12 +28,18 @@ eza
 fd
 ffmpegthumbnailer
 fish
+fontconfig
 fzf
 gamemode
 git
 git-lfs
 glow
+gpu-screen-recorder
+gst-plugins-base
+gstreamer
+gtk4
 gtk4-layer-shell
+gtksourceview5
 gvfs
 gvfs-afc
 gvfs-gphoto2
@@ -84,6 +91,7 @@ pipewire
 pipewire-alsa
 pipewire-pulse
 polkit-gnome
+poppler-glib
 qbittorrent-nox
 qt5-wayland
 qt6ct
@@ -107,7 +115,6 @@ unzip
 uv
 uwsm
 viu
-wf-recorder
 wget
 wireplumber
 wl-clipboard
