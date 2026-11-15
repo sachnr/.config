@@ -239,6 +239,7 @@ hl.gesture({
 local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("/home/sachnr/.local/bin/strata"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(ipc .. " panel-toggle clipboard"))
