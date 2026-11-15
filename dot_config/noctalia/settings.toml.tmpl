@@ -9,7 +9,7 @@ capsule_border_width = 0.0
 capsule_padding = 8.0
 capsule_radius = 9
 capsule_thickness = 0.8
-start = ["launcher", "wallpaper", "workspaces"]
+start = ["launcher", "wallpaper", "taskbar"]
 center = ["clock"]
 end = [
   "media",
@@ -36,7 +36,7 @@ radius_bottom_left = 0
 radius_bottom_right = 0
 concave_edge_corners = false
 shadow = false
-thickness = 40
+thickness = 48
 padding = 16
 widget_spacing = 6
 
@@ -119,7 +119,6 @@ community_ids = [
   "obs",
   "zathura",
   "hyprtoolkit",
-  "papirus-icons",
   "bat",
   "fzf",
   "glow",
@@ -153,6 +152,19 @@ type = "noctalia/wallhaven:wallhaven"
 [widget.workspaces]
 font_weight = 600
 scale = 1.0
+
+[widget.taskbar]
+type = "taskbar"
+scale = 1.5
+colorize_icons = false
+group_by_workspace = true
+only_active_workspace = false
+show_workspace_label = true
+workspace_label_placement = "inside"
+hide_empty_workspaces = false
+workspace_group_capsule = true
+group_single_icon_per_app = true
+show_window_title = false
 
 [widget.tray]
 type = "tray"

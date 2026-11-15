@@ -3,4 +3,5 @@
 blockbench-bin
 ldtk
 raddebugger-git
+whitesur-icon-theme
 yay
