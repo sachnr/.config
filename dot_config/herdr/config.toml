@@ -42,3 +42,24 @@ scrollback_limit_bytes = 52428800
 
 [session]
 # resume_agents_on_restore = true
+
+[theme.custom]
+accent = "#e8a87c"
+panel_bg = "reset"
+sidebar_bg = "reset"
+active_row_bg = "#45394c"
+selection_bg = "#4f4157"
+surface0 = "#45394c"
+surface1 = "#4f4157"
+surface_dim = "#141118"
+overlay0 = "#74626a"
+overlay1 = "#c8b8a8"
+text = "#f5ede6"
+subtext0 = "#c8b8a8"
+mauve = "#c89ab8"
+green = "#7aad5a"
+yellow = "#e8c87a"
+red = "#d96b6b"
+blue = "#8a9ab8"
+teal = "#8ac8c0"
+peach = "#d9a26b"

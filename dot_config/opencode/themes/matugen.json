@@ -1,20 +1,20 @@
 {
   "$schema": "https://opencode.ai/theme.json",
   "defs": {
-    "primary": "#85d5c1",
-    "on_primary": "#00382e",
-    "secondary": "#aecdc3",
-    "on_secondary": "#19352f",
-    "surface": "#101413",
-    "on_surface": "#e0e3e0",
-    "surface_variant": "#3f4946",
-    "on_surface_variant": "#bec9c4",
-    "background": "#101413",
-    "on_background": "#e0e3e0",
-    "error": "#ffb4ab",
-    "on_error": "#690005",
-    "outline": "#88938f",
-    "outline_variant": "#3f4946"
+    "primary": "#e8a87c",
+    "on_primary": "#1a1418",
+    "secondary": "#8fbf6a",
+    "on_secondary": "#1a1418",
+    "surface": "#1e1a24",
+    "on_surface": "#f5ede6",
+    "surface_variant": "#3a3040",
+    "on_surface_variant": "#c8b8a8",
+    "background": "#1e1a24",
+    "on_background": "#f5ede6",
+    "error": "#d96b6b",
+    "on_error": "#1a1418",
+    "outline": "#74626a",
+    "outline_variant": "#6b5a62"
   },
   "theme": {
     "primary": {

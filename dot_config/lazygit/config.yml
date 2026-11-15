@@ -1,4 +1,31 @@
 gui:
+  theme:
+    activeBorderColor:
+      - "#e8a87c"
+      - bold
+    inactiveBorderColor:
+      - "#8fbf6a"
+    searchingActiveBorderColor:
+      - "#e8c87a"
+      - bold
+    optionsTextColor:
+      - "#c8b8a8"
+    selectedLineBgColor:
+      - "#45394c"
+    inactiveViewSelectedLineBgColor:
+      - bold
+    cherryPickedCommitFgColor:
+      - "#c8b8a8"
+    cherryPickedCommitBgColor:
+      - "#e8c87a"
+    markedBaseCommitFgColor:
+      - "#e8c87a"
+    markedBaseCommitBgColor:
+      - "#d96b6b"
+    unstagedChangesColor:
+      - "#d96b6b"
+    defaultFgColor:
+      - "#f5ede6"
   sidePanelWidth: 0.4
   expandFocusedSidePanel: true
   expandedSidePanelWeight: 2
